@@ -1,0 +1,106 @@
+package tiktok
+
+import "encoding/json"
+
+type Response struct {
+	Code      int             `json:"code"`
+	Message   string          `json:"message"`
+	RequestID string          `json:"request_id"`
+	Data      json.RawMessage `json:"data"`
+}
+
+type AccessTokenResponse struct {
+	AccessToken          string `json:"access_token"`
+	AccessTokenExpireIn  int    `json:"access_token_expire_in"`
+	RefreshToken         string `json:"refresh_token"`
+	RefreshTokenExpireIn int    `json:"refresh_token_expire_in"`
+	OpenID               string `json:"open_id"`
+	SellerName           string `json:"seller_name"`
+}
+
+type Shop struct {
+	ShopID   string `json:"shop_id"`
+	ShopName string `json:"shop_name"`
+	Region   string `json:"region"`
+	Type     int    `json:"type"`
+}
+
+type ShopList struct {
+	Shops []Shop `json:"shop_list"`
+}
+
+type Order struct {
+	OrderID     string `json:"order_id"`
+	OrderStatus int    `json:"order_status"`
+	UpdateTime  int    `json:"update_time"`
+}
+
+type OrdersList struct {
+	OrderList  []Order `json:"order_list,omitempty"`
+	More       bool    `json:"more"`
+	NextCursor string  `json:"next_cursor"`
+	Total      int     `json:"total"`
+}
+
+type RecipientAddress struct {
+	FullAddress     string   `json:"full_address"`
+	Region          string   `json:"region"`
+	State           string   `json:"state"`
+	City            string   `json:"city"`
+	District        string   `json:"district"`
+	Town            string   `json:"town"`
+	Phone           string   `json:"phone"`
+	Name            string   `json:"name"`
+	Zipcode         string   `json:"zipcode"`
+	AddressDetail   string   `json:"address_detail"`
+	AddressLineList []string `json:"address_line_list"`
+}
+
+type PaymentInfo struct {
+	Currency                    string `json:"currency"`
+	SubTotal                    int    `json:"sub_total"`
+	ShippingFee                 int    `json:"shipping_fee"`
+	SellerDiscount              int    `json:"seller_discount"`
+	TotalAmount                 int    `json:"total_amount"`
+	OriginalTotalProductPrice   int    `json:"original_total_product_price"`
+	OriginalShippingFee         int    `json:"original_shipping_fee"`
+	ShippingFeeSellerDiscount   int    `json:"shipping_fee_seller_discount"`
+	ShippingFeePlatformDiscount int    `json:"shipping_fee_platform_discount"`
+}
+
+type Item struct {
+	SkuID            string `json:"sku_id"`
+	ProductID        string `json:"product_id"`
+	ProductName      string `json:"product_name"`
+	SkuName          string `json:"sku_name"`
+	SkuImage         string `json:"sku_image"`
+	Quantity         int    `json:"quantity"`
+	SellerSku        string `json:"seller_sku"`
+	SkuOriginalPrice int    `json:"sku_original_price"`
+	SkuSalePrice     int    `json:"sku_sale_price"`
+}
+
+type OrderDetail struct {
+	OrderID            string           `json:"order_id"`
+	OrderStatus        int              `json:"order_status"`
+	PaymentMethod      string           `json:"payment_method"`
+	DeliveryOption     string           `json:"delivery_option"`
+	ShippingProvider   string           `json:"shipping_provider"`
+	ShippingProviderID string           `json:"shipping_provider_id"`
+	CreateTime         string           `json:"create_time"`
+	PaidTime           string           `json:"paid_time"`
+	BuyerMessage       string           `json:"buyer_message"`
+	PaymentInfo        PaymentInfo      `json:"payment_info,omitempty"`
+	RecipientAddress   RecipientAddress `json:"recipient_address,omitempty"`
+	TrackingNumber     string           `json:"tracking_number"`
+	ItemList           []Item           `json:"item_list,omitempty"`
+	RtsTime            int              `json:"rts_time"`
+	RtsSLA             int              `json:"rts_sla"`
+	TtsSLA             int              `json:"tts_sla"`
+	CancelOrderSLA     int              `json:"cancel_order_sla"`
+	UpdateTime         int              `json:"update_time"`
+}
+
+type OrderDetailList struct {
+	OrderList []OrderDetail `json:"order_list"`
+}
