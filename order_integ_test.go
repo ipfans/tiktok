@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ipfans/tiktok-sdk"
+	"github.com/ipfans/tiktok"
 	"github.com/stretchr/testify/require"
 )
 

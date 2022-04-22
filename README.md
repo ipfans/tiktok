@@ -1,4 +1,4 @@
-# tiktok-sdk
+# tiktok
  Go SDK for TikTok global
 
 

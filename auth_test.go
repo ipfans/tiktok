@@ -1,15 +1,14 @@
 package tiktok_test
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
+	"encoding/json"
+	"io"
 	"net/http"
-	"os"
 	"testing"
 
-	"github.com/golang/mock/gomock"
-	"github.com/ipfans/tiktok-sdk"
+	"github.com/ipfans/tiktok"
+	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/require"
 )
 
@@ -21,36 +20,104 @@ func TestClient_GenerateAuthURL(t *testing.T) {
 }
 
 func TestClient_GetAccessToken(t *testing.T) {
-	c, close := mockClient(t)
-	defer close()
-	b, _ := os.ReadFile("testdata/get_access_token.json")
-
-	res := &http.Response{
-		Status:        "200 OK",
-		StatusCode:    200,
-		Proto:         "HTTP/1.1",
-		ProtoMajor:    1,
-		ProtoMinor:    1,
-		Body:          ioutil.NopCloser(bytes.NewBuffer(b)),
-		ContentLength: int64(len(b)),
-		Request:       nil,
-		Header:        make(http.Header, 0),
+	type request struct {
+		Code string `json:"code"`
 	}
 
-	c.EXPECT().Do(gomock.Any()).Return(res, nil)
-	client, err := tiktok.New("123abc", "456def", tiktok.WithHTTPClient(c))
+	var want struct {
+		AccessToken  string `json:"access_token"`
+		RefreshToken string `json:"refresh_token"`
+		OpenID       string `json:"open_id"`
+	}
+
+	client, err := tiktok.New("123abc", "456def")
 	require.NoError(t, err)
-	resp, err := client.GetAccessToken(context.TODO(), "123")
-	require.NoError(t, err)
-	require.Equal(t, tiktok.AccessTokenResponse{
-		AccessToken:          "RLM6CIADWF606TZGFO5XGA",
-		AccessTokenExpireIn:  1630401330,
-		RefreshToken:         "C2XWDN63ON-FOHJSMR0WSG",
-		RefreshTokenExpireIn: 1630401510,
-		OpenID:               "7000636243100829446",
-		SellerName:           "fanfan",
-	}, resp)
+	tests := loadTestData(t, "testdata/get_access_token.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+
+			err = json.Unmarshal([]byte(tt.Want), &want)
+			require.NoError(t, err)
+
+			httpmock.RegisterResponder(
+				tt.Request.Method, tt.Request.URL,
+				func(r *http.Request) (res *http.Response, err error) {
+					defer r.Body.Close()
+					b, _ := io.ReadAll(r.Body)
+					require.JSONEq(t, string(tt.Request.Body), string(b))
+					res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
+					return
+				},
+			)
+
+			var req request
+			err := json.Unmarshal(tt.Args, &req)
+			require.NoError(t, err)
+
+			resp, err := client.GetAccessToken(context.TODO(), req.Code)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			}
+
+			require.NoError(t, err)
+			require.Equal(t, want.AccessToken, resp.AccessToken)
+			require.Equal(t, want.RefreshToken, resp.RefreshToken)
+			require.Equal(t, want.OpenID, resp.OpenID)
+		})
+	}
+
 }
 
 func TestClient_RefreshToken(t *testing.T) {
+	type request struct {
+		RefreshToken string `json:"refresh_token"`
+	}
+
+	var want struct {
+		AccessToken  string `json:"access_token"`
+		RefreshToken string `json:"refresh_token"`
+		OpenID       string `json:"open_id"`
+	}
+
+	client, err := tiktok.New("123abc", "456def")
+	require.NoError(t, err)
+	tests := loadTestData(t, "testdata/refresh_token.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+
+			err = json.Unmarshal([]byte(tt.Want), &want)
+			require.NoError(t, err)
+
+			httpmock.RegisterResponder(
+				tt.Request.Method, tt.Request.URL,
+				func(r *http.Request) (res *http.Response, err error) {
+					defer r.Body.Close()
+					b, _ := io.ReadAll(r.Body)
+					require.JSONEq(t, string(tt.Request.Body), string(b))
+					res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
+					return
+				},
+			)
+
+			var req request
+			err := json.Unmarshal(tt.Args, &req)
+			require.NoError(t, err)
+
+			resp, err := client.RefreshToken(context.TODO(), req.RefreshToken)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			}
+
+			require.NoError(t, err)
+			require.Equal(t, want.AccessToken, resp.AccessToken)
+			require.Equal(t, want.RefreshToken, resp.RefreshToken)
+			require.Equal(t, want.OpenID, resp.OpenID)
+		})
+	}
 }

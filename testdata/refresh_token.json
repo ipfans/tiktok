@@ -2,17 +2,17 @@
     {
         "name": "Official example",
         "args": {
-            "code": "123"
+            "refresh_token": "C2XWDN63ON-FOHJSMR0WSG"
         },
         "request": {
             "method": "POST",
-            "url": "https://auth.tiktok-shops.com/api/token/getAccessToken",
+            "url": "https://auth.tiktok-shops.com/api/token/refreshToken",
             "headers": {},
             "body": {
                 "app_key": "123abc",
                 "app_secret": "456def",
-                "auth_code": "123",
-                "grant_type": "authorized_code"
+                "refresh_token": "C2XWDN63ON-FOHJSMR0WSG",
+                "grant_type": "refresh_token"
             }
         },
         "response": {
@@ -28,7 +28,7 @@
                     "refresh_token_expire_in": 1630401510,
                     "open_id": "7000636243100829446",
                     "seller_name": "fanfan",
-                    "request_id": "123456"
+                    "request_id": "12345"
                 }
             }
         },

@@ -1,13 +1,14 @@
 package tiktok_test
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
 	"testing"
 
-	"github.com/golang/mock/gomock"
-	"github.com/ipfans/tiktok-sdk"
+	"github.com/ipfans/tiktok"
+	"github.com/stretchr/testify/require"
 )
 
 func newTestClient(t *testing.T) *tiktok.Client {
@@ -24,17 +25,28 @@ func newTestClient(t *testing.T) *tiktok.Client {
 	return c
 }
 
-func mockClient(t *testing.T) (*MockHTTPClient, func()) {
-	ctrl := gomock.NewController(t)
-	client := NewMockHTTPClient(ctrl)
-	return client, func() { ctrl.Finish() }
+type TestRecord struct {
+	Name    string          `json:"name"`
+	Args    json.RawMessage `json:"args"`
+	Request struct {
+		Method string          `json:"method"`
+		URL    string          `json:"url"`
+		Body   json.RawMessage `json:"body"`
+	} `json:"request"`
+	Response struct {
+		Status  int               `json:"status"`
+		Headers map[string]string `json:"headers"`
+		Body    json.RawMessage   `json:"body"`
+	} `json:"response"`
+	Want    json.RawMessage `json:"want"`
+	WantErr bool            `json:"want_err"`
 }
 
-func loadTestData(t *testing.T, fn string) (s string) {
+func loadTestData(t *testing.T, fn string) (records []TestRecord) {
 	t.Helper()
 	b, err := ioutil.ReadFile(fn)
-	if err != nil {
-		t.Skipf("%s:loaded failed.", fn)
-	}
-	return string(b)
+	require.NoError(t, err)
+	err = json.Unmarshal(b, &records)
+	require.NoError(t, err)
+	return
 }
