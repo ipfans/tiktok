@@ -2,6 +2,7 @@ package tiktok
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -51,18 +52,18 @@ func New(appKey, appSecret string, opts ...Option) (c *Client, err error) {
 
 // Get request for TikTok requests.
 // Note: Timestamp, appkey and signature will auto-management by action.
-func (c *Client) Get(path string, param url.Values, resp interface{}) (err error) {
+func (c *Client) Get(ctx context.Context, path string, param url.Values, resp interface{}) (err error) {
 	param = c.prepareParam(path, param)
-	err = c.request(http.MethodGet, APIBaseURL, path, param, nil, resp)
+	err = c.request(ctx, http.MethodGet, APIBaseURL, path, param, nil, resp)
 	return
 }
 
 // Post request for TikTok requests.
 // Note: Timestamp, appkey and signature will auto-management by action.
-func (c *Client) Post(path string, param url.Values, body interface{}, resp interface{}) (err error) {
+func (c *Client) Post(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {
 	param = c.prepareParam(path, param)
 	r := c.prepareBody(body)
-	err = c.request(http.MethodPost, APIBaseURL, path, param, r, resp)
+	err = c.request(ctx, http.MethodPost, APIBaseURL, path, param, r, resp)
 	return
 }
 
@@ -86,7 +87,7 @@ func (c *Client) prepareBody(body interface{}) (buf io.Reader) {
 	return
 }
 
-func (c *Client) request(method, base, path string, param url.Values, r io.Reader, body interface{}) (err error) {
+func (c *Client) request(ctx context.Context, method, base, path string, param url.Values, r io.Reader, body interface{}) (err error) {
 	var req *http.Request
 	target := base + path + "?" + param.Encode()
 	c.opt.logger.Printf("%s %s", method, target)
@@ -94,8 +95,9 @@ func (c *Client) request(method, base, path string, param url.Values, r io.Reade
 	if err != nil {
 		return
 	}
-	req.Header.Set("User-Agnet", "Go-TikTok-SDK/v1")
+	req.Header.Set("User-Agnet", "Go-TikTok-SDK/v0")
 	req.Header.Set("Content-Type", "application/json")
+	req = req.WithContext(ctx)
 
 	resp, err := c.opt.client.Do(req)
 	if err != nil {

@@ -7,5 +7,10 @@ dotenv: [".env"]
 tasks:
   default:
     cmds:
-      - go1.18beta1 test -v -race ./...
-    silent: true
+      - go test -v -race -timeout 10m -coverprofile=coverage.out -cover ./...
+      - go tool cover -func coverage.out
+
+  integration:
+    cmds:
+      - go test -v -race -timeout 10m -tags integration -coverprofile=coverage.out -cover -failfast ./...
+      - go tool cover -func coverage.out

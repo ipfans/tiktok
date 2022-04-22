@@ -1,6 +1,10 @@
+//go:build integration
+// +build integration
+
 package tiktok_test
 
 import (
+	"context"
 	"encoding/json"
 	"os"
 	"testing"
@@ -39,7 +43,7 @@ func TestClient_GetAuthorizedShop(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotShops, err := c.GetAuthorizedShop(tt.args.ak, tt.args.shop_id)
+			gotShops, err := c.GetAuthorizedShop(context.TODO(), tt.args.ak, tt.args.shop_id)
 			require.Equal(t, tt.wantErr, err != nil, "Client.GetAuthorizedShop() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return

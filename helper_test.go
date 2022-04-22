@@ -6,6 +6,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/golang/mock/gomock"
 	"github.com/ipfans/tiktok-sdk"
 )
 
@@ -21,6 +22,12 @@ func newTestClient(t *testing.T) *tiktok.Client {
 	logger := log.Default()
 	c, _ := tiktok.New(appKey, appSecret, tiktok.WithLogger(logger))
 	return c
+}
+
+func mockClient(t *testing.T) (*MockHTTPClient, func()) {
+	ctrl := gomock.NewController(t)
+	client := NewMockHTTPClient(ctrl)
+	return client, func() { ctrl.Finish() }
 }
 
 func loadTestData(t *testing.T, fn string) (s string) {

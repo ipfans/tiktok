@@ -1,0 +1,13 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "access_token": "RLM6CIADWF606TZGFO5XGA",
+        "access_token_expire_in": 1630401330,
+        "refresh_token": "C2XWDN63ON-FOHJSMR0WSG",
+        "refresh_token_expire_in": 1630401510,
+        "open_id": "7000636243100829446",
+        "seller_name": "fanfan",
+        "request_id": "123456"
+    }
+}

@@ -13,7 +13,5 @@
 
 .env
 *.bak
-_integration_tests.go
 .vscode/
 .idea/
-testdata/**/*.json

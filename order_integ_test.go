@@ -1,6 +1,10 @@
+//go:build integration
+// +build integration
+
 package tiktok_test
 
 import (
+	"context"
 	"encoding/json"
 	"os"
 	"testing"
@@ -45,7 +49,7 @@ func TestClient_GetOrderList(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotList, err := c.GetOrderList(tt.args.ak, tt.args.shopID, tt.args.query)
+			gotList, err := c.GetOrderList(context.TODO(), tt.args.ak, tt.args.shopID, tt.args.query)
 			require.Equal(t, tt.wantErr, err != nil, "Client.GetOrderList() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return
@@ -96,7 +100,7 @@ func TestClient_GetOrderDetail(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotDetail, err := c.GetOrderDetail(tt.args.ak, tt.args.shopID, tt.args.orderID)
+			gotDetail, err := c.GetOrderDetail(context.TODO(), tt.args.ak, tt.args.shopID, tt.args.orderID)
 			require.Equal(t, tt.wantErr, err != nil, "Client.GetOrderDetail() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return
