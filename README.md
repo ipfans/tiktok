@@ -1,6 +1,27 @@
 # tiktok
  Go SDK for TikTok global
 
+## Feature
+
+- [x] Authentication
+  - [x] Get your auth code url
+  - [x] Use auth code to get access_token
+  - [x] Refresh your access token
+- [ ] Webhook
+- [x] Order API
+  - [x] Get order list
+  - [x] Get order detail
+  - [ ] Ship order
+- [ ] Fulfillment API
+- [ ] Logistics API
+- [ ] Product API
+- [ ] Shop API
+- [ ] Finance API
+- [ ] Reverse Order API
+
+## API Call Flow
+
+https://bytedance.feishu.cn/docs/doccnZ15f4vPK4qOOBTKhgc2xNh
 
 ## HOWTO Contribuate
 

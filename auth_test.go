@@ -2,9 +2,6 @@ package tiktok_test
 
 import (
 	"context"
-	"encoding/json"
-	"io"
-	"net/http"
 	"testing"
 
 	"github.com/ipfans/tiktok"
@@ -24,7 +21,7 @@ func TestClient_GetAccessToken(t *testing.T) {
 		Code string `json:"code"`
 	}
 
-	var want struct {
+	type want struct {
 		AccessToken  string `json:"access_token"`
 		RefreshToken string `json:"refresh_token"`
 		OpenID       string `json:"open_id"`
@@ -38,23 +35,9 @@ func TestClient_GetAccessToken(t *testing.T) {
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 
-			err = json.Unmarshal([]byte(tt.Want), &want)
-			require.NoError(t, err)
-
-			httpmock.RegisterResponder(
-				tt.Request.Method, tt.Request.URL,
-				func(r *http.Request) (res *http.Response, err error) {
-					defer r.Body.Close()
-					b, _ := io.ReadAll(r.Body)
-					require.JSONEq(t, string(tt.Request.Body), string(b))
-					res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
-					return
-				},
-			)
-
+			var w want
 			var req request
-			err := json.Unmarshal(tt.Args, &req)
-			require.NoError(t, err)
+			setupMock(t, tt, &req, &w)
 
 			resp, err := client.GetAccessToken(context.TODO(), req.Code)
 			if tt.WantErr {
@@ -63,9 +46,9 @@ func TestClient_GetAccessToken(t *testing.T) {
 			}
 
 			require.NoError(t, err)
-			require.Equal(t, want.AccessToken, resp.AccessToken)
-			require.Equal(t, want.RefreshToken, resp.RefreshToken)
-			require.Equal(t, want.OpenID, resp.OpenID)
+			require.Equal(t, w.AccessToken, resp.AccessToken)
+			require.Equal(t, w.RefreshToken, resp.RefreshToken)
+			require.Equal(t, w.OpenID, resp.OpenID)
 		})
 	}
 
@@ -76,7 +59,7 @@ func TestClient_RefreshToken(t *testing.T) {
 		RefreshToken string `json:"refresh_token"`
 	}
 
-	var want struct {
+	type want struct {
 		AccessToken  string `json:"access_token"`
 		RefreshToken string `json:"refresh_token"`
 		OpenID       string `json:"open_id"`
@@ -90,23 +73,9 @@ func TestClient_RefreshToken(t *testing.T) {
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 
-			err = json.Unmarshal([]byte(tt.Want), &want)
-			require.NoError(t, err)
-
-			httpmock.RegisterResponder(
-				tt.Request.Method, tt.Request.URL,
-				func(r *http.Request) (res *http.Response, err error) {
-					defer r.Body.Close()
-					b, _ := io.ReadAll(r.Body)
-					require.JSONEq(t, string(tt.Request.Body), string(b))
-					res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
-					return
-				},
-			)
-
 			var req request
-			err := json.Unmarshal(tt.Args, &req)
-			require.NoError(t, err)
+			var w want
+			setupMock(t, tt, &req, &w)
 
 			resp, err := client.RefreshToken(context.TODO(), req.RefreshToken)
 			if tt.WantErr {
@@ -115,9 +84,9 @@ func TestClient_RefreshToken(t *testing.T) {
 			}
 
 			require.NoError(t, err)
-			require.Equal(t, want.AccessToken, resp.AccessToken)
-			require.Equal(t, want.RefreshToken, resp.RefreshToken)
-			require.Equal(t, want.OpenID, resp.OpenID)
+			require.Equal(t, w.AccessToken, resp.AccessToken)
+			require.Equal(t, w.RefreshToken, resp.RefreshToken)
+			require.Equal(t, w.OpenID, resp.OpenID)
 		})
 	}
 }

@@ -2,12 +2,15 @@ package tiktok_test
 
 import (
 	"encoding/json"
+	"io"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"testing"
 
 	"github.com/ipfans/tiktok"
+	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/require"
 )
 
@@ -49,4 +52,23 @@ func loadTestData(t *testing.T, fn string) (records []TestRecord) {
 	err = json.Unmarshal(b, &records)
 	require.NoError(t, err)
 	return
+}
+
+func setupMock(t *testing.T, tt TestRecord, req, want interface{}) {
+	err := json.Unmarshal([]byte(tt.Want), want)
+	require.NoError(t, err)
+
+	httpmock.RegisterResponder(
+		tt.Request.Method, tt.Request.URL,
+		func(r *http.Request) (res *http.Response, err error) {
+			defer r.Body.Close()
+			b, _ := io.ReadAll(r.Body)
+			require.JSONEq(t, string(tt.Request.Body), string(b))
+			res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
+			return
+		},
+	)
+
+	err = json.Unmarshal(tt.Args, req)
+	require.NoError(t, err)
 }

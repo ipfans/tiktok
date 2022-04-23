@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456"
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://auth.tiktok-shops.com/api/token/refreshToken",
+            "headers": {},
+            "body": {
+                "app_key": "123abc",
+                "app_secret": "456def",
+                "refresh_token": "C2XWDN63ON-FOHJSMR0WSG",
+                "grant_type": "refresh_token"
+            }
+        },
+        "response": {
+            "status": 200,
+            "headers": {},
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "02162513320727800000000000000000000ffff0ae7f06c9f1968",
+                "data": {
+                    "order_list": [
+                        {
+                            "order_id": "576463220456522968",
+                            "order_status": 100,
+                            "update_time": 1634106101
+                        },
+                        {
+                            "order_id": "576463220456260824",
+                            "order_status": 100,
+                            "update_time": 1634106101
+                        }
+                    ],
+                    "more": true,
+                    "next_cursor": "390r2hHJILRaASHiJeL3ARsZ2PL0Ms332p3iEvL+i+EgFfjY8RwqxfuyV/uvtie2g4DXwLUu1CUr6+YxpZl1LA=="
+                }
+            }
+        },
+        "want": {
+            "order_list": [
+                {
+                    "order_id": "576463220456522968",
+                    "order_status": 100,
+                    "update_time": 1634106101
+                },
+                {
+                    "order_id": "576463220456260824",
+                    "order_status": 100,
+                    "update_time": 1634106101
+                }
+            ],
+            "more": true,
+            "next_cursor": "390r2hHJILRaASHiJeL3ARsZ2PL0Ms332p3iEvL+i+EgFfjY8RwqxfuyV/uvtie2g4DXwLUu1CUr6+YxpZl1LA=="
+        },
+        "want_err": false
+    }
+]
