@@ -69,7 +69,7 @@ func TestClient_GetOrderSettlements(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/finance/search_transactions.json")
+	tests := loadTestData(t, "testdata/finance/get_order_settlements.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
