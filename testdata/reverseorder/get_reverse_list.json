@@ -16,7 +16,7 @@
         },
         "request": {
             "method": "POST",
-            "url": "https://open-api.tiktokglobalshop.com/api/reverse/reverse_reason/list",
+            "url": "https://open-api.tiktokglobalshop.com/api/reverse/reverse_order/list",
             "headers": {},
             "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=711619b0c6073ea3e00c4b3c47b8f65159b0e2cfb4bb1281feaf0edd43f75c25&timestamp=1600000000",
             "body": {}
