@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "order_id": "4035225888722551903",
+            "reason_key": "reverse_reject_request_reason_1",
+            "comments": "Please return it"
+        },
+        "request": {
+            "method": "GET",
+            "url": "https://open-api.tiktokglobalshop.com/api/reverse/reverse_reason/list",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=26ae3dbc60ce6093433a7d3206e362e850efc1a30d4ce2ace7ca698986698fd0&timestamp=1600000000"
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "02162512594107000000000000000000000ffff0ae7f06c633915",
+                "data": {
+                    "reverse_reason_list": [
+                        {
+                            "reverse_reason_key": "seller_cancel_reason_wrong_price_uk",
+                            "reverse_reason": "Pricing error",
+                            "available_order_status_list": [
+                                200
+                            ]
+                        },
+                        {
+                            "reverse_reason_key": "seller_cancel_unpaid_reason_out_of_stock_uk",
+                            "reverse_reason": "Out of stock",
+                            "available_order_status_list": [
+                                0
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "reverse_reason_list": [
+                {
+                    "reverse_reason_key": "seller_cancel_reason_wrong_price_uk",
+                    "reverse_reason": "Pricing error",
+                    "available_order_status_list": [
+                        200
+                    ]
+                },
+                {
+                    "reverse_reason_key": "seller_cancel_unpaid_reason_out_of_stock_uk",
+                    "reverse_reason": "Out of stock",
+                    "available_order_status_list": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "want_err": false
+    }
+]

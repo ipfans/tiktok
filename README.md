@@ -19,15 +19,52 @@ Go SDK for Tiktok Shop Open Platform.
   - [x] Get order detail
   - [x] Ship order
 - [ ] Fulfillment API
+  - [ ] SearchPreCombinePkg
+  - [ ] ConfirmPreCombinePkg
+  - [ ] RemovePackageOrder
+  - [ ] GetPackagePickupConfig
+  - [ ] ShipPackage
+  - [ ] SearchPackage
+  - [ ] GetPackageDetail
+  - [ ] GetPackageShippingInfo
+  - [ ] UpdatePackageShippingInfo
+  - [ ] GetPackageShippingDocument
+  - [ ] VerifyOrderSplit
+  - [ ] ConfirmOrderSplit
 - [ ] Logistics API
+  - [ ] GetShippingInfo
+  - [ ] UpdateShippingInfo
+  - [ ] GetShippingDocument
+  - [ ] GetWarehouseList
+  - [ ] GetShippingProvider
 - [ ] Product API
+  - [ ] GetCategory
+  - [ ] GetAttribute
+  - [ ] GetCategoryRule
+  - [ ] GetBrand
+  - [ ] UploadImg
+  - [ ] UploadFile
+  - [ ] CreateProduct
+  - [ ] EditProduct
+  - [ ] GetProductList
+  - [ ] GetProductDetail
+  - [ ] UpdatePrice
+  - [ ] UpdateStock
+  - [ ] DeactivateProducts
+  - [ ] DeleteProducts
+  - [ ] RecoverProduct
+  - [ ] ActivateProduct
 - [x] Shop API
-  - [x] Get authorized shop list
+  - [x] GetAuthorizedShop
 - [x] Finance API
-  - [x] Search settlements within a certain timeframe
-  - [x] Query settlement of a specific order
-  - [x] Search your seller account's transactions within a certain timeframe
-- [ ] Reverse Order API
+  - [x] SearchSettlements
+  - [x] GetOrderSettlements
+  - [x] SearchTransactions
+- [x] Reverse Order API
+  - [x] ConfirmReverse
+  - [x] RejectReverse
+  - [x] GetReverseList
+  - [x] GetReverseReason
 
 ### TODO
 
@@ -42,11 +79,11 @@ https://bytedance.feishu.cn/docs/doccnZ15f4vPK4qOOBTKhgc2xNh
 
 Install [`taskfile`](https://taskfile.dev) before you start.
 
-1. Setup Intergration Environment Variables
+### Setup Intergration Environment Variables
 
 edit `.env` file in root directory:
 
-```
+```env
 APPKEY=<app id for tiktok>
 APPSECRET=<app secret for tiktok>
 AK=<access token>
@@ -54,9 +91,11 @@ RK=<refresh token>
 OPENID=<seller's openid>
 SELLER=<seller's name>
 ```
+### Run Tests
 
-```
-task tests  # run tests.
+```bash
+task  # run tests.
+task integration # run integration tests.
 ```
 
-If env is not setup, all tests will be skipped.
+If env is not setup, all integration tests will be skipped.

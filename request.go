@@ -59,3 +59,24 @@ type SearchTransactionsRequest struct {
 	PageSize        int   `json:"page_size"`
 	Offset          int   `json:"offset" validate:"gte=0,lte=1000"`
 }
+
+type RejectReverseRequest struct {
+	ReverseOrderID           string `json:"reverse_order_id" validate:"required"`
+	ReverseRejectReasonKey   string `json:"reverse_reject_reason_key" validate:"required"`
+	ReverseRejectReasonValue string `json:"reverse_reject_comments"`
+}
+
+type GetReverseListRequest struct {
+	UpdateTimeFrom int `json:"update_time_from"`
+	UpdateTimeTo   int `json:"update_time_to"`
+	ReverseType    int `json:"reverse_type"`
+	SortBy         int `json:"sort_by"`
+	SortType       int `json:"sort_type"`
+	Offset         int `json:"offset"`
+	Size           int `json:"size"`
+}
+
+type GetReverseReasonRequest struct {
+	ReverseActionType int `json:"reverse_action_type"`
+	ReasonType        int `json:"reason_type"`
+}
