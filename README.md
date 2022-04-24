@@ -1,5 +1,11 @@
 # tiktok
- Go SDK for TikTok global
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/ipfans/tiktok-sdk.svg)](https://pkg.go.dev/github.com/ipfans/tiktok-sdk)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ipfans/tiktok-sdk)](https://goreportcard.com/report/github.com/ipfans/tiktok-sdk)
+[![build](https://github.com/ipfans/tiktok/actions/workflows/ci.yml/badge.svg)](https://github.com/ipfans/tiktok/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/ipfans/tiktok/badge.svg?branch=master)](https://coveralls.io/github/ipfans/tiktok?branch=master)
+
+Go SDK for Tiktok Shop Open Platform.
 
 ## Feature
 
@@ -17,10 +23,10 @@
 - [ ] Product API
 - [x] Shop API
   - [x] Get authorized shop list
-- [ ] Finance API
-  - [ ] Search settlements within a certain timeframe
-  - [ ] Query settlement of a specific order
-  - [ ] Search your seller account's transactions within a certain timeframe
+- [x] Finance API
+  - [x] Search settlements within a certain timeframe
+  - [x] Query settlement of a specific order
+  - [x] Search your seller account's transactions within a certain timeframe
 - [ ] Reverse Order API
 
 ### TODO

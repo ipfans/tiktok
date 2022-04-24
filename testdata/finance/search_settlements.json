@@ -1,0 +1,141 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "order_id": [
+                "576461413038785752"
+            ],
+            "request_time_from": 1635479324,
+            "request_time_to": 1635663463,
+            "page_size": 5,
+            "cursor": "aThUdHhKMXpjVnRLYkJDS3JMRm9McXlPVUxXVExYRjJiTVkwZTkzT3JJdC9HOVE9",
+            "sort_type": 2
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://open-api.tiktokglobalshop.com/api/finance/settlements/search",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=99d51e40d6176b7608094168a22562b4c733518d462282b939079c4951f7d88d&timestamp=1600000000",
+            "body": {
+                "request_time_from": 1635479324,
+                "request_time_to": 1635663463,
+                "page_size": 5,
+                "cursor": "aThUdHhKMXpjVnRLYkJDS3JMRm9McXlPVUxXVExYRjJiTVkwZTkzT3JJdC9HOVE9",
+                "sort_type": 2
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "20211105101202010245248014063F9014",
+                "data": {
+                    "more": false,
+                    "next_cursor": "aThUdHhKcDZjRmxLYkJDS3JMRm9MbUQ1VE1mZWovVUh1ejZXUVFQS2wzTkFyL289",
+                    "settlement_list": [
+                        {
+                            "unique_key": 7024412596837025542,
+                            "order_id": "576462919350519044",
+                            "adjustment_id": "0",
+                            "related_order_id": "576462919350519044",
+                            "sku_id": "0",
+                            "sku_name": "",
+                            "product_name": "",
+                            "settlement_info": {
+                                "settlement_time": 1635984000,
+                                "currency": "IDR",
+                                "user_pay": "1000",
+                                "platform_promotion": "0",
+                                "refund": "1000",
+                                "payment_fee": "0",
+                                "platform_commission": "0",
+                                "affiliate_commission": "0",
+                                "vat": "0",
+                                "shipping_fee": "0",
+                                "settlement_amount": "0"
+                            }
+                        },
+                        {
+                            "unique_key": 7024412596837025542,
+                            "order_id": "576462772652640213",
+                            "adjustment_id": "576462772652640213",
+                            "related_order_id": "576462772652640213",
+                            "sku_id": "0",
+                            "sku_name": "",
+                            "product_name": "",
+                            "settlement_info": {
+                                "settlement_time": 1635724800,
+                                "currency": "IDR",
+                                "user_pay": "100",
+                                "platform_promotion": "0",
+                                "refund": "100",
+                                "payment_fee": "0",
+                                "platform_commission": "0",
+                                "affiliate_commission": "0",
+                                "vat": "0",
+                                "shipping_fee": "0",
+                                "settlement_amount": "0"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "more": false,
+            "next_cursor": "aThUdHhKcDZjRmxLYkJDS3JMRm9MbUQ1VE1mZWovVUh1ejZXUVFQS2wzTkFyL289",
+            "settlement_list": [
+                {
+                    "unique_key": 7024412596837025542,
+                    "order_id": "576462919350519044",
+                    "adjustment_id": "0",
+                    "related_order_id": "576462919350519044",
+                    "sku_id": "0",
+                    "sku_name": "",
+                    "product_name": "",
+                    "settlement_info": {
+                        "settlement_time": 1635984000,
+                        "currency": "IDR",
+                        "user_pay": "1000",
+                        "platform_promotion": "0",
+                        "refund": "1000",
+                        "payment_fee": "0",
+                        "platform_commission": "0",
+                        "affiliate_commission": "0",
+                        "vat": "0",
+                        "shipping_fee": "0",
+                        "settlement_amount": "0"
+                    }
+                },
+                {
+                    "unique_key": 7024412596837025542,
+                    "order_id": "576462772652640213",
+                    "adjustment_id": "576462772652640213",
+                    "related_order_id": "576462772652640213",
+                    "sku_id": "0",
+                    "sku_name": "",
+                    "product_name": "",
+                    "settlement_info": {
+                        "settlement_time": 1635724800,
+                        "currency": "IDR",
+                        "user_pay": "100",
+                        "platform_promotion": "0",
+                        "refund": "100",
+                        "payment_fee": "0",
+                        "platform_commission": "0",
+                        "affiliate_commission": "0",
+                        "vat": "0",
+                        "shipping_fee": "0",
+                        "settlement_amount": "0"
+                    }
+                }
+            ]
+        },
+        "want_err": false
+    }
+]

@@ -43,3 +43,19 @@ type ShipOrderRequest struct {
 	OrderID string  `json:"order_id" validate:"required"`
 	Pickup  *Pickup `json:"pick_up,omitempty"`
 }
+
+type SearchSettlementsRequest struct {
+	RequestTimeFrom int    `json:"request_time_from"`
+	RequestTimeTo   int    `json:"request_time_to"`
+	PageSize        int    `json:"page_size"`
+	Cursor          string `json:"cursor"`
+	SortType        int    `json:"sort_type"`
+}
+
+type SearchTransactionsRequest struct {
+	RequestTimeFrom int   `json:"request_time_from"`
+	RequestTimeTo   int   `json:"request_time_to"`
+	TransactionType []int `json:"transaction_type" validate:"required"`
+	PageSize        int   `json:"page_size"`
+	Offset          int   `json:"offset" validate:"gte=0,lte=1000"`
+}

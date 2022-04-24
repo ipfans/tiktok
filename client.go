@@ -112,9 +112,10 @@ func (c *Client) request(ctx context.Context, method, base, path string, param u
 	if err != nil {
 		return
 	}
-	c.opt.logger.Printf("resp=%s", string(b))
-
 	var res Response
+	defer func() {
+		c.opt.logger.Printf("request_id=%s resp=%s", res.RequestID, string(b))
+	}()
 	err = json.Unmarshal(b, &res)
 	if err != nil {
 		return

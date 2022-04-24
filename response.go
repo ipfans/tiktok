@@ -19,10 +19,10 @@ type AccessTokenResponse struct {
 }
 
 type Shop struct {
-	ShopID   string `json:"shop_id"`
-	ShopName string `json:"shop_name"`
-	Region   string `json:"region"`
-	Type     int    `json:"type"`
+	ShopID   string      `json:"shop_id"`
+	ShopName string      `json:"shop_name"`
+	Region   string      `json:"region"`
+	Type     json.Number `json:"type"`
 }
 
 type ShopList struct {
@@ -112,4 +112,49 @@ type OrderLineList struct {
 
 type OrderDetailList struct {
 	OrderList []OrderDetail `json:"order_list"`
+}
+
+type SettlementInfo struct {
+	SettlementTime      int    `json:"settlement_time"`
+	Currency            string `json:"currency"`
+	UserPay             string `json:"user_pay"`
+	PlatformPromotion   string `json:"platform_promotion"`
+	Refund              string `json:"refund"`
+	PaymentFee          string `json:"payment_fee"`
+	PlatformCommission  string `json:"platform_commission"`
+	AffiliateCommission string `json:"affiliate_commission"`
+	Vat                 string `json:"vat"`
+	ShippingFee         string `json:"shipping_fee"`
+	SettlementAmount    string `json:"settlement_amount"`
+}
+
+type Settlement struct {
+	UniqueKey      int64          `json:"unique_key"`
+	OrderID        string         `json:"order_id"`
+	AdjustmentID   string         `json:"adjustment_id"`
+	RelatedOrderID string         `json:"related_order_id"`
+	SkuID          string         `json:"sku_id"`
+	SkuName        string         `json:"sku_name"`
+	ProductName    string         `json:"product_name"`
+	SettlementInfo SettlementInfo `json:"settlement_info"`
+}
+
+type SettlementsList struct {
+	More           bool         `json:"more"`
+	NextCursor     string       `json:"next_cursor"`
+	SettlementList []Settlement `json:"settlement_list"`
+}
+
+type Transaction struct {
+	TransactionType     int    `json:"transaction_type"`
+	TransactionTime     int    `json:"transaction_time"`
+	TransactionAmount   string `json:"transaction_amount"`
+	TransactionCurrency string `json:"transaction_currency"`
+	TransactionStatus   int    `json:"transaction_status"`
+}
+
+type TransactionsList struct {
+	More            bool          `json:"more"`
+	Total           int           `json:"total"`
+	TransactionList []Transaction `json:"transaction_list"`
 }

@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "order_id": "576462772652640213"
+        },
+        "request": {
+            "method": "GET",
+            "url": "https://open-api.tiktokglobalshop.com/api/finance/order/settlements",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&order_id=576462772652640213&shop_id=123456&sign=a7413dac4b6a6aa8f9f99e77a394b9952bf7742e205c3a0b0ae8196dfaca877b&timestamp=1600000000"
+        },
+        "response": {
+            "status": 200,
+            "headers": {},
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "202202230611580102452480140FA71BBF",
+                "data": {
+                    "settlement_list": [
+                        {
+                            "sku_id": "0",
+                            "sku_name": "",
+                            "product_name": "",
+                            "sett_status": 4,
+                            "settlement_info": {
+                                "settlement_time": 1634009699,
+                                "currency": "IDR",
+                                "user_pay": "300",
+                                "platform_promotion": "29600",
+                                "refund": "0",
+                                "payment_fee": "3",
+                                "platform_commission": "0",
+                                "affiliate_commission": "0",
+                                "vat": "0",
+                                "shipping_fee": "17342",
+                                "settlement_amount": "12558"
+                            },
+                            "unique_key": 7017041842550081282
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "settlement_list": [
+                {
+                    "sku_id": "0",
+                    "sku_name": "",
+                    "product_name": "",
+                    "sett_status": 4,
+                    "settlement_info": {
+                        "settlement_time": 1634009699,
+                        "currency": "IDR",
+                        "user_pay": "300",
+                        "platform_promotion": "29600",
+                        "refund": "0",
+                        "payment_fee": "3",
+                        "platform_commission": "0",
+                        "affiliate_commission": "0",
+                        "vat": "0",
+                        "shipping_fee": "17342",
+                        "settlement_amount": "12558"
+                    },
+                    "unique_key": 7017041842550081282
+                }
+            ]
+        },
+        "want_err": false
+    }
+]
