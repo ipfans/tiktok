@@ -20,3 +20,10 @@ type APIError struct {
 func (a *APIError) Error() string {
 	return fmt.Sprintf("%d: %s", a.Code, a.Message)
 }
+
+func ErrCode(err error) int {
+	if ae, ok := err.(*APIError); ok {
+		return ae.Code
+	}
+	return 0
+}

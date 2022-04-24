@@ -81,24 +81,33 @@ type Item struct {
 }
 
 type OrderDetail struct {
-	OrderID            string           `json:"order_id"`
-	OrderStatus        int              `json:"order_status"`
-	PaymentMethod      string           `json:"payment_method"`
-	DeliveryOption     string           `json:"delivery_option"`
-	ShippingProvider   string           `json:"shipping_provider"`
-	ShippingProviderID string           `json:"shipping_provider_id"`
-	CreateTime         string           `json:"create_time"`
-	PaidTime           string           `json:"paid_time"`
-	BuyerMessage       string           `json:"buyer_message"`
-	PaymentInfo        PaymentInfo      `json:"payment_info,omitempty"`
-	RecipientAddress   RecipientAddress `json:"recipient_address,omitempty"`
-	TrackingNumber     string           `json:"tracking_number"`
-	ItemList           []Item           `json:"item_list,omitempty"`
-	RtsTime            int              `json:"rts_time"`
-	RtsSLA             int              `json:"rts_sla"`
-	TtsSLA             int              `json:"tts_sla"`
-	CancelOrderSLA     int              `json:"cancel_order_sla"`
-	UpdateTime         int              `json:"update_time"`
+	OrderID                string           `json:"order_id"`
+	OrderStatus            int              `json:"order_status"`
+	PaymentMethod          string           `json:"payment_method"`
+	DeliveryOption         string           `json:"delivery_option"`
+	ShippingProvider       string           `json:"shipping_provider"`
+	ShippingProviderID     string           `json:"shipping_provider_id"`
+	CreateTime             string           `json:"create_time"`
+	PaidTime               json.Number      `json:"paid_time"`
+	BuyerMessage           string           `json:"buyer_message"`
+	PaymentInfo            PaymentInfo      `json:"payment_info,omitempty"`
+	RecipientAddress       RecipientAddress `json:"recipient_address,omitempty"`
+	TrackingNumber         string           `json:"tracking_number"`
+	ItemList               []Item           `json:"item_list,omitempty"`
+	RtsTime                int              `json:"rts_time"`
+	RtsSLA                 int              `json:"rts_sla"`
+	TtsSLA                 int              `json:"tts_sla"`
+	CancelOrderSLA         int              `json:"cancel_order_sla"`
+	ReceiverAddressUpdated int              `json:"receiver_address_updated"`
+	UpdateTime             int              `json:"update_time"`
+	BuyerUID               string           `json:"buyer_uid"`
+	FulfillmentType        int              `json:"fulfillment_type"`
+	OrderLineList          []OrderLineList  `json:"order_line_list"`
+}
+
+type OrderLineList struct {
+	OrderLineID string `json:"order_line_id"`
+	SkuID       string `json:"sku_id"`
 }
 
 type OrderDetailList struct {

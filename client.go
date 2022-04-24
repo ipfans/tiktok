@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"net/url"
 	"time"
+
+	"github.com/go-playground/validator/v10"
 )
 
 var (
@@ -28,8 +30,8 @@ var Timestamp func() string = func() string {
 type Client struct {
 	appKey    string
 	appSecret string
-
-	opt *option
+	opt       *option
+	validate  *validator.Validate
 }
 
 // New for create a client.
@@ -46,6 +48,7 @@ func New(appKey, appSecret string, opts ...Option) (c *Client, err error) {
 		appKey:    appKey,
 		appSecret: appSecret,
 		opt:       opt,
+		validate:  validator.New(),
 	}
 	return
 }
@@ -125,6 +128,8 @@ func (c *Client) request(ctx context.Context, method, base, path string, param u
 		return
 	}
 
-	err = json.Unmarshal(res.Data, body)
+	if body != nil {
+		err = json.Unmarshal(res.Data, body)
+	}
 	return
 }

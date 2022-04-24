@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestClient_GetOrderList(t *testing.T) {
+func TestClient_GetOrderList_Integration(t *testing.T) {
 	c := newTestClient(t)
 	type args struct {
 		ak     string
@@ -62,7 +62,7 @@ func TestClient_GetOrderList(t *testing.T) {
 	}
 }
 
-func TestClient_GetOrderDetail(t *testing.T) {
+func TestClient_GetOrderDetail_Integration(t *testing.T) {
 	t.SkipNow()
 
 	c := newTestClient(t)

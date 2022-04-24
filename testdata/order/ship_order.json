@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "order_id": "576463213959808216"
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://open-api.tiktokglobalshop.com/api/order/rts",
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=cb923e406c244d6c3b05096d09d201a09c8a07bb4a74c22a8746f4a9961462ee&timestamp=1600000000",
+            "body": {
+                "order_id": "576463213959808216"
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "02162513373357900000000000000000000ffff0ae7f06ce8bbd3"
+            }
+        },
+        "want_err": false
+    }
+]

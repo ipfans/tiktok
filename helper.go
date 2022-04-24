@@ -51,3 +51,19 @@ func CheckEmpty(vals ...string) bool {
 	}
 	return false
 }
+
+type Param struct {
+	AccessToken string `validate:"required"`
+	ShopID      string `validate:"required"`
+}
+
+func (c *Client) params(p Param) (param url.Values, err error) {
+	err = c.validate.Struct(p)
+	if err != nil {
+		return
+	}
+	param = url.Values{}
+	param.Set("access_token", p.AccessToken)
+	param.Set("shop_id", p.ShopID)
+	return
+}

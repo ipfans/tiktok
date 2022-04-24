@@ -29,3 +29,17 @@ type GetOrderListRequest struct {
 type GetOrderDetailRequest struct {
 	OrderIDList []string `json:"order_id_list"`
 }
+
+type SelfShipment struct {
+	TrackingNumber     string `json:"tracking_number"`
+	ShoppingProviderID string `json:"shopping_provider_id"`
+}
+
+type Pickup struct {
+	SelfShipment SelfShipment `json:"self_shipment"`
+}
+
+type ShipOrderRequest struct {
+	OrderID string  `json:"order_id" validate:"required"`
+	Pickup  *Pickup `json:"pick_up,omitempty"`
+}

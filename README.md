@@ -11,13 +11,18 @@
 - [x] Order API
   - [x] Get order list
   - [x] Get order detail
-  - [ ] Ship order
+  - [x] Ship order
 - [ ] Fulfillment API
 - [ ] Logistics API
 - [ ] Product API
 - [ ] Shop API
 - [ ] Finance API
 - [ ] Reverse Order API
+
+### TODO
+
+- [ ] All Feature supports
+- [ ] Integraion tests
 
 ## API Call Flow
 
