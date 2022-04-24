@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestClient_GetAuthorizedShop(t *testing.T) {
+func TestClient_GetAuthorizedShop_Integration(t *testing.T) {
 	c := newTestClient(t)
 	type args struct {
 		ak      string

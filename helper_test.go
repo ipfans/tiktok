@@ -61,13 +61,20 @@ func setupMock(t *testing.T, tt TestRecord, args, want interface{}) {
 	httpmock.RegisterResponder(
 		tt.Request.Method, tt.Request.URL,
 		func(r *http.Request) (res *http.Response, err error) {
-			defer r.Body.Close()
 			if tt.Request.Query != "" {
 				require.Equal(t, tt.Request.Query, r.URL.RawQuery)
 			}
-			b, _ := io.ReadAll(r.Body)
-			require.JSONEq(t, string(tt.Request.Body), string(b))
-			res, err = httpmock.NewJsonResponse(200, tt.Response.Body)
+			var b []byte
+			if r.Method == http.MethodPost || r.Method == http.MethodPut {
+				defer r.Body.Close()
+				b, _ = io.ReadAll(r.Body)
+			}
+			if len(tt.Request.Body) > 0 {
+				require.JSONEq(t, string(tt.Request.Body), string(b))
+			} else {
+				tt.Request.Body = []byte(`{}`)
+			}
+			res, err = httpmock.NewJsonResponse(tt.Response.Status, tt.Response.Body)
 			return
 		},
 	)

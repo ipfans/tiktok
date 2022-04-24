@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa"
+        },
+        "request": {
+            "method": "GET",
+            "url": "https://open-api.tiktokglobalshop.com/api/shop/get_authorized_shop",
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&sign=f0f368ecacccb0839e5291d375f9171e1ab93b65fb2bc4ece556e1f42466249f&timestamp=1600000000"
+        },
+        "response": {
+            "status": 200,
+            "headers": {},
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "2021090907000901024505719023004057",
+                "data": {
+                    "shop_list": [
+                        {
+                            "shop_id": "7494083350427699117",
+                            "shop_name": "cbtest",
+                            "region": "GB",
+                            "type": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "shop_list": [
+                {
+                    "shop_id": "7494083350427699117",
+                    "shop_name": "cbtest",
+                    "region": "GB",
+                    "type": "1"
+                }
+            ]
+        },
+        "want_err": false
+    }
+]

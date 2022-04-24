@@ -15,8 +15,12 @@
 - [ ] Fulfillment API
 - [ ] Logistics API
 - [ ] Product API
-- [ ] Shop API
+- [x] Shop API
+  - [x] Get authorized shop list
 - [ ] Finance API
+  - [ ] Search settlements within a certain timeframe
+  - [ ] Query settlement of a specific order
+  - [ ] Search your seller account's transactions within a certain timeframe
 - [ ] Reverse Order API
 
 ### TODO
