@@ -204,3 +204,68 @@ type ReverseReason struct {
 type ReverseReasonList struct {
 	ReverseReasonList []ReverseReason `json:"reverse_reason_list"`
 }
+
+type Category struct {
+	ID               string `json:"id"`
+	ParentID         string `json:"parent_id"`
+	LocalDisplayName string `json:"local_display_name"`
+	IsLeaf           bool   `json:"is_leaf"`
+}
+type CategoryList struct {
+	CategoryList []Category `json:"category_list"`
+}
+
+type InputType struct {
+	IsMandatory        bool `json:"is_mandatory"`
+	IsMultipleSelected bool `json:"is_multiple_selected"`
+	IsCustomized       bool `json:"is_customized"`
+}
+
+type Attribute struct {
+	ID            string    `json:"id"`
+	Name          string    `json:"name"`
+	AttributeType int       `json:"attribute_type"`
+	InputType     InputType `json:"input_type"`
+}
+type AttributeList struct {
+	Attributes []Attribute `json:"attributes"`
+}
+
+type ProductCertification struct {
+	Name        string `json:"certification_name"`
+	ID          string `json:"certification_id"`
+	Sample      string `json:"certification_sample"`
+	IsMandatory bool   `json:"is_mandatory"`
+}
+type CategoryRule struct {
+	ProductCertifications []ProductCertification `json:"product_certifications"`
+	SupportSizeChart      bool                   `json:"support_size_chart"`
+	SupportCod            bool                   `json:"support_cod"`
+}
+
+type CategoryRules struct {
+	CategoryRules []CategoryRule `json:"category_rules"`
+}
+
+type Brand struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+type BrandList struct {
+	BrandList []Brand `json:"brand_list"`
+}
+
+type ImageInfo struct {
+	ImgID     string `json:"img_id"`
+	ImgURL    string `json:"img_url"`
+	ImgHeight int    `json:"img_height"`
+	ImgWidth  int    `json:"img_width"`
+	ImgScene  int    `json:"img_scene"`
+}
+
+type FileInfo struct {
+	FileID   string `json:"file_id"`
+	FileURL  string `json:"file_url"`
+	FileName string `json:"file_name"`
+	FileType string `json:"file_type"`
+}

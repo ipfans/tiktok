@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "file": "testdata/refresh_token.json"
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/upload_imgs",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=6ad527ffdc248aa67c4947b2a593086fa65f37f0d4b83bde705d67f823d62a4f&timestamp=1600000000",
+            "body": {
+                "img_data": "dGVzdGRhdGEvcmVmcmVzaF90b2tlbi5qc29u",
+                "img_scene": 3
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "1111111111",
+                "data": {
+                    "img_id": "aaaaabbbbb",
+                    "img_url": "http://bbbbbbbb",
+                    "img_height": 1000,
+                    "img_width": 1000,
+                    "img_scene": 1
+                }
+            }
+        },
+        "want": {
+            "img_id": "aaaaabbbbb",
+            "img_url": "http://bbbbbbbb",
+            "img_height": 1000,
+            "img_width": 1000,
+            "img_scene": 1
+        },
+        "want_err": false
+    }
+]

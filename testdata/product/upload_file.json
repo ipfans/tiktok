@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "file": "testdata/refresh_token.json",
+            "name": "test.pdf"
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/upload_files",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=f8c097c3adc46c48f9eb50cf5afb91682af5aab910a9820e67686f8265e96550&timestamp=1600000000",
+            "body": {
+                "file_data": "dGVzdGRhdGEvcmVmcmVzaF90b2tlbi5qc29u",
+                "file_name": "test.pdf"
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "123333111131313131",
+                "data": {
+                    "file_id": "aaaaaa",
+                    "file_url": "http://bbbbbbbb",
+                    "file_name": "file1.pdf",
+                    "file_type": "PDF"
+                }
+            }
+        },
+        "want": {
+            "file_id": "aaaaaa",
+            "file_url": "http://bbbbbbbb",
+            "file_name": "file1.pdf",
+            "file_type": "PDF"
+        },
+        "want_err": false
+    }
+]

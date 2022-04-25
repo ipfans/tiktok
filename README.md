@@ -37,23 +37,23 @@ Go SDK for Tiktok Shop Open Platform.
   - [ ] GetShippingDocument
   - [ ] GetWarehouseList
   - [ ] GetShippingProvider
-- [ ] Product API
-  - [ ] GetCategory
-  - [ ] GetAttribute
-  - [ ] GetCategoryRule
-  - [ ] GetBrand
-  - [ ] UploadImg
-  - [ ] UploadFile
-  - [ ] CreateProduct
-  - [ ] EditProduct
-  - [ ] GetProductList
-  - [ ] GetProductDetail
-  - [ ] UpdatePrice
-  - [ ] UpdateStock
-  - [ ] DeactivateProducts
-  - [ ] DeleteProducts
-  - [ ] RecoverProduct
-  - [ ] ActivateProduct
+- [x] Product API
+  - [x] GetCategory
+  - [x] GetAttribute
+  - [x] GetCategoryRule
+  - [x] GetBrand
+  - [x] UploadImg
+  - [x] UploadFile
+  - [x] CreateProduct
+  - [x] EditProduct
+  - [x] GetProductList
+  - [x] GetProductDetail
+  - [x] UpdatePrice
+  - [x] UpdateStock
+  - [x] DeactivateProducts
+  - [x] DeleteProducts
+  - [x] RecoverProduct
+  - [x] ActivateProduct
 - [x] Shop API
   - [x] GetAuthorizedShop
 - [x] Finance API

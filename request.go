@@ -80,3 +80,13 @@ type GetReverseReasonRequest struct {
 	ReverseActionType int `json:"reverse_action_type"`
 	ReasonType        int `json:"reason_type"`
 }
+
+type ImgScene int
+
+const (
+	ImgSceneProductImage ImgScene = iota + 1
+	ImgSceneDescriptionImage
+	ImgSceneAttributeImage
+	ImgSceneCertificationImage
+	ImgSceneSizeChartImage
+)

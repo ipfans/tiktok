@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456"
+        },
+        "request": {
+            "method": "GET",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/categories",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=5c173f5aaafa741dda621ffb2189901d74259930f1fca533ff2cfe84c7a77148&timestamp=1600000000"
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "11111",
+                "data": {
+                    "category_list": [
+                        {
+                            "id": "1",
+                            "parent_id": "1111",
+                            "local_display_name": "aaaa",
+                            "is_leaf": false
+                        },
+                        {
+                            "id": "2",
+                            "parent_id": "2222",
+                            "local_display_name": "bbbb",
+                            "is_leaf": false
+                        },
+                        {
+                            "id": "3",
+                            "parent_id": "3333",
+                            "local_display_name": "cccc",
+                            "is_leaf": false
+                        },
+                        {
+                            "id": "4",
+                            "parent_id": "4444",
+                            "local_display_name": "dddd",
+                            "is_leaf": true
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "category_list": [
+                {
+                    "id": "1",
+                    "parent_id": "1111",
+                    "local_display_name": "aaaa",
+                    "is_leaf": false
+                },
+                {
+                    "id": "2",
+                    "parent_id": "2222",
+                    "local_display_name": "bbbb",
+                    "is_leaf": false
+                },
+                {
+                    "id": "3",
+                    "parent_id": "3333",
+                    "local_display_name": "cccc",
+                    "is_leaf": false
+                },
+                {
+                    "id": "4",
+                    "parent_id": "4444",
+                    "local_display_name": "dddd",
+                    "is_leaf": true
+                }
+            ]
+        },
+        "want_err": false
+    }
+]
