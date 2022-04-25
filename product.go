@@ -83,42 +83,110 @@ func (c *Client) UploadFile(ctx context.Context, p Param, fn string, body []byte
 	return
 }
 
-func (c *Client) CreateProduct(ctx context.Context, p Param) (err error) {
+func (c *Client) CreateProduct(ctx context.Context, p Param, req CreateProductRequest) (product Product, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	if err = c.validate.Struct(&req); err != nil {
+		return
+	}
+	err = c.Post(ctx, "/api/products", param, req, &product)
 	return
 }
 
-func (c *Client) EditProduct(ctx context.Context, p Param) (err error) {
+func (c *Client) EditProduct(ctx context.Context, p Param, req EditProductRequest) (product Product, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+
+	if err = c.validate.Struct(&req); err != nil {
+		return
+	}
+	err = c.Put(ctx, "/api/products", param, req, &product)
 	return
 }
 
-func (c *Client) GetProductList(ctx context.Context, p Param) (err error) {
+func (c *Client) GetProductList(ctx context.Context, p Param, req ProductSearchRequest) (list ProductSearchList, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	err = c.Post(ctx, "/api/products/search", param, req, &list)
 	return
 }
 
-func (c *Client) GetProductDetail(ctx context.Context, p Param) (err error) {
+func (c *Client) GetProductDetail(ctx context.Context, p Param, productID string) (product Product, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	param.Set("product_id", productID)
+	err = c.Get(ctx, "/api/products/details", param, &product)
 	return
 }
 
-func (c *Client) UpdatePrice(ctx context.Context, p Param) (err error) {
+func (c *Client) UpdatePrice(ctx context.Context, p Param, req UpdatePriceRequest) (list UpdatePriceFailedSKU, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	err = c.Put(ctx, "/api/products/prices", param, req, &list)
 	return
 }
 
-func (c *Client) UpdateStock(ctx context.Context, p Param) (err error) {
+func (c *Client) UpdateStock(ctx context.Context, p Param, req UpdateStockRequest) (list UpdateStockFailedSKU, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	err = c.Put(ctx, "/api/products/stocks", param, req, &list)
 	return
 }
 
-func (c *Client) DeactivateProducts(ctx context.Context, p Param) (err error) {
+func (c *Client) DeactivateProducts(ctx context.Context, p Param, ids []string) (list FailedProductIDs, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	req := map[string][]string{
+		"product_ids": ids,
+	}
+	err = c.Post(ctx, "/api/products/inactivated_products", param, req, &list)
 	return
 }
 
-func (c *Client) DeleteProducts(ctx context.Context, p Param) (err error) {
+func (c *Client) DeleteProducts(ctx context.Context, p Param, ids []string) (list FailedProductIDs, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	req := map[string][]string{
+		"product_ids": ids,
+	}
+	err = c.Delete(ctx, "/api/products", param, req, &list)
 	return
 }
 
-func (c *Client) RecoverProduct(ctx context.Context, p Param) (err error) {
+func (c *Client) RecoverProduct(ctx context.Context, p Param, ids []string) (list FailedProductIDs, err error) {
+	param := url.Values{}
+	param.Set("access_token", p.AccessToken)
+	req := map[string][]string{
+		"product_ids": ids,
+	}
+	err = c.Post(ctx, "/api/products/recover", param, req, &list)
 	return
 }
 
-func (c *Client) ActivateProduct(ctx context.Context, p Param) (err error) {
+func (c *Client) ActivateProduct(ctx context.Context, p Param, ids []string) (list FailedProductIDs, err error) {
+	var param url.Values
+	if param, err = c.params(p); err != nil {
+		return
+	}
+	req := map[string][]string{
+		"product_ids": ids,
+	}
+	err = c.Post(ctx, "/api/products/activate", param, req, &list)
 	return
 }

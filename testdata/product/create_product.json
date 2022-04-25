@@ -1,0 +1,249 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "request_json": {
+                "product_name": "aaaaaa",
+                "description": "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\" width=\"1920\" height=\"1080\">",
+                "category_id": "111111",
+                "brand_id": "2222222",
+                "images": [
+                    {
+                        "id": "fadfasdf"
+                    },
+                    {
+                        "id": "asdfasdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    }
+                ],
+                "warranty_period": 1,
+                "warranty_policy": "N/A",
+                "package_length": 10,
+                "package_width": 10,
+                "package_height": 10,
+                "package_weight": "20",
+                "product_certifications": [
+                    {
+                        "id": "1111111",
+                        "files": [
+                            {
+                                "id": "dfgsdfgsdfgsdfg",
+                                "name": "aaaa.pdf",
+                                "type": "PDF"
+                            },
+                            {
+                                "id": "asdfasdfasdfasdf",
+                                "name": "bbb.pdf",
+                                "type": "PDF"
+                            }
+                        ],
+                        "images": [
+                            {
+                                "id": "sdafasdfasdfasdfsd"
+                            }
+                        ]
+                    }
+                ],
+                "is_cod_open": false,
+                "skus": [
+                    {
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "11111",
+                                "custom_value": "yellow"
+                            },
+                            {
+                                "attribute_id": "222222",
+                                "custom_value": "small",
+                                "sku_img": {
+                                    "id": "asdfasdfasdfasdf"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "3333333",
+                                "available_stock": 200
+                            }
+                        ],
+                        "seller_sku": "test1",
+                        "original_price": "100"
+                    },
+                    {
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "custom_value": "red"
+                            },
+                            {
+                                "attribute_id": "100007",
+                                "custom_value": "big",
+                                "sku_img": {
+                                    "id": "asdfasdfasdfasdfsda"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "4444444",
+                                "available_stock": 0
+                            }
+                        ],
+                        "seller_sku": "test2",
+                        "original_price": "100"
+                    }
+                ]
+            }
+        },
+        "request": {
+            "method": "POST",
+            "url": "https://open-api.tiktokglobalshop.com/api/products",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=0bd65a4d92ab3328d0237c1714eb8664616efc55dfb41a7223f48517eb2e1358&timestamp=1600000000",
+            "body": {
+                "product_name": "aaaaaa",
+                "description": "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\" width=\"1920\" height=\"1080\">",
+                "category_id": "111111",
+                "brand_id": "2222222",
+                "images": [
+                    {
+                        "id": "fadfasdf"
+                    },
+                    {
+                        "id": "asdfasdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    },
+                    {
+                        "id": "asdfasdf"
+                    }
+                ],
+                "warranty_period": 1,
+                "warranty_policy": "N/A",
+                "package_length": 10,
+                "package_width": 10,
+                "package_height": 10,
+                "package_weight": "20",
+                "product_certifications": [
+                    {
+                        "id": "1111111",
+                        "files": [
+                            {
+                                "id": "dfgsdfgsdfgsdfg",
+                                "name": "aaaa.pdf",
+                                "type": "PDF"
+                            },
+                            {
+                                "id": "asdfasdfasdfasdf",
+                                "name": "bbb.pdf",
+                                "type": "PDF"
+                            }
+                        ],
+                        "images": [
+                            {
+                                "id": "sdafasdfasdfasdfsd"
+                            }
+                        ]
+                    }
+                ],
+                "is_cod_open": false,
+                "skus": [
+                    {
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "11111",
+                                "custom_value": "yellow"
+                            },
+                            {
+                                "attribute_id": "222222",
+                                "custom_value": "small",
+                                "sku_img": {
+                                    "id": "asdfasdfasdfasdf"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "3333333",
+                                "available_stock": 200
+                            }
+                        ],
+                        "seller_sku": "test1",
+                        "original_price": "100"
+                    },
+                    {
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "custom_value": "red"
+                            },
+                            {
+                                "attribute_id": "100007",
+                                "custom_value": "big",
+                                "sku_img": {
+                                    "id": "asdfasdfasdfasdfsda"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "4444444",
+                                "available_stock": 0
+                            }
+                        ],
+                        "seller_sku": "test2",
+                        "original_price": "100"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "id": "2222332323",
+                "seller_sku": "bbbbb",
+                "sales_attributes": [
+                    {
+                        "attribute_id": "33333",
+                        "value_id": "123124123123"
+                    },
+                    {
+                        "attribute_id": "44444",
+                        "value_id": "1312312312412"
+                    }
+                ]
+            }
+        },
+        "want": {
+            "id": "2222332323",
+            "seller_sku": "bbbbb",
+            "sales_attributes": [
+                {
+                    "attribute_id": "33333",
+                    "value_id": "123124123123"
+                },
+                {
+                    "attribute_id": "44444",
+                    "value_id": "1312312312412"
+                }
+            ]
+        },
+        "want_err": false
+    }
+]

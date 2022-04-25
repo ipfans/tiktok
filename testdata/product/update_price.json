@@ -1,0 +1,59 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "request_json": {
+                "product_id": "123123123",
+                "skus": [
+                    {
+                        "id": "123123123",
+                        "original_price": "1200"
+                    },
+                    {
+                        "id": "12312312312",
+                        "original_price": "1600"
+                    }
+                ]
+            }
+        },
+        "request": {
+            "method": "PUT",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/prices",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=2ef96993a61f2efd39ff041bd0be3a09bd669c271ccd2076445da196b0ced32c&timestamp=1600000000",
+            "body": {
+                "product_id": "123123123",
+                "skus": [
+                    {
+                        "id": "123123123",
+                        "original_price": "1200"
+                    },
+                    {
+                        "id": "12312312312",
+                        "original_price": "1600"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "123123123",
+                "data": {
+                    "code": 0,
+                    "message": "Success",
+                    "request_id": "111123123123",
+                    "data": []
+                }
+            }
+        },
+        "want": {},
+        "want_err": false
+    }
+]

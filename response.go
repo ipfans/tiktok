@@ -269,3 +269,36 @@ type FileInfo struct {
 	FileName string `json:"file_name"`
 	FileType string `json:"file_type"`
 }
+
+type SalesAttribute struct {
+	AttributeID string `json:"attribute_id"`
+	ValueID     string `json:"value_id"`
+}
+
+type ProductSKU struct {
+	ID              string           `json:"id"`
+	SellerSku       string           `json:"seller_sku"`
+	SalesAttributes []SalesAttribute `json:"sales_attributes"`
+}
+
+type Product struct {
+	ProductID string       `json:"product_id"`
+	Skus      []ProductSKU `json:"skus"`
+}
+
+type ProductSearchList struct{}
+
+type UpdatePriceFailedSKU struct {
+	FailedSKUIDs []string `json:"failed_sku_ids"`
+}
+
+type FailedSKUStock struct {
+	ID                 string   `json:"id"`
+	FailedWarehouseIDs []string `json:"failed_warehouse_ids"`
+}
+
+type UpdateStockFailedSKU struct {
+	FailedSKUs []FailedSKUStock `json:"failed_skus"`
+}
+
+type FailedProductIDs struct{}

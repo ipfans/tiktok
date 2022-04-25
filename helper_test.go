@@ -48,12 +48,10 @@ func setupMock(t *testing.T, tt TestRecord, args, want interface{}) {
 			if tt.Request.Query != "" {
 				require.Equal(t, tt.Request.Query, r.URL.RawQuery)
 			}
-			var b []byte
-			if r.Method == http.MethodPost || r.Method == http.MethodPut {
-				defer r.Body.Close()
-				b, _ = io.ReadAll(r.Body)
-			}
+
 			if len(tt.Request.Body) > 0 {
+				defer r.Body.Close()
+				b, _ := io.ReadAll(r.Body)
 				require.JSONEq(t, string(tt.Request.Body), string(b))
 			} else {
 				tt.Request.Body = []byte(`{}`)
@@ -83,5 +81,32 @@ func mockTime() func() {
 		tiktok.Timestamp = func() string {
 			return fmt.Sprintf("%d", time.Now().Unix())
 		}
+	}
+}
+
+func mockTests(t *testing.T, fn string, args, want interface{}, exec func() (interface{}, error)) {
+	t.Helper()
+
+	restore := mockTime()
+	defer restore()
+
+	tests := loadTestData(t, fn)
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, args, want)
+
+			got, err := exec()
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+				if want != nil {
+					require.Equal(t, want, got)
+				}
+			}
+		})
 	}
 }

@@ -90,3 +90,84 @@ const (
 	ImgSceneCertificationImage
 	ImgSceneSizeChartImage
 )
+
+type SKU struct {
+	ID              string           `json:"id,omitempty"`
+	SalesAttributes []SalesAttribute `json:"sales_attributes,omitempty"`
+	StockInfos      []StockInfo      `json:"stock_infos,omitempty"`
+	SellerSku       string           `json:"seller_sku,omitempty"`
+	OriginalPrice   string           `json:"original_price,omitempty"`
+}
+
+type File struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	Type string `json:"type"`
+}
+
+type Image struct {
+	ID string `json:"id"`
+}
+
+type ProductCertificationRequest struct {
+	ID     string  `json:"id"`
+	Files  []File  `json:"files"`
+	Images []Image `json:"images"`
+}
+
+type CreateProductRequest struct {
+	ProductName           string                 `json:"product_name"`
+	Description           string                 `json:"description"`
+	CategoryID            string                 `json:"category_id"`
+	BrandID               string                 `json:"brand_id"`
+	Images                []Image                `json:"images"`
+	WarrantyPeriod        int                    `json:"warranty_period"`
+	WarrantyPolicy        string                 `json:"warranty_policy"`
+	PackageLength         int                    `json:"package_length"`
+	PackageWidth          int                    `json:"package_width"`
+	PackageHeight         int                    `json:"package_height"`
+	PackageWeight         string                 `json:"package_weight"`
+	ProductCertifications []ProductCertification `json:"product_certifications"`
+	IsCodOpen             bool                   `json:"is_cod_open"`
+	Skus                  []SKU                  `json:"skus"`
+}
+
+type StockInfo struct {
+	WarehouseID    string `json:"warehouse_id"`
+	AvailableStock int    `json:"available_stock"`
+}
+
+type EditProductRequest struct {
+	ProductID             string                        `json:"product_id"`
+	ProductName           string                        `json:"product_name"`
+	Description           string                        `json:"description"`
+	CategoryID            string                        `json:"category_id"`
+	Images                []Image                       `json:"images"`
+	PackageWeight         string                        `json:"package_weight"`
+	IsCodOpen             bool                          `json:"is_cod_open"`
+	Skus                  []SKU                         `json:"skus"`
+	BrandID               string                        `json:"brand_id"`
+	WarrantyPeriod        int                           `json:"warranty_period"`
+	WarrantyPolicy        string                        `json:"warranty_policy"`
+	PackageLength         int                           `json:"package_length"`
+	PackageWidth          int                           `json:"package_width"`
+	PackageHeight         int                           `json:"package_height"`
+	ProductCertifications []ProductCertificationRequest `json:"product_certifications"`
+}
+
+type ProductSearchRequest struct {
+	PageSize      int      `json:"page_size"`
+	PageNumber    int      `json:"page_number"`
+	SearchStatus  int      `json:"search_status"`
+	SellerSkuList []string `json:"seller_sku_list"`
+}
+
+type UpdatePriceRequest struct {
+	ProductID string `json:"product_id"`
+	Skus      []SKU  `json:"skus"`
+}
+
+type UpdateStockRequest struct {
+	ProductID string `json:"product_id"`
+	Skus      []SKU  `json:"skus"`
+}

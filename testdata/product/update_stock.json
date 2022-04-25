@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "request_json": {
+                "product_id": "123123123",
+                "skus": [
+                    {
+                        "id": "123123123",
+                        "stock_infos": [
+                            {
+                                "available_stock": 50,
+                                "warehouse_id": "123123123123"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "123123123",
+                        "stock_infos": [
+                            {
+                                "available_stock": 60,
+                                "warehouse_id": "123123123"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "request": {
+            "method": "PUT",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/stocks",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=44673d90649d50f4eab6d76d2cc172e5f672e5d6ceb3cf088d8a1d1d2602cb82&timestamp=1600000000",
+            "body": {
+                "product_id": "123123123",
+                "skus": [
+                    {
+                        "id": "123123123",
+                        "stock_infos": [
+                            {
+                                "available_stock": 50,
+                                "warehouse_id": "123123123123"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "123123123",
+                        "stock_infos": [
+                            {
+                                "available_stock": 60,
+                                "warehouse_id": "123123123"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "12312312312",
+                "data": {}
+            }
+        },
+        "want": {},
+        "want_err": false
+    }
+]

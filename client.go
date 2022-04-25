@@ -70,6 +70,27 @@ func (c *Client) Post(ctx context.Context, path string, param url.Values, body i
 	return
 }
 
+// Put request for TikTok requests.
+// Note: Timestamp, appkey and signature will auto-management by action.
+func (c *Client) Put(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {
+	param = c.prepareParam(path, param)
+	r := c.prepareBody(body)
+	err = c.request(ctx, http.MethodPut, APIBaseURL, path, param, r, resp)
+	return
+}
+
+// Delete request for TikTok requests. I don't known why there is body in delete request.
+// Note: Timestamp, appkey and signature will auto-management by action.
+func (c *Client) Delete(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {
+	param = c.prepareParam(path, param)
+	var r io.Reader
+	if body != nil {
+		r = c.prepareBody(body)
+	}
+	err = c.request(ctx, http.MethodDelete, APIBaseURL, path, param, r, resp)
+	return
+}
+
 func (c *Client) prepareParam(path string, param url.Values) url.Values {
 	ak := safeGet(param, "access_token")
 	if ak != "" {
