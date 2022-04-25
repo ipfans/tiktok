@@ -1,0 +1,39 @@
+[
+  {
+    "name": "GetShippingDocument.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "order_id": "576463173535499480",
+        "document_type": "SHIPPING_LABEL",
+        "document_size": "A6"
+      }
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/shipping_document",
+      "headers": {},
+      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416&order_id=576461040547956054&document_type=SHIPPING_LABEL",
+      "body": {}
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162510876969200000000000000000000ffff0ae7f06c3aa675",
+        "data": {
+          "doc_url": "http://magellan-boe.bytedance.net/pssresource/external/download?ticket=qYF6Z1TYTZwO%2FvhFGedtCZj5la9UTkNt5IDqX3aKS76dtTQOODcYul8LyGXOcF0LiakFOhLJn8AZ9jdKCcp5LAfazLko5LOjlDduELEpC1ftACqWjE3H7NawILZcz5ZUoKiiWMWM3elo8E0bn3sPQvdp13Hx4AEM3WYRAjVSaNwcBBYdDfWxZy6G9HsGq80RCBzbfSGxsaE%2FcwCOk7eViRa8vbKIK%2B7s3Su1nm3uFlB3oM7ZC1XYKpwuOK9CBetEjvqNsXeXBnG7Mz8qH9nKzf7n2x2T4NLlyCwujQ%3D%3D"
+        }
+      }
+    },
+    "want": {
+      "doc_url": "http://magellan-boe.bytedance.net/pssresource/external/download?ticket=qYF6Z1TYTZwO%2FvhFGedtCZj5la9UTkNt5IDqX3aKS76dtTQOODcYul8LyGXOcF0LiakFOhLJn8AZ9jdKCcp5LAfazLko5LOjlDduELEpC1ftACqWjE3H7NawILZcz5ZUoKiiWMWM3elo8E0bn3sPQvdp13Hx4AEM3WYRAjVSaNwcBBYdDfWxZy6G9HsGq80RCBzbfSGxsaE%2FcwCOk7eViRa8vbKIK%2B7s3Su1nm3uFlB3oM7ZC1XYKpwuOK9CBetEjvqNsXeXBnG7Mz8qH9nKzf7n2x2T4NLlyCwujQ%3D%3D"
+    },
+    "want_err": false
+  }
+]

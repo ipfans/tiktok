@@ -1,0 +1,34 @@
+[
+  {
+    "name": "UpdateShippingInfo.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "order_id": "576463173535499480",
+        "tracking_number": "576460868968549926",
+        "provider_id": "6965352555291346690"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/tracking",
+      "headers": {},
+      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416",
+      "body": {
+        "order_id": "576463173535499480",
+        "tracking_number": "576460868968549926",
+        "provider_id": "6965352555291346690"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {}
+    },
+    "want": {},
+    "want_err": false
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "name": "GetShippingInfo.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req":{
+        "order_id":"576463173535499480"
+      }
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/ship/get",
+      "headers": {},
+      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416&order_id= 576463173535499480",
+      "body": {}
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162513172306500000000000000000000ffff0ae7f06cd26f48",
+        "data": {
+          "tracking_info_list": [
+            {
+              "tracking_info": [
+                {
+                  "update_time": 1625110547534,
+                  "description": "Your order was processed and your package is ready to ship."
+                },
+                {
+                  "update_time": 1625110422202,
+                  "description": "Your order was placed."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "want":  {
+      "tracking_info_list": [
+        {
+          "tracking_info": [
+            {
+              "update_time": 1625110547534,
+              "description": "Your order was processed and your package is ready to ship."
+            },
+            {
+              "update_time": 1625110422202,
+              "description": "Your order was placed."
+            }
+          ]
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "ShipPackage.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "package_id": "1152927012083369012",
+        "self_shipment": {
+          "tracking_number": "TN-20220228112002",
+          "shipping_provider_id": "6658174162568658945"
+        }
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/rts",
+      "headers": {},
+      "query": "app_key=5p0d40&access_token=_sDrvTes1E8O3StqsxBTg0rjKHCeJVuBJ0RvbYpGvW_n4WCT8o3WyuoJ_dihkHT_&sign=d3b00934fe8c5f5c536234f19710dd4332c046fcc17fa117e339c3a675b9c514&timestamp=1646024230&shop_id=7493990462817141976",
+      "body": {
+        "package_id": "1152927012083369012",
+        "self_shipment": {
+          "tracking_number": "TN-20220228112002",
+          "shipping_provider_id": "6658174162568658945"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "202203220356270101890660321112F891",
+        "data": {
+          "fail_packages": [
+            {
+              "fail_code": 206108,
+              "fail_reason": "invalid tracking number",
+              "package_id": "1152935320329685737"
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "code": 0,
+      "message": "Success",
+      "request_id": "202203220356270101890660321112F891",
+      "data": {
+        "fail_packages": [
+          {
+            "fail_code": 206108,
+            "fail_reason": "invalid tracking number",
+            "package_id": "1152935320329685737"
+          }
+        ]
+      }
+    },
+    "want_err": false
+  }
+]
