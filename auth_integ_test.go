@@ -3,41 +3,46 @@
 
 package tiktok_test
 
-// import (
-// 	"context"
-// 	"os"
-// 	"testing"
-// 	"time"
+import (
+	"context"
+	"os"
+	"testing"
+	"time"
 
-// 	"github.com/stretchr/testify/require"
-// )
+	"github.com/ipfans/tiktok"
+	"github.com/stretchr/testify/require"
+)
 
-// func TestClient_RefreshToken_Integration(t *testing.T) {
-// 	c := newTestClient(t)
-// 	tests := []struct {
-// 		name    string
-// 		rk      string
-// 		wantErr bool
-// 	}{
-// 		{
-// 			name: "Refresh Token with valid token",
-// 			rk:   os.Getenv("RK"),
-// 		},
-// 		{
-// 			name:    "Refresh Token with invalid token",
-// 			rk:      os.Getenv("RK") + "111",
-// 			wantErr: true,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			gotResp, err := c.RefreshToken(context.TODO(), tt.rk)
-// 			require.Equal(t, tt.wantErr, err != nil, "Client.RefreshToken() error = %v, wantErr %v", err, tt.wantErr)
-// 			if err != nil {
-// 				return
-// 			}
-// 			require.Equal(t, tt.rk, gotResp.RefreshToken)
-// 			require.Greater(t, gotResp.RefreshTokenExpireIn, int(time.Now().Unix()))
-// 		})
-// 	}
-// }
+func TestClient_RefreshToken_Integration(t *testing.T) {
+	c := newTestClient(t)
+	RK := os.Getenv("RK")
+	if tiktok.CheckEmpty(RK) {
+		t.Skip("AK or RK is empty")
+		return
+	}
+	tests := []struct {
+		name    string
+		rk      string
+		wantErr require.ErrorAssertionFunc
+	}{
+		{
+			name:    "Refresh Token with valid token",
+			rk:      RK,
+			wantErr: require.NoError,
+		},
+		{
+			name:    "Refresh Token with invalid token",
+			rk:      RK + "111",
+			wantErr: require.Error,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := c.RefreshToken(context.TODO(), tt.rk)
+			tt.wantErr(t, err)
+			if err == nil {
+				require.Greater(t, got.RefreshTokenExpireIn, int(time.Now().Unix()))
+			}
+		})
+	}
+}
