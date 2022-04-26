@@ -1,0 +1,71 @@
+[
+  {
+    "name": "ConfirmPreCombinePkg.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "pre_combine_pkg_list": [
+          {
+            "pre_combine_pkg_id": "1152927318214083861",
+            "order_id_list": [
+              "576464528665707797",
+              "576464319955502357"
+            ]
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/pre_combine_pkg/confirm",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=2de4aaafcff8859cc7d556415d6cbb68c6939124d9089e55388a61431a3de18b&timestamp=1600000000",
+      "body": {
+        "pre_combine_pkg_list": [
+          {
+            "pre_combine_pkg_id": "1152927318214083861",
+            "order_id_list": [
+              "576464528665707797",
+              "576464319955502357"
+            ]
+          }
+        ]
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162513357425000000000000000000000ffff0ae7f06cf7cddd",
+        "data": {
+          "package_list": [
+            {
+              "package_id": "1152927557687149678",
+              "order_id_list": [
+                "576464528665707797",
+                "576464319955502357"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "package_list": [
+        {
+          "package_id": "1152927557687149678",
+          "order_id_list": [
+            "576464528665707797",
+            "576464319955502357"
+          ]
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

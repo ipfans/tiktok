@@ -1,0 +1,67 @@
+[
+  {
+    "name": "GetAddressList(deprecated).json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {}
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/addresses",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=9209a370e3f7b6e770750843c4d2c0185d8f81846d43d6e0133a4499731a2c64&timestamp=1600000000"
+
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162512594107000000000000000000000ffff0ae7f06c633915",
+        "data": {
+          "address_list": [
+            {
+              "address_type": "RETURN_WAREHOUSE",
+              "address_info": {
+                "region": "Republic of Indonesia",
+                "state": "Aceh",
+                "city": "Aceh Jaya",
+                "district": "Panga",
+                "town": "Alue Pande",
+                "zipcode": "23683",
+                "address_id": "6966507629925778438",
+                "full_address": "Republic of Indonesia, Aceh, Aceh Jaya, Panga, Alue Pande, test result",
+                "contact_people": "wbx",
+                "phone": "(+62)12345678900"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "address_list": [
+        {
+          "address_type": "RETURN_WAREHOUSE",
+          "address_info": {
+            "region": "Republic of Indonesia",
+            "state": "Aceh",
+            "city": "Aceh Jaya",
+            "district": "Panga",
+            "town": "Alue Pande",
+            "zipcode": "23683",
+            "address_id": "6966507629925778438",
+            "full_address": "Republic of Indonesia, Aceh, Aceh Jaya, Panga, Alue Pande, test result",
+            "contact_people": "wbx",
+            "phone": "(+62)12345678900"
+          }
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

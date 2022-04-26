@@ -1,0 +1,124 @@
+[
+  {
+    "name": "SearchPreCombinePkg",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "page_size": 10
+      }
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/pre_combine_pkg/list",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&page_size=10&shop_id=123456&sign=ccf30e0b4a1629a31808c5dec8b5a665f08178f4ac34a5c70444c8bbd3120a17&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "20220303074330010231029070035A518A",
+        "data": {
+          "pre_combine_pkg_list": [
+            {
+              "pre_combine_pkg_id": "1152927657844442328",
+              "order_id_list": [
+                "576464536643929304",
+                "576464558852375768"
+              ]
+            },
+            {
+              "pre_combine_pkg_id": "1152927557687215320",
+              "order_id_list": [
+                "576464298276127960",
+                "576464298276324568",
+                "576464298276521176",
+                "576464298276717784",
+                "576464298276914392",
+                "576464298277111000",
+                "576464298277307608",
+                "576464298277504216",
+                "576464298277700824",
+                "576464298277897432"
+              ]
+            },
+            {
+              "pre_combine_pkg_id": "1152927557687149784",
+              "order_id_list": [
+                "576464298271409368",
+                "576464298271802584",
+                "576464298271999192",
+                "576464298272195800",
+                "576464298272392408",
+                "576464298272589016"
+              ]
+            },
+            {
+              "pre_combine_pkg_id": "1152927318214083861",
+              "order_id_list": [
+                "576464528665707797",
+                "576464319955502357"
+              ]
+            }
+          ],
+          "next_cursor": "aDV5MXEyV1ZaVTlKUkdSTDlDdUlhc2xCNDhFVDMzMmpwdC8vZnJJblFkQzhHSUk9",
+          "more": true,
+          "total": 29
+        }
+      }
+    },
+    "want": {
+      "pre_combine_pkg_list": [
+        {
+          "pre_combine_pkg_id": "1152927657844442328",
+          "order_id_list": [
+            "576464536643929304",
+            "576464558852375768"
+          ]
+        },
+        {
+          "pre_combine_pkg_id": "1152927557687215320",
+          "order_id_list": [
+            "576464298276127960",
+            "576464298276324568",
+            "576464298276521176",
+            "576464298276717784",
+            "576464298276914392",
+            "576464298277111000",
+            "576464298277307608",
+            "576464298277504216",
+            "576464298277700824",
+            "576464298277897432"
+          ]
+        },
+        {
+          "pre_combine_pkg_id": "1152927557687149784",
+          "order_id_list": [
+            "576464298271409368",
+            "576464298271802584",
+            "576464298271999192",
+            "576464298272195800",
+            "576464298272392408",
+            "576464298272589016"
+          ]
+        },
+        {
+          "pre_combine_pkg_id": "1152927318214083861",
+          "order_id_list": [
+            "576464528665707797",
+            "576464319955502357"
+          ]
+        }
+      ],
+      "next_cursor": "aDV5MXEyV1ZaVTlKUkdSTDlDdUlhc2xCNDhFVDMzMmpwdC8vZnJJblFkQzhHSUk9",
+      "more": true,
+      "total": 29
+    },
+    "want_err": false
+  }
+]
