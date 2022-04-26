@@ -51,7 +51,6 @@ func TestClient_GetAccessToken(t *testing.T) {
 			require.Equal(t, w.OpenID, resp.OpenID)
 		})
 	}
-
 }
 
 func TestClient_RefreshToken(t *testing.T) {

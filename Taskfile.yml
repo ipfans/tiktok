@@ -14,3 +14,12 @@ tasks:
     cmds:
       - go test -v -race -timeout 10m -tags integration -covermode atomic -coverprofile=coverage.txt -cover -failfast ./...
       - go tool cover -func coverage.txt
+
+  format:
+    cmds:
+      - go install mvdan.cc/gofumpt@latest
+      - gofumpt -l -w .
+      - go install github.com/daixiang0/gci@latest
+      - gci write .
+      - go install golang.org/x/tools/cmd/goimports@latest
+      - goimports -w .

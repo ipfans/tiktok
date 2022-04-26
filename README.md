@@ -15,28 +15,28 @@ Go SDK for Tiktok Shop Open Platform.
   - [x] Refresh your access token
 - [ ] Webhook
 - [x] Order API
-  - [x] Get order list
-  - [x] Get order detail
-  - [x] Ship order
-- [ ] Fulfillment API
-  - [ ] SearchPreCombinePkg
-  - [ ] ConfirmPreCombinePkg
-  - [ ] RemovePackageOrder
-  - [ ] GetPackagePickupConfig
-  - [ ] ShipPackage
-  - [ ] SearchPackage
-  - [ ] GetPackageDetail
-  - [ ] GetPackageShippingInfo
-  - [ ] UpdatePackageShippingInfo
-  - [ ] GetPackageShippingDocument
-  - [ ] VerifyOrderSplit
-  - [ ] ConfirmOrderSplit
-- [ ] Logistics API
-  - [ ] GetShippingInfo
-  - [ ] UpdateShippingInfo
-  - [ ] GetShippingDocument
-  - [ ] GetWarehouseList
-  - [ ] GetShippingProvider
+  - [x] GetOrderList
+  - [x] GetOrderDetail
+  - [x] ShipOrder
+- [x] Fulfillment API
+  - [x] SearchPreCombinePkg
+  - [x] ConfirmPreCombinePkg
+  - [x] RemovePackageOrder
+  - [x] GetPackagePickupConfig
+  - [x] ShipPackage
+  - [x] SearchPackage
+  - [x] GetPackageDetail
+  - [x] GetPackageShippingInfo
+  - [x] UpdatePackageShippingInfo
+  - [x] GetPackageShippingDocument
+  - [x] VerifyOrderSplit
+  - [x] ConfirmOrderSplit
+- [x] Logistics API
+  - [x] GetShippingInfo
+  - [x] UpdateShippingInfo
+  - [x] GetShippingDocument
+  - [x] GetWarehouseList
+  - [x] GetShippingProvider
 - [x] Product API
   - [x] GetCategory
   - [x] GetAttribute
