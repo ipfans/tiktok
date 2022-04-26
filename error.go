@@ -1,6 +1,9 @@
 package tiktok
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Error string
 
@@ -22,8 +25,9 @@ func (a *APIError) Error() string {
 }
 
 func ErrCode(err error) int {
-	if ae, ok := err.(*APIError); ok {
-		return ae.Code
+	var e *APIError
+	if errors.As(err, &e) {
+		return e.Code
 	}
 	return 0
 }

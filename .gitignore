@@ -16,3 +16,5 @@ coverage.txt
 *.bak
 .vscode/
 .idea/
+examples/
+testdata/integration/
