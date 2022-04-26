@@ -272,7 +272,9 @@ type FileInfo struct {
 
 type SalesAttribute struct {
 	AttributeID string `json:"attribute_id"`
-	ValueID     string `json:"value_id"`
+	CustomValue string `json:"custom_value,omitempty"`
+	SKUImage    *Image `json:"sku_img,omitempty"`
+	ValueID     string `json:"value_id,omitempty"`
 }
 
 type ProductSKU struct {
@@ -286,7 +288,10 @@ type Product struct {
 	Skus      []ProductSKU `json:"skus"`
 }
 
-type ProductSearchList struct{}
+type ProductSearchList struct {
+	ProductID string `json:"product_id"`
+	Skus      []SKU  `json:"skus"`
+}
 
 type UpdatePriceFailedSKU struct {
 	FailedSKUIDs []string `json:"failed_sku_ids"`
@@ -301,4 +306,6 @@ type UpdateStockFailedSKU struct {
 	FailedSKUs []FailedSKUStock `json:"failed_skus"`
 }
 
-type FailedProductIDs struct{}
+type FailedProductIDs struct {
+	FailedProductIDs []string `json:"failed_product_ids"`
+}

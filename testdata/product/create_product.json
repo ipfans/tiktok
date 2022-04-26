@@ -216,31 +216,74 @@
         "response": {
             "status": 200,
             "body": {
-                "id": "2222332323",
-                "seller_sku": "bbbbb",
-                "sales_attributes": [
-                    {
-                        "attribute_id": "33333",
-                        "value_id": "123124123123"
-                    },
-                    {
-                        "attribute_id": "44444",
-                        "value_id": "1312312312412"
-                    }
-                ]
+                "code": 0,
+                "message": "Success",
+                "request_id": "11111111",
+                "data": {
+                    "product_id": "111111112222",
+                    "skus": [
+                        {
+                            "id": "1111111111333333",
+                            "seller_sku": "aaaaaa",
+                            "sales_attributes": [
+                                {
+                                    "attribute_id": "111",
+                                    "value_id": "1231241234"
+                                },
+                                {
+                                    "attribute_id": "222",
+                                    "value_id": "123124123124"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2222332323",
+                            "seller_sku": "bbbbb",
+                            "sales_attributes": [
+                                {
+                                    "attribute_id": "33333",
+                                    "value_id": "123124123123"
+                                },
+                                {
+                                    "attribute_id": "44444",
+                                    "value_id": "1312312312412"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         },
         "want": {
-            "id": "2222332323",
-            "seller_sku": "bbbbb",
-            "sales_attributes": [
+            "product_id": "111111112222",
+            "skus": [
                 {
-                    "attribute_id": "33333",
-                    "value_id": "123124123123"
+                    "id": "1111111111333333",
+                    "seller_sku": "aaaaaa",
+                    "sales_attributes": [
+                        {
+                            "attribute_id": "111",
+                            "value_id": "1231241234"
+                        },
+                        {
+                            "attribute_id": "222",
+                            "value_id": "123124123124"
+                        }
+                    ]
                 },
                 {
-                    "attribute_id": "44444",
-                    "value_id": "1312312312412"
+                    "id": "2222332323",
+                    "seller_sku": "bbbbb",
+                    "sales_attributes": [
+                        {
+                            "attribute_id": "33333",
+                            "value_id": "123124123123"
+                        },
+                        {
+                            "attribute_id": "44444",
+                            "value_id": "1312312312412"
+                        }
+                    ]
                 }
             ]
         },

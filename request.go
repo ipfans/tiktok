@@ -116,20 +116,20 @@ type ProductCertificationRequest struct {
 }
 
 type CreateProductRequest struct {
-	ProductName           string                 `json:"product_name"`
-	Description           string                 `json:"description"`
-	CategoryID            string                 `json:"category_id"`
-	BrandID               string                 `json:"brand_id"`
-	Images                []Image                `json:"images"`
-	WarrantyPeriod        int                    `json:"warranty_period"`
-	WarrantyPolicy        string                 `json:"warranty_policy"`
-	PackageLength         int                    `json:"package_length"`
-	PackageWidth          int                    `json:"package_width"`
-	PackageHeight         int                    `json:"package_height"`
-	PackageWeight         string                 `json:"package_weight"`
-	ProductCertifications []ProductCertification `json:"product_certifications"`
-	IsCodOpen             bool                   `json:"is_cod_open"`
-	Skus                  []SKU                  `json:"skus"`
+	ProductName           string                        `json:"product_name"`
+	Description           string                        `json:"description"`
+	CategoryID            string                        `json:"category_id"`
+	BrandID               string                        `json:"brand_id"`
+	Images                []Image                       `json:"images"`
+	WarrantyPeriod        int                           `json:"warranty_period"`
+	WarrantyPolicy        string                        `json:"warranty_policy"`
+	PackageLength         int                           `json:"package_length"`
+	PackageWidth          int                           `json:"package_width"`
+	PackageHeight         int                           `json:"package_height"`
+	PackageWeight         string                        `json:"package_weight"`
+	ProductCertifications []ProductCertificationRequest `json:"product_certifications"`
+	IsCodOpen             bool                          `json:"is_cod_open"`
+	Skus                  []SKU                         `json:"skus"`
 }
 
 type StockInfo struct {

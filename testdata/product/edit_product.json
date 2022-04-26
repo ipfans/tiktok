@@ -1,0 +1,250 @@
+[
+    {
+        "name": "Official example",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "request_json": {
+                "product_id": "111111",
+                "product_name": "aaaaa",
+                "description": "adsfasdfasdfasf",
+                "category_id": "222222",
+                "images": [
+                    {
+                        "id": "asdfasdfasdfasdf"
+                    },
+                    {
+                        "id": "asdfasdfasdfasdfas"
+                    },
+                    {
+                        "id": "asdfasdfasdfasdf"
+                    }
+                ],
+                "package_weight": "5",
+                "is_cod_open": false,
+                "skus": [
+                    {
+                        "id": "1729383061885388337",
+                        "seller_sku": "aaaa",
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "value_id": "7007745555669501697",
+                                "custom_value": "red"
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "6917540455471154945",
+                                "available_stock": 160
+                            }
+                        ],
+                        "original_price": "1200"
+                    },
+                    {
+                        "id": "1729383061885388333",
+                        "seller_sku": "bbbb",
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "custom_value": "black",
+                                "sku_img": {
+                                    "id": "tos-alisg-i-aphluv4xwc-sg/483d605d024f400aa06da0dbd3748505"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "6917540455471154945",
+                                "available_stock": 3000
+                            }
+                        ],
+                        "original_price": "1600"
+                    }
+                ],
+                "brand_id": "123123123",
+                "warranty_period": 2,
+                "warranty_policy": "warranty policy test",
+                "package_length": 30,
+                "package_width": 20,
+                "package_height": 30,
+                "product_certifications": [
+                    {
+                        "id": "123123123",
+                        "images": [
+                            {
+                                "id": "asdfasdfasdfasdfas"
+                            }
+                        ],
+                        "files": [
+                            {
+                                "id": "asdfasdfasdfasdfasdf",
+                                "name": "test1.pdf",
+                                "type": "PDF"
+                            },
+                            {
+                                "id": "asdfasdfasdfasdfasdf",
+                                "name": "test2.pdf",
+                                "type": "PDF"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "request": {
+            "method": "PUT",
+            "url": "https://open-api.tiktokglobalshop.com/api/products",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=0bd65a4d92ab3328d0237c1714eb8664616efc55dfb41a7223f48517eb2e1358&timestamp=1600000000",
+            "body": {
+                "product_id": "111111",
+                "product_name": "aaaaa",
+                "description": "adsfasdfasdfasf",
+                "category_id": "222222",
+                "images": [
+                    {
+                        "id": "asdfasdfasdfasdf"
+                    },
+                    {
+                        "id": "asdfasdfasdfasdfas"
+                    },
+                    {
+                        "id": "asdfasdfasdfasdf"
+                    }
+                ],
+                "package_weight": "5",
+                "is_cod_open": false,
+                "skus": [
+                    {
+                        "id": "1729383061885388337",
+                        "seller_sku": "aaaa",
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "value_id": "7007745555669501697",
+                                "custom_value": "red"
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "6917540455471154945",
+                                "available_stock": 160
+                            }
+                        ],
+                        "original_price": "1200"
+                    },
+                    {
+                        "id": "1729383061885388333",
+                        "seller_sku": "bbbb",
+                        "sales_attributes": [
+                            {
+                                "attribute_id": "100000",
+                                "custom_value": "black",
+                                "sku_img": {
+                                    "id": "tos-alisg-i-aphluv4xwc-sg/483d605d024f400aa06da0dbd3748505"
+                                }
+                            }
+                        ],
+                        "stock_infos": [
+                            {
+                                "warehouse_id": "6917540455471154945",
+                                "available_stock": 3000
+                            }
+                        ],
+                        "original_price": "1600"
+                    }
+                ],
+                "brand_id": "123123123",
+                "warranty_period": 2,
+                "warranty_policy": "warranty policy test",
+                "package_length": 30,
+                "package_width": 20,
+                "package_height": 30,
+                "product_certifications": [
+                    {
+                        "id": "123123123",
+                        "images": [
+                            {
+                                "id": "asdfasdfasdfasdfas"
+                            }
+                        ],
+                        "files": [
+                            {
+                                "id": "asdfasdfasdfasdfasdf",
+                                "name": "test1.pdf",
+                                "type": "PDF"
+                            },
+                            {
+                                "id": "asdfasdfasdfasdfasdf",
+                                "name": "test2.pdf",
+                                "type": "PDF"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "123123123",
+                "data": {
+                    "product_id": "123123123123",
+                    "skus": [
+                        {
+                            "id": "123123123",
+                            "seller_sku": "aaaa",
+                            "sales_attributes": [
+                                {
+                                    "attribute_id": "123123123123",
+                                    "value_id": "123123123123"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "123123123",
+                            "seller_sku": "bbbb",
+                            "sales_attributes": [
+                                {
+                                    "attribute_id": "123123123",
+                                    "value_id": "123123123123"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "product_id": "123123123123",
+            "skus": [
+                {
+                    "id": "123123123",
+                    "seller_sku": "aaaa",
+                    "sales_attributes": [
+                        {
+                            "attribute_id": "123123123123",
+                            "value_id": "123123123123"
+                        }
+                    ]
+                },
+                {
+                    "id": "123123123",
+                    "seller_sku": "bbbb",
+                    "sales_attributes": [
+                        {
+                            "attribute_id": "123123123",
+                            "value_id": "123123123123"
+                        }
+                    ]
+                }
+            ]
+        },
+        "want_err": false
+    }
+]

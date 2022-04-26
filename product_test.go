@@ -237,48 +237,47 @@ func TestClient_UploadFile(t *testing.T) {
 	}
 }
 
-// TODO: Fix those tests.
-// func TestClient_CreateProduct(t *testing.T) {
-// 	var args struct {
-// 		AppKey      string          `json:"app_key"`
-// 		AppSecret   string          `json:"app_secret"`
-// 		AccessToken string          `json:"access_token"`
-// 		ShopID      string          `json:"shop_id"`
-// 		RequestJSON json.RawMessage `json:"request_json"`
-// 	}
-// 	var want tiktok.Product
-// 	mockTests(t, "testdata/product/create_product.json", &args, &want, func() (got interface{}, err error) {
-// 		c, err := tiktok.New(args.AppKey, args.AppSecret)
-// 		require.NoError(t, err)
-// 		var req tiktok.CreateProductRequest
-// 		err = json.Unmarshal(args.RequestJSON, &req)
-// 		require.NoError(t, err)
-// 		product, err := c.CreateProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
-// 		got = &product
-// 		return
-// 	})
-// }
+func TestClient_CreateProduct(t *testing.T) {
+	var args struct {
+		AppKey      string          `json:"app_key"`
+		AppSecret   string          `json:"app_secret"`
+		AccessToken string          `json:"access_token"`
+		ShopID      string          `json:"shop_id"`
+		RequestJSON json.RawMessage `json:"request_json"`
+	}
+	var want tiktok.Product
+	mockTests(t, "testdata/product/create_product.json", &args, &want, func() (got interface{}, err error) {
+		c, err := tiktok.New(args.AppKey, args.AppSecret)
+		require.NoError(t, err)
+		var req tiktok.CreateProductRequest
+		err = json.Unmarshal(args.RequestJSON, &req)
+		require.NoError(t, err)
+		product, err := c.CreateProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
+		got = &product
+		return
+	})
+}
 
-// func TestClient_EditProduct(t *testing.T) {
-// 	var args struct {
-// 		AppKey      string          `json:"app_key"`
-// 		AppSecret   string          `json:"app_secret"`
-// 		AccessToken string          `json:"access_token"`
-// 		ShopID      string          `json:"shop_id"`
-// 		RequestJSON json.RawMessage `json:"request_json"`
-// 	}
-// 	var want tiktok.Product
-// 	mockTests(t, "testdata/product/edit_product.json", &args, &want, func() (got interface{}, err error) {
-// 		c, err := tiktok.New(args.AppKey, args.AppSecret)
-// 		require.NoError(t, err)
-// 		var req tiktok.CreateProductRequest
-// 		err = json.Unmarshal(args.RequestJSON, &req)
-// 		require.NoError(t, err)
-// 		product, err := c.CreateProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
-// 		got = &product
-// 		return
-// 	})
-// }
+func TestClient_EditProduct(t *testing.T) {
+	var args struct {
+		AppKey      string          `json:"app_key"`
+		AppSecret   string          `json:"app_secret"`
+		AccessToken string          `json:"access_token"`
+		ShopID      string          `json:"shop_id"`
+		RequestJSON json.RawMessage `json:"request_json"`
+	}
+	var want tiktok.Product
+	mockTests(t, "testdata/product/edit_product.json", &args, &want, func() (got interface{}, err error) {
+		c, err := tiktok.New(args.AppKey, args.AppSecret)
+		require.NoError(t, err)
+		var req tiktok.EditProductRequest
+		err = json.Unmarshal(args.RequestJSON, &req)
+		require.NoError(t, err)
+		product, err := c.EditProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
+		got = &product
+		return
+	})
+}
 
 func TestClient_GetProductList(t *testing.T) {
 	var args struct {
