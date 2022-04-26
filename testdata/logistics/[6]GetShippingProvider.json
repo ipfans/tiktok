@@ -1,0 +1,74 @@
+[
+  {
+    "name": "GetShippingProvider.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {}
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/shipping_providers",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=7d1b364efacbb92d9c481b8ac3d058b002188fb3c9e5ccd1448bfcf6733e4418&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162497288499000000000000000000000ffff0ae7f06c9f1e3c",
+        "data": {
+          "delivery_option_list": [
+            {
+              "delivery_option_id": "6953569689649809158",
+              "delivery_option_name": "ID_ID_economy_service",
+              "item_weight_limit": {
+                "max_weight": 1000000,
+                "min_weight": 1
+              },
+              "item_dimension_limit": {
+                "length": 22,
+                "width": 0,
+                "height": 0
+              },
+              "shipping_provider_list": [
+                {
+                  "shipping_provider_id": "6965352555291346690",
+                  "shipping_provider_name": "JX Express"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "delivery_option_list": [
+        {
+          "delivery_option_id": "6953569689649809158",
+          "delivery_option_name": "ID_ID_economy_service",
+          "item_weight_limit": {
+            "max_weight": 1000000,
+            "min_weight": 1
+          },
+          "item_dimension_limit": {
+            "length": 22,
+            "width": 0,
+            "height": 0
+          },
+          "shipping_provider_list": [
+            {
+              "shipping_provider_id": "6965352555291346690",
+              "shipping_provider_name": "JX Express"
+            }
+          ]
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

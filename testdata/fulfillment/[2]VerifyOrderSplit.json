@@ -1,0 +1,67 @@
+[
+  {
+    "name": "VerifyOrderSplit.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "order_id_list": [
+          576464992663470320,
+          576464992663470321
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/order_split/verify",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=e031b5d03e973c3ca731988b3bff76e714d34a31524e2420799ccf4090bade53&timestamp=1600000000",
+      "body": {
+        "order_id_list": [
+          576464992663470320,
+          576464992663470321
+        ]
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162513320727800000000000000000000ffff0ae7f06c9f1968",
+        "data": {
+          "verify_order_result": [
+            {
+              "order_id": 576462377512830168,
+              "verify_order_result": false
+            }
+          ],
+          "fail_list": [
+            {
+              "order_id": 576462377512830168,
+              "fail_reason": "fulfill unit freeze"
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "verify_order_result": [
+        {
+          "order_id": 576462377512830168,
+          "verify_order_result": false
+        }
+      ],
+      "fail_list": [
+        {
+          "order_id": 576462377512830168,
+          "fail_reason": "fulfill unit freeze"
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

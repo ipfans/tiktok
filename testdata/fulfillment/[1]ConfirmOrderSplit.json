@@ -1,0 +1,79 @@
+[
+  {
+    "name": "ConfirmOrderSplit.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "order_id": 576464992663471320,
+        "split_group": [
+          {
+            "pre_split_pkg_id": 123,
+            "order_line_id_list": [
+              576464992663470320,
+              576464992663470321
+            ]
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/order_split/confirm",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=24e2b3b0bef464da26f42bf96c15477679faf0ee9a7e8554a724031b192c0927&timestamp=1600000000",
+      "body": {
+        "order_id": 576464992663471320,
+        "split_group": [
+          {
+            "pre_split_pkg_id": 123,
+            "order_line_id_list": [
+              576464992663470320,
+              576464992663470321
+            ]
+          }
+        ]
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162513320727800000000000000000000ffff0ae7f06c9f1968",
+        "data": {
+          "confirm_result_list": [
+            {
+              "pre_split_pkg_id": 123,
+              "confirm_result": true
+            }
+          ],
+          "success_list": [
+            {
+              "pre_split_pkg_id": 123,
+              "package_id": 1234567890
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "confirm_result_list": [
+        {
+          "pre_split_pkg_id": 123,
+          "confirm_result": true
+        }
+      ],
+      "success_list": [
+        {
+          "pre_split_pkg_id": 123,
+          "package_id": 1234567890
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

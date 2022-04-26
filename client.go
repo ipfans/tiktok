@@ -61,6 +61,15 @@ func (c *Client) Get(ctx context.Context, path string, param url.Values, resp in
 	return
 }
 
+// Any is support All HTTP methods and customize communication for TikTok requests.
+// Note: Timestamp, appkey and signature will auto-management by action.
+func (c *Client) Any(ctx context.Context, method, path string, param url.Values, body interface{}, resp interface{}) (err error) {
+	param = c.prepareParam(path, param)
+	r := c.prepareBody(body)
+	err = c.request(ctx, method, APIBaseURL, path, param, r, resp)
+	return
+}
+
 // Post request for TikTok requests.
 // Note: Timestamp, appkey and signature will auto-management by action.
 func (c *Client) Post(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {

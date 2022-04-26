@@ -1,0 +1,60 @@
+[
+  {
+    "name": "RemovePackageOrder.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "package_id": "1152926184425751768",
+        "order_id_list": ["576464281740281048", "576464281740084440"]
+      }
+    },
+
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/package/remove",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=fe144c5536881e1c06d63cdb681bfde6c890cd8b7ea454fa55c5c949c2a85439&timestamp=1600000000",
+      "body": {
+        "package_id": "1152926184425751768",
+        "order_id_list": ["576464281740281048", "576464281740084440"]
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "02162513357425000000000000000000000ffff0ae7f06cf7cddd",
+        "data": {
+          "package_list": [
+            {
+              "package_id": "1152927557687149678",
+              "order_id_list": ["576464528665707797"]
+            },
+            {
+              "package_id": "1152912398748912748",
+              "order_id_list": ["576464319955502357"]
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "package_list": [
+        {
+          "package_id": "1152927557687149678",
+          "order_id_list": ["576464528665707797"]
+        },
+        {
+          "package_id": "1152912398748912748",
+          "order_id_list": ["576464319955502357"]
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

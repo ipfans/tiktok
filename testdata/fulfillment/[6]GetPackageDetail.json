@@ -1,0 +1,66 @@
+[
+  {
+    "name": "GetPackageDetail.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "package_id": "1152927458095236984"
+      }
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/detail",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&package_id=1152927458095236984&shop_id=123456&sign=99d5232c485d949d2da0b0ffccec4ac1f8e726d25aefc2a76e4372aa7612291b&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "2022022808040401023102107203058D5A",
+        "data": {
+          "package_id": "1152927458095236984",
+          "package_status": 2,
+          "package_freeze_status": 0,
+          "sc_tag": 0,
+          "print_tag": 0,
+          "sku_tag": 1,
+          "note_tag": 3,
+          "delivery_option": "STANDARD",
+          "shipping_provider": "J&T Express",
+          "shipping_provider_id": "6841743441349706241",
+          "tracking_number": "JX0005946863",
+          "pick_up_type": 1,
+          "pick_up_start_time": 0,
+          "pick_up_end_time": 0,
+          "create_time": 1645784637,
+          "update_time": 1645784642
+        }
+      }
+    },
+    "want": {
+      "package_id": "1152927458095236984",
+      "package_status": 2,
+      "package_freeze_status": 0,
+      "sc_tag": 0,
+      "print_tag": 0,
+      "sku_tag": 1,
+      "note_tag": 3,
+      "delivery_option": "STANDARD",
+      "shipping_provider": "J&T Express",
+      "shipping_provider_id": "6841743441349706241",
+      "tracking_number": "JX0005946863",
+      "pick_up_type": 1,
+      "pick_up_start_time": 0,
+      "pick_up_end_time": 0,
+      "create_time": 1645784637,
+      "update_time": 1645784642
+    },
+    "want_err": false
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "SearchPackage.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "create_time_from": 1645784437,
+        "create_time_to": 1645784666,
+        "sort_type": 2,
+        "sort_by": 3,
+        "page_size": 20
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/search",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=c5352c9c96e18df41c8c481c19a4494892770746a442800ad295111a127d4ae8&timestamp=1600000000",
+      "body": {
+        "create_time_from": 1645784437,
+        "create_time_to": 1645784666,
+        "sort_by": 3,
+        "sort_type": 2,
+        "page_size": 20
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "2022022808033501023102907001025E39",
+        "data": {
+          "more": false,
+          "next_cursor": "aDV5MXEyU1daVTlPVG1WSDlTbUlhaE1ydHdPWFU2aklaVVNTMktoVnFaMHVpRGs9",
+          "package_list": [
+            {
+              "package_id": "1152927458095236984",
+              "package_status": 2,
+              "create_time": 1645784637,
+              "update_time": 1645784642
+            }
+          ],
+          "total": 1
+        }
+      }
+    },
+    "want": {
+      "more": false,
+      "next_cursor": "aDV5MXEyU1daVTlPVG1WSDlTbUlhaE1ydHdPWFU2aklaVVNTMktoVnFaMHVpRGs9",
+      "package_list": [
+        {
+          "package_id": "1152927458095236984",
+          "package_status": 2,
+          "create_time": 1645784637,
+          "update_time": 1645784642
+        }
+      ],
+      "total": 1
+    },
+    "want_err": false
+  }
+]

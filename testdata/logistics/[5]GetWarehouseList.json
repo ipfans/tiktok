@@ -1,0 +1,108 @@
+[
+  {
+    "name": "GetWarehouseList.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req":{}
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/get_warehouse_list",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=4c3dcdcec7eb8e56e763a9435508450bcaf6c7e387a0863ec59ea8a6d11ed5e8&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "202109090653160102450571902E003892",
+        "data": {
+          "warehouse_list": [
+            {
+              "warehouse_id": "7000714532876257026",
+              "warehouse_name": "cbtest",
+              "warehouse_type": 1,
+              "warehouse_sub_type": 3,
+              "warehouse_effect_status": 1,
+              "warehouse_address": {
+                "region": "People's Republic of China",
+                "state": "Chongqing City",
+                "city": "Chongqing City",
+                "district": "Wanzhou District",
+                "town": "",
+                "full_address": "ceshi",
+                "zipcode": "",
+                "phone": "(+86)12342087611",
+                "contact_person": "guo"
+              }
+            },
+            {
+              "warehouse_id": "7000714532876273410",
+              "warehouse_name": "cbtest",
+              "warehouse_type": 2,
+              "warehouse_sub_type": 3,
+              "warehouse_effect_status": 1,
+              "warehouse_address": {
+                "region": "People's Republic of China",
+                "state": "Chongqing City",
+                "city": "Chongqing City",
+                "district": "Wanzhou District",
+                "town": "",
+                "full_address": "ceshi",
+                "zipcode": "",
+                "phone": "(+86)12342087611",
+                "contact_person": "guo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "warehouse_list": [
+        {
+          "warehouse_id": "7000714532876257026",
+          "warehouse_name": "cbtest",
+          "warehouse_type": 1,
+          "warehouse_sub_type": 3,
+          "warehouse_effect_status": 1,
+          "warehouse_address": {
+            "region": "People's Republic of China",
+            "state": "Chongqing City",
+            "city": "Chongqing City",
+            "district": "Wanzhou District",
+            "town": "",
+            "full_address": "ceshi",
+            "zipcode": "",
+            "phone": "(+86)12342087611",
+            "contact_person": "guo"
+          }
+        },
+        {
+          "warehouse_id": "7000714532876273410",
+          "warehouse_name": "cbtest",
+          "warehouse_type": 2,
+          "warehouse_sub_type": 3,
+          "warehouse_effect_status": 1,
+          "warehouse_address": {
+            "region": "People's Republic of China",
+            "state": "Chongqing City",
+            "city": "Chongqing City",
+            "district": "Wanzhou District",
+            "town": "",
+            "full_address": "ceshi",
+            "zipcode": "",
+            "phone": "(+86)12342087611",
+            "contact_person": "guo"
+          }
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

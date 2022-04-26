@@ -1,0 +1,45 @@
+[
+  {
+    "name": "UpdatePackageShippingInfo.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "package_id": "1152927012083369012",
+        "tracking_number": "TN-20220228113002",
+        "provider_id": "6658174162568658945"
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/shipping_info/update",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=6d0b8a9f9d8ff1d5275f1c48bd81ee6eeca67070091e23ae29730eb84fa1d93a&timestamp=1600000000",
+      "body": {
+        "package_id": "1152927012083369012",
+        "tracking_number": "TN-20220228113002",
+        "provider_id": "6658174162568658945"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "20220317040616010231029069005F6563",
+        "data": {
+          "failed_reason": "no permission",
+          "update_success": false
+        }
+      }
+    },
+    "want": {
+      "failed_reason": "no permission",
+      "update_success": false
+    },
+    "want_err": false
+  }
+]
