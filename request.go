@@ -32,7 +32,7 @@ type GetOrderDetailRequest struct {
 
 type SelfShipment struct {
 	TrackingNumber     string `json:"tracking_number"`
-	ShoppingProviderID string `json:"shopping_provider_id"`
+	ShippingProviderID string `json:"shipping_provider_id"`
 }
 
 type Pickup struct {
