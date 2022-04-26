@@ -6,16 +6,15 @@
       "app_secret": "123",
       "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
       "shop_id": "123456",
-      "req":{
-        "order_id":"576463173535499480"
+      "req": {
+        "order_id": "576463173535499480"
       }
     },
     "request": {
       "method": "GET",
       "url": "https://open-api.tiktokglobalshop.com/api/logistics/ship/get",
       "headers": {},
-      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416&order_id= 576463173535499480",
-      "body": {}
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&order_id=576463173535499480&shop_id=123456&sign=db06fca19320e9faa07ae1f70d83db5f156f4209d4692e2325b11b7ac021fd43&timestamp=1600000000"
     },
     "response": {
       "status": 200,
@@ -42,7 +41,7 @@
         }
       }
     },
-    "want":  {
+    "want": {
       "tracking_info_list": [
         {
           "tracking_info": [

@@ -29,6 +29,7 @@ func (c *Client) SearchPreCombinePkg(ctx context.Context, p Param, req SearchPre
 	if err = c.validate.Struct(req); err != nil {
 		return
 	}
+
 	param.Set("page_size", strconv.Itoa(req.PageSize))
 	if req.Cursor != "" {
 		param.Set("cursor", req.Cursor)

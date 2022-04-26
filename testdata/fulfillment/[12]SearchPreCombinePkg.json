@@ -14,8 +14,7 @@
       "method": "GET",
       "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/pre_combine_pkg/list",
       "headers": {},
-      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416&shop_id=123456",
-      "body": {}
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&page_size=10&shop_id=123456&sign=ccf30e0b4a1629a31808c5dec8b5a665f08178f4ac34a5c70444c8bbd3120a17&timestamp=1600000000"
     },
     "response": {
       "status": 200,

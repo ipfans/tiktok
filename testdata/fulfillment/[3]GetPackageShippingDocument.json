@@ -16,12 +16,7 @@
       "method": "GET",
       "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/shipping_document",
       "headers": {},
-      "query": "app_key=5p0d40&access_token=_sDrvTes1E8O3StqsxBTg0rjKHCeJVuBJ0RvbYpGvW_n4WCT8o3WyuoJ_dihkHT_&sign=d3b00934fe8c5f5c536234f19710dd4332c046fcc17fa117e339c3a675b9c514&timestamp=1646024230&shop_id=7493990462817141976",
-      "body": {
-        "package_id": "576463173535499480",
-        "document_type": 2,
-        "document_size": 0
-      }
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=17fd80e0d96da36c0d49be88513421aabc50890124a78e4b7d337a732da9f354&timestamp=1600000000"
     },
     "response": {
       "status": 200,
@@ -36,12 +31,7 @@
       }
     },
     "want": {
-      "code": 0,
-      "message": "Success",
-      "request_id": "202202280816040102310290690306597F",
-      "data": {
-        "doc_url": "https://magellan-boe.bytedance.net/wsos_v2/oec_fulfillment_doc_tts/object/wsos621add3ef7ca8b05?expire=1646039765&skipCookie=true&timeStamp=1646036165&sign=4429656de86d0a6f7337c5b43ee21a3b84ff2d4e51cd7da3b85b5ca902fca6da"
-      }
+      "doc_url": "https://magellan-boe.bytedance.net/wsos_v2/oec_fulfillment_doc_tts/object/wsos621add3ef7ca8b05?expire=1646039765&skipCookie=true&timeStamp=1646036165&sign=4429656de86d0a6f7337c5b43ee21a3b84ff2d4e51cd7da3b85b5ca902fca6da"
     },
     "want_err": false
   }

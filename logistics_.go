@@ -14,15 +14,15 @@ type LogisticsGetShippingInfoData struct {
 }
 
 type UpdateShippingInfoReq struct {
-	OrderId        string `json:"order_id"`
-	TrackingNumber string `json:"tracking_number"`
-	ProviderId     string `json:"provider_id"`
+	OrderId        string `json:"order_id" validate:"required"`
+	TrackingNumber string `json:"tracking_number" validate:"required"`
+	ProviderId     string `json:"provider_id" validate:"required"`
 }
 
 type GetShippingDocumentRequest struct {
 	OrderID      string `json:"order_id" validate:"required"`
-	DocumentType int    `json:"document_type" validate:"required" example:"Use this field to specify the type of document to obtain. Available value: SHIPPING_LABEL/ PICK_LIST/ SL_PL SL_PL is to print both SHIPPING_LABEL and PICK_LIST in one pdf. "`
-	DocumentSize int    `json:"document_size" example:"Use this field to specify the size of document to obtain. Available value: A6/A5.  A6 by default. A6 = 0 A5 = 1"`
+	DocumentType string `json:"document_type" validate:"required,oneof=SHIPPING_LABEL PICK_LIST SL_PL" example:"Use this field to specify the type of document to obtain. Available value: SHIPPING_LABEL/ PICK_LIST/ SL_PL SL_PL is to print both SHIPPING_LABEL and PICK_LIST in one pdf. "`
+	DocumentSize string `json:"document_size" validate:"oneof=A5 A6" example:"Use this field to specify the size of document to obtain. Available value: A6/A5.  A6 by default. A6 = 0 A5 = 1"`
 }
 
 type GetShippingDocumentData struct {
@@ -30,7 +30,7 @@ type GetShippingDocumentData struct {
 }
 
 type GetAddressListRequest struct {
-	AddressType string `json:"address_type" validate:"required,oneof=SALES_WAREHOUSE RETURN_WAREHOUSE LOCAL_RETURN_WAREHOUSE" example:"Use this field to specify the type of warehouse to obtain. Available value: SALES_WAREHOUSE/ RETURN_WAREHOUSE/ LOCAL_RETURN_WAREHOUSE. "`
+	AddressType string `json:"address_type" validate:"omitempty,oneof=SALES_WAREHOUSE RETURN_WAREHOUSE LOCAL_RETURN_WAREHOUSE" example:"Not required! Use this field to specify the type of warehouse to obtain. Available value: SALES_WAREHOUSE/ RETURN_WAREHOUSE/ LOCAL_RETURN_WAREHOUSE. "`
 }
 
 type GetAddressListData struct {

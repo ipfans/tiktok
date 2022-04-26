@@ -49,8 +49,12 @@ func (c *Client) GetShippingDocument(ctx context.Context, p Param, req GetShippi
 		return
 	}
 
-	//  TODO
-	param.Set("document_type", req.OrderID)
+	param.Set("order_id", req.OrderID)
+	param.Set("document_type", req.DocumentType)
+	if req.DocumentSize != "" {
+		param.Set("document_size", req.DocumentSize)
+	}
+
 	err = c.Get(ctx, GetShippingDocumentPATH, param, &data)
 	return
 }
@@ -64,8 +68,9 @@ func (c *Client) GetAddressList(ctx context.Context, p Param, req GetAddressList
 		return
 	}
 
-	//  TODO
-	param.Set("address_type", req.AddressType)
+	if req.AddressType != "" {
+		param.Set("address_type", req.AddressType)
+	}
 	err = c.Get(ctx, GetAddressListPATH, param, &data)
 	return
 }

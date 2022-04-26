@@ -211,11 +211,11 @@ func TestShipPackage(t *testing.T) {
 
 func TestSearchPackage(t *testing.T) {
 	var args struct {
-		AppKey      string                    `json:"app_key"`
-		AppSecret   string                    `json:"app_secret"`
-		AccessToken string                    `json:"access_token"`
-		ShopID      string                    `json:"shop_id"`
-		Req         tiktok.ShipPackageRequest `json:"req"`
+		AppKey      string                      `json:"app_key"`
+		AppSecret   string                      `json:"app_secret"`
+		AccessToken string                      `json:"access_token"`
+		ShopID      string                      `json:"shop_id"`
+		Req         tiktok.SearchPackageRequest `json:"req"`
 	}
 
 	var response tiktok.SearchPackageData
@@ -234,7 +234,7 @@ func TestSearchPackage(t *testing.T) {
 			require.NoError(t, err)
 			res, err := c.SearchPackage(context.Background(), tiktok.Param{
 				AccessToken: args.AccessToken, ShopID: args.ShopID,
-			}, tiktok.SearchPackageRequest{})
+			}, args.Req)
 			if tt.WantErr {
 				require.Error(t, err)
 				return
@@ -301,18 +301,14 @@ func TestGetPackageShippingInfo(t *testing.T) {
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
-
 			var ans tiktok.GetPackageShippingInfoData
 			err := json.Unmarshal(tt.Want, &ans)
 			require.NoError(t, err)
-
 			c, err := tiktok.New(args.AppKey, args.AppSecret)
 			require.NoError(t, err)
-
 			res, err := c.GetPackageShippingInfo(context.Background(), tiktok.Param{
 				AccessToken: args.AccessToken, ShopID: args.ShopID,
 			}, args.Req)
-
 			if tt.WantErr {
 				require.Error(t, err)
 				return

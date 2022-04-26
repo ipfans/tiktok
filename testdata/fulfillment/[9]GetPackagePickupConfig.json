@@ -14,8 +14,7 @@
       "method": "GET",
       "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/package_pickup_config/list",
       "headers": {},
-      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416&shop_id=7493990462817141976&package_id=123456",
-      "body": {}
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&package_id=123456&shop_id=123456&sign=137b36b6908dc0b88bae6e6387d12bee54c5c2ebdfdbe370ac369e83c26d77b5&timestamp=1600000000"
     },
     "response": {
       "status": 200,
@@ -44,26 +43,21 @@
       }
     },
     "want": {
-      "code": 0,
-      "message": "Success",
-      "request_id": "2022022808044101023102906900035F20",
-      "data": {
-        "is_pick_up": true,
-        "is_drop_off": true,
-        "pick_up_time_list": [
-          {
-            "start_time": "1646067600",
-            "end_time": "1646074800",
-            "available": true
-          },
-          {
-            "start_time": "1646074800",
-            "end_time": "1646103600",
-            "available": true
-          }
-        ],
-        "drop_off_point_url": "https://j.map.baidu.com/09/BZnc"
-      }
+      "is_pick_up": true,
+      "is_drop_off": true,
+      "pick_up_time_list": [
+        {
+          "start_time": "1646067600",
+          "end_time": "1646074800",
+          "available": true
+        },
+        {
+          "start_time": "1646074800",
+          "end_time": "1646103600",
+          "available": true
+        }
+      ],
+      "drop_off_point_url": "https://j.map.baidu.com/09/BZnc"
     },
     "want_err": false
   }

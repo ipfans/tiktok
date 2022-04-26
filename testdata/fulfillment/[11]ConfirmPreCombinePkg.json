@@ -19,10 +19,10 @@
       }
     },
     "request": {
-      "method": "GET",
+      "method": "POST",
       "url": "https://open-api.tiktokglobalshop.com/api/fulfillment/pre_combine_pkg/confirm",
       "headers": {},
-      "query": "app_key=12abcd&access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&sign=28212f44f16270f3583e5b812af4dad7e5c07bd4b09c9832ff320a66526afefc&timestamp=1628743416",
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=2de4aaafcff8859cc7d556415d6cbb68c6939124d9089e55388a61431a3de18b&timestamp=1600000000",
       "body": {
         "pre_combine_pkg_list": [
           {
