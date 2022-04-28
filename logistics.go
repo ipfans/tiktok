@@ -2,15 +2,17 @@ package tiktok
 
 import (
 	"context"
+
+	"github.com/google/go-querystring/query"
 )
 
 const (
-	GetShippingInfoPATH     = "/api/logistics/ship/get"
-	UpdateShippingInfoPATH  = "/api/logistics/tracking"
-	GetShippingDocumentPATH = "/api/logistics/shipping_document"
-	GetAddressListPATH      = "/api/logistics/addresses"
-	GetWarehouseListPATH    = "/api/logistics/get_warehouse_list"
-	GetShippingProviderPATH = "/api/logistics/shipping_providers"
+	GetShippingInfoPATH       = "/api/logistics/ship/get"
+	UpdateShippingInfoPATH    = "/api/logistics/tracking"
+	GetShippingDocumentPATH   = "/api/logistics/shipping_document"
+	GetWarehouseListPATH      = "/api/logistics/get_warehouse_list"
+	GetShippingProviderPATH   = "/api/logistics/shipping_providers"
+	GetSubscribedDeliveryPATH = "/api/logistics/get_subscribed_deliveryoptions"
 )
 
 func (c *Client) GetShippingInfo(ctx context.Context, p Param, req OrderIDReq) (data LogisticsGetShippingInfoData, err error) {
@@ -22,7 +24,18 @@ func (c *Client) GetShippingInfo(ctx context.Context, p Param, req OrderIDReq) (
 		return
 	}
 
-	param.Set("order_id", req.OrderID)
+	values, err := query.Values(req)
+	if err != nil {
+		return
+	}
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
+	}
+
 	err = c.Get(ctx, GetShippingInfoPATH, param, &data)
 	return
 }
@@ -49,29 +62,19 @@ func (c *Client) GetShippingDocument(ctx context.Context, p Param, req GetShippi
 		return
 	}
 
-	param.Set("order_id", req.OrderID)
-	param.Set("document_type", req.DocumentType)
-	if req.DocumentSize != "" {
-		param.Set("document_size", req.DocumentSize)
-	}
-
-	err = c.Get(ctx, GetShippingDocumentPATH, param, &data)
-	return
-}
-
-func (c *Client) GetAddressList(ctx context.Context, p Param, req GetAddressListRequest) (data GetAddressListData, err error) {
-	param, err := c.params(p)
+	values, err := query.Values(req)
 	if err != nil {
 		return
 	}
-	if err = c.validate.Struct(req); err != nil {
-		return
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
 	}
 
-	if req.AddressType != "" {
-		param.Set("address_type", req.AddressType)
-	}
-	err = c.Get(ctx, GetAddressListPATH, param, &data)
+	err = c.Get(ctx, GetShippingDocumentPATH, param, &data)
 	return
 }
 
@@ -92,5 +95,18 @@ func (c *Client) GetShippingProvider(ctx context.Context, p Param) (data GetShip
 	}
 
 	err = c.Get(ctx, GetShippingProviderPATH, param, &data)
+	return
+}
+
+func (c *Client) GetSubscribedDelivery(ctx context.Context, p Param, req GetSubscribedDeliveryRequest) (data GetSubscribedDeliveryData, err error) {
+	param, err := c.params(p)
+	if err != nil {
+		return
+	}
+	if err = c.validate.Struct(req); err != nil {
+		return
+	}
+
+	err = c.Post(ctx, GetSubscribedDeliveryPATH, param, req, &data)
 	return
 }

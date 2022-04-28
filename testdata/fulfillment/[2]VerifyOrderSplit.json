@@ -30,35 +30,35 @@
       "headers": {},
       "body": {
         "code": 0,
-        "message": "Success",
-        "request_id": "02162513320727800000000000000000000ffff0ae7f06c9f1968",
         "data": {
-          "verify_order_result": [
-            {
-              "order_id": 576462377512830168,
-              "verify_order_result": false
-            }
-          ],
           "fail_list": [
             {
-              "order_id": 576462377512830168,
-              "fail_reason": "fulfill unit freeze"
+              "fail_reason": "fulfill unit freeze",
+              "order_id": 576462377512830200
+            }
+          ],
+          "result_list": [
+            {
+              "order_id": 576462377512830200,
+              "verify_order_result": true
             }
           ]
-        }
+        },
+        "message": "Success",
+        "request_id": "202203070749000101890810281E8C70B7"
       }
     },
     "want": {
-      "verify_order_result": [
-        {
-          "order_id": 576462377512830168,
-          "verify_order_result": false
-        }
-      ],
       "fail_list": [
         {
-          "order_id": 576462377512830168,
-          "fail_reason": "fulfill unit freeze"
+          "fail_reason": "fulfill unit freeze",
+          "order_id": 576462377512830200
+        }
+      ],
+      "result_list": [
+        {
+          "order_id": 576462377512830200,
+          "verify_order_result": true
         }
       ]
     },

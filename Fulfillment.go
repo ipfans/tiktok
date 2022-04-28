@@ -2,8 +2,8 @@ package tiktok
 
 import (
 	"context"
-	"net/http"
-	"strconv"
+
+	"github.com/google/go-querystring/query"
 )
 
 const (
@@ -30,9 +30,16 @@ func (c *Client) SearchPreCombinePkg(ctx context.Context, p Param, req SearchPre
 		return
 	}
 
-	param.Set("page_size", strconv.Itoa(req.PageSize))
-	if req.Cursor != "" {
-		param.Set("cursor", req.Cursor)
+	values, err := query.Values(req)
+	if err != nil {
+		return
+	}
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
 	}
 
 	err = c.Get(ctx, SearchPreCombinePkgPATH, param, &data)
@@ -74,7 +81,17 @@ func (c *Client) GetPackagePickupConfig(ctx context.Context, p Param, req Packag
 		return
 	}
 
-	param.Set("package_id", req.PackageID)
+	values, err := query.Values(req)
+	if err != nil {
+		return
+	}
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
+	}
 	err = c.Get(ctx, GetPackagePickupConfigPATH, param, &data)
 	return
 }
@@ -114,7 +131,17 @@ func (c *Client) GetPackageDetail(ctx context.Context, p Param, req PackageIDReq
 		return
 	}
 
-	param.Set("package_id", req.PackageID)
+	values, err := query.Values(req)
+	if err != nil {
+		return
+	}
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
+	}
 	err = c.Get(ctx, GetPackageDetailPATH, param, &data)
 	return
 }
@@ -155,7 +182,18 @@ func (c *Client) GetPackageShippingDocument(ctx context.Context, p Param, req Ge
 		return
 	}
 
-	err = c.Any(ctx, http.MethodGet, GetPackageShippingDocumentPATH, param, req, &data)
+	values, err := query.Values(req)
+	if err != nil {
+		return
+	}
+	for k, data := range values {
+		if items, ok := param[k]; ok {
+			param[k] = append(items, data...)
+		} else {
+			param[k] = data
+		}
+	}
+	err = c.Get(ctx, GetPackageShippingDocumentPATH, param, &data)
 	return
 }
 

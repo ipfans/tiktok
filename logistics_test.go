@@ -124,46 +124,6 @@ func TestGetShippingDocument(t *testing.T) {
 	}
 }
 
-func TestGetAddressList(t *testing.T) {
-	var args struct {
-		AppKey      string                       `json:"app_key"`
-		AppSecret   string                       `json:"app_secret"`
-		AccessToken string                       `json:"access_token"`
-		ShopID      string                       `json:"shop_id"`
-		Req         tiktok.GetAddressListRequest `json:"req"`
-	}
-
-	var response tiktok.GetAddressListData
-	restore := mockTime()
-	defer restore()
-	tests := loadTestData(t, "testdata/logistics/[4]GetAddressList(deprecated).json")
-	for _, tt := range tests {
-		t.Run(tt.Name, func(t *testing.T) {
-			httpmock.Activate()
-			defer httpmock.DeactivateAndReset()
-			setupMock(t, tt, &args, &response)
-
-			var ans tiktok.GetAddressListData
-			err := json.Unmarshal(tt.Want, &ans)
-			require.NoError(t, err)
-
-			c, err := tiktok.New(args.AppKey, args.AppSecret)
-			require.NoError(t, err)
-
-			res, err := c.GetAddressList(context.Background(), tiktok.Param{
-				AccessToken: args.AccessToken, ShopID: args.ShopID,
-			}, args.Req)
-			if tt.WantErr {
-				require.Error(t, err)
-				return
-			} else {
-				require.NoError(t, err)
-			}
-			require.Equal(t, ans, res)
-		})
-	}
-}
-
 func TestGetWarehouseList(t *testing.T) {
 	var args struct {
 		AppKey      string `json:"app_key"`
@@ -229,6 +189,46 @@ func TestGetShippingProvider(t *testing.T) {
 			res, err := c.GetShippingProvider(context.Background(), tiktok.Param{
 				AccessToken: args.AccessToken, ShopID: args.ShopID,
 			})
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+			}
+			require.Equal(t, ans, res)
+		})
+	}
+}
+
+func TestGetSubscribedDelivery(t *testing.T) {
+	var args struct {
+		AppKey      string                              `json:"app_key"`
+		AppSecret   string                              `json:"app_secret"`
+		AccessToken string                              `json:"access_token"`
+		ShopID      string                              `json:"shop_id"`
+		Req         tiktok.GetSubscribedDeliveryRequest `json:"req"`
+	}
+
+	var response tiktok.GetSubscribedDeliveryData
+	restore := mockTime()
+	defer restore()
+	tests := loadTestData(t, "testdata/logistics/[4]GetSubscribedDelivery.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, &args, &response)
+
+			var ans tiktok.GetSubscribedDeliveryData
+			err := json.Unmarshal(tt.Want, &ans)
+			require.NoError(t, err)
+
+			c, err := tiktok.New(args.AppKey, args.AppSecret)
+			require.NoError(t, err)
+
+			res, err := c.GetSubscribedDelivery(context.TODO(), tiktok.Param{
+				AccessToken: args.AccessToken, ShopID: args.ShopID,
+			}, args.Req)
 			if tt.WantErr {
 				require.Error(t, err)
 				return
