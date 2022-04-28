@@ -1,8 +1,8 @@
 package tiktok
 
 type SearchPreCombinePkgRequest struct {
-	Cursor   string `json:"cursor"`
-	PageSize int    `json:"page_size" validate:"required,min=1,max=50"`
+	Cursor   string `json:"cursor" url:"cursor,omitempty"`
+	PageSize int    `json:"page_size"  url:"page_size" validate:"required,min=1,max=50"`
 }
 
 type SearchPreCombinePkgData struct {
@@ -41,7 +41,7 @@ type RemovePackageOrderRequest struct {
 }
 
 type PackageIDRequest struct {
-	PackageID string `json:"package_id" validate:"required"`
+	PackageID string `json:"package_id" url:"package_id,omitempty" validate:"required"`
 }
 
 type GetPackagePickupConfigData struct {
@@ -60,16 +60,8 @@ type FulfillmentPickUp struct {
 	PickUpEndTime   int64 `json:"pick_up_end_time"`
 }
 
-/*
-type T struct {
-	PackageID    string            `json:"package_id" validate:"required"`
-	PickUpType   int               `json:"pick_up_type"`
-	PickUp       FulfillmentPickUp `json:"pick_up"`
-	SelfShipment SelfShipment      `json:"self_shipment"`
-}*/
-
 type ShipPackageRequest struct {
-	PackageId  string `json:"package_id"`
+	PackageID  string `json:"package_id"`
 	PickUpType int    `json:"pick_up_type"`
 	PickUp     struct {
 		PickUpStartTime int `json:"pick_up_start_time"`
@@ -77,7 +69,7 @@ type ShipPackageRequest struct {
 	} `json:"pick_up"`
 	SelfShipment struct {
 		TrackingNumber     string `json:"tracking_number"`
-		ShippingProviderId string `json:"shipping_provider_id"`
+		ShippingProviderID string `json:"shipping_provider_id"`
 	} `json:"self_shipment"`
 }
 
@@ -96,8 +88,8 @@ type SearchPackageRequest struct {
 	UpdateTimeTo   int64  `json:"update_time_to,omitempty"`
 	PackageStatus  int    `json:"package_status,omitempty"`
 	Cursor         string `json:"cursor,omitempty"`
-	SortBy         int    `json:"sort_by,omitempty" validate:"oneof=1 2 3"  example:"Default value: 1 CREATE_TIME = 1 - ORDER_PAY_TIME = 2 - UPDATE_TME = 3"`
-	SortType       int    `json:"sort_type,omitempty" validate:"oneof=1 2" example:"ASC = 1 DESC = 2"`
+	SortBy         int    `json:"sort_by,omitempty" validate:"omitempty,oneof=1 2 3"  example:"Default value: 1 CREATE_TIME = 1 - ORDER_PAY_TIME = 2 - UPDATE_TME = 3"`
+	SortType       int    `json:"sort_type,omitempty" validate:"omitempty,oneof=1 2" example:"ASC = 1 DESC = 2"`
 	PageSize       int    `json:"page_size,omitempty" validate:"min=1,max=50"`
 }
 
@@ -105,7 +97,7 @@ type SearchPackageData struct {
 	More        bool   `json:"more"`
 	NextCursor  string `json:"next_cursor"`
 	PackageList []struct {
-		PackageId     string `json:"package_id"`
+		PackageID     string `json:"package_id"`
 		PackageStatus int    `json:"package_status"`
 		CreateTime    int64  `json:"create_time"`
 		UpdateTime    int64  `json:"update_time"`
@@ -114,32 +106,32 @@ type SearchPackageData struct {
 }
 
 type GetPackageDetailData struct {
-	PackageID     string `json:"package_id"`
-	OrderInfoList struct {
-		OrderID string `json:"order_id"`
-		SkuList struct {
-			SkuID    string `json:"sku_id"`
-			SkuName  string `json:"sku_name"`
-			SkuImage string `json:"sku_image"`
+	CreateTime     int    `json:"create_time"`
+	DeliveryOption string `json:"delivery_option"`
+	NoteTag        int    `json:"note_tag"`
+	OrderInfoList  []struct {
+		OrderId string `json:"order_id"`
+		SkuList []struct {
 			Quantity string `json:"quantity"`
+			SkuId    string `json:"sku_id"`
+			SkuImage string `json:"sku_image"`
+			SkuName  string `json:"sku_name"`
 		} `json:"sku_list"`
 	} `json:"order_info_list"`
-	PackageStatus       int      `json:"package_status" example:"TO_FULFILL = 1 , PROCESSING = 2 , FULFILLING = 3 , COMPLETED = 4 , CANCELLED = 5"`
-	PackageFreezeStatus int      `json:"package_freeze_status" example:"FREEZE = 1, When the package is pending review for cancellation. UNFREEZE = 2"`
-	ScTag               int      `json:"sc_tag" example:"DEFAULT = 0 , COMBINE =1 , SPLIT = 2"`
-	PrintTag            int      `json:"print_tag"`
-	SkuTag              int      `json:"sku_tag" example:"Whether there are multiple SKU IDs in a package, ONE = 1 MANY = 2"`
-	NoteTag             int      `json:"note_tag" example:"BUYER_UNNOTED = 0 BUYER_NOTED = 1"`
-	DeliveryOption      string   `json:"delivery_option" example:"STANDARD=1 EXPRESS=2 ECONOMY=3 SEND_BY_SELLER=4"`
-	ShippingProvider    string   `json:"shipping_provider"`
-	ShippingProviderID  string   `json:"shipping_provider_id"`
-	TrackingNumber      string   `json:"tracking_number"`
-	PickUpType          int      `json:"pick_up_type"`
-	PickUpStartTime     int64    `json:"pick_up_start_time"`
-	PickUpEndTime       int64    `json:"pick_up_end_time"`
-	CreateTime          int64    `json:"create_time"`
-	UpdateTime          int64    `json:"update_time"`
-	OrderLineIDList     []string `json:"order_line_id_list"`
+	OrderLineIdList     string `json:"order_line_id_list"`
+	PackageFreezeStatus int    `json:"package_freeze_status"`
+	PackageId           string `json:"package_id"`
+	PackageStatus       int    `json:"package_status"`
+	PickUpEndTime       int    `json:"pick_up_end_time"`
+	PickUpStartTime     int    `json:"pick_up_start_time"`
+	PickUpType          int    `json:"pick_up_type"`
+	PrintTag            int    `json:"print_tag"`
+	ScTag               int    `json:"sc_tag"`
+	ShippingProvider    string `json:"shipping_provider"`
+	ShippingProviderId  string `json:"shipping_provider_id"`
+	SkuTag              string `json:"sku_tag"`
+	TrackingNumber      string `json:"tracking_number"`
+	UpdateTime          int    `json:"update_time"`
 }
 
 type GetPackageShippingInfoData struct {
@@ -161,9 +153,9 @@ type UpdatePackageShippingInfoData struct {
 }
 
 type GetPackageShippingDocumentRequest struct {
-	PackageID    string `json:"package_id" validate:"required"`
-	DocumentType int    `json:"document_type" validate:"required" example:"Available value: SHIPPING_LABEL = 1 PICK_LIST = 2 SL+PL = 3 PACK_LIST is not available in this version."`
-	DocumentSize int    `json:"document_size" validate:"isdefault=0,oneof=0 1" example:"Use this field to specify the size of document to obtain. Available value: A6/A5.  A6 by default. A6 = 0 A5 = 1"`
+	PackageID    string `json:"package_id"  url:"package_id" validate:"required"`
+	DocumentType int    `json:"document_type" url:"document_type" validate:"required,oneof=1 2 3" example:"Available value: SHIPPING_LABEL = 1 PICK_LIST = 2 SL+PL = 3 PACK_LIST is not available in this version."`
+	DocumentSize int    `json:"document_size" url:"document_size,omitempty" validate:"omitempty,oneof=0 1" example:"Use this field to specify the size of document to obtain. Available value: A6/A5.  A6 by default. A6 = 0 A5 = 1"`
 }
 
 type GetPackageShippingDocumentData struct {
@@ -175,14 +167,14 @@ type VerifyOrderSplitRequest struct {
 }
 
 type VerifyOrderSplitData struct {
-	VerifyOrderResult []struct {
-		OrderID           int64 `json:"order_id"`
-		VerifyOrderResult bool  `json:"verify_order_result"`
-	} `json:"verify_order_result"`
 	FailList []struct {
-		OrderID    int64  `json:"order_id"`
 		FailReason string `json:"fail_reason"`
+		OrderId    int64  `json:"order_id"`
 	} `json:"fail_list"`
+	ResultList []struct {
+		OrderId           int64 `json:"order_id"`
+		VerifyOrderResult bool  `json:"verify_order_result"`
+	} `json:"result_list"`
 }
 
 type ConfirmOrderSplitRequest struct {

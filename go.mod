@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/go-playground/validator/v10 v10.10.1
+	github.com/google/go-querystring v1.1.0
 	github.com/jarcoal/httpmock v1.1.0
 	github.com/stretchr/testify v1.7.0
 )

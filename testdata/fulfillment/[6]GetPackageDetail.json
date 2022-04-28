@@ -21,45 +21,73 @@
       "headers": {},
       "body": {
         "code": 0,
-        "message": "Success",
-        "request_id": "2022022808040401023102107203058D5A",
         "data": {
-          "package_id": "1152927458095236984",
-          "package_status": 2,
-          "package_freeze_status": 0,
-          "sc_tag": 0,
-          "print_tag": 0,
-          "sku_tag": 1,
-          "note_tag": 3,
+          "create_time": 1635338186,
           "delivery_option": "STANDARD",
-          "shipping_provider": "J&T Express",
-          "shipping_provider_id": "6841743441349706241",
-          "tracking_number": "JX0005946863",
+          "note_tag": 1,
+          "order_info_list": [
+            {
+              "order_id": "123456",
+              "sku_list": [
+                {
+                  "quantity": "",
+                  "sku_id": "",
+                  "sku_image": "",
+                  "sku_name": ""
+                }
+              ]
+            }
+          ],
+          "order_line_id_list": "",
+          "package_freeze_status": 100,
+          "package_id": "123456",
+          "package_status": 1,
+          "pick_up_end_time": 1635338186,
+          "pick_up_start_time": 1635338186,
           "pick_up_type": 1,
-          "pick_up_start_time": 0,
-          "pick_up_end_time": 0,
-          "create_time": 1645784637,
-          "update_time": 1645784642
-        }
+          "print_tag": 1,
+          "sc_tag": 1,
+          "shipping_provider": "TT Virtual express",
+          "shipping_provider_id": "6617675021119438849",
+          "sku_tag": "",
+          "tracking_number": "6617675021119438849",
+          "update_time": 1635338186
+        },
+        "message": "Success",
+        "request_id": "202203070749000101890810281E8C70B7"
       }
     },
-    "want": {
-      "package_id": "1152927458095236984",
-      "package_status": 2,
-      "package_freeze_status": 0,
-      "sc_tag": 0,
-      "print_tag": 0,
-      "sku_tag": 1,
-      "note_tag": 3,
+    "want":  {
+      "create_time": 1635338186,
       "delivery_option": "STANDARD",
-      "shipping_provider": "J&T Express",
-      "shipping_provider_id": "6841743441349706241",
-      "tracking_number": "JX0005946863",
+      "note_tag": 1,
+      "order_info_list": [
+        {
+          "order_id": "123456",
+          "sku_list": [
+            {
+              "quantity": "",
+              "sku_id": "",
+              "sku_image": "",
+              "sku_name": ""
+            }
+          ]
+        }
+      ],
+      "order_line_id_list": "",
+      "package_freeze_status": 100,
+      "package_id": "123456",
+      "package_status": 1,
+      "pick_up_end_time": 1635338186,
+      "pick_up_start_time": 1635338186,
       "pick_up_type": 1,
-      "pick_up_start_time": 0,
-      "pick_up_end_time": 0,
-      "create_time": 1645784637,
-      "update_time": 1645784642
+      "print_tag": 1,
+      "sc_tag": 1,
+      "shipping_provider": "TT Virtual express",
+      "shipping_provider_id": "6617675021119438849",
+      "sku_tag": "",
+      "tracking_number": "6617675021119438849",
+      "update_time": 1635338186
     },
     "want_err": false
   }

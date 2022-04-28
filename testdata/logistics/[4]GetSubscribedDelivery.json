@@ -1,0 +1,67 @@
+[
+  {
+    "name": "GetSubscribedDelivery.json",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "warehouse_id_list": [
+          "7000714532876273410",
+          "7000714532876273899"
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/logistics/get_subscribed_deliveryoptions",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=35efe16f0841a51a4c84d9afc7d0f06b51d96d4c33e33cf1a7f05f4a99ce0396&timestamp=1600000000",
+      "body": {
+        "warehouse_id_list": [
+          "7000714532876273410",
+          "7000714532876273899"
+        ]
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "data": {
+          "warehouse_list": [
+            {
+              "warehouse_delivery": [
+                {
+                  "delivery_option": "1",
+                  "service_id": "",
+                  "service_name": "LSV-Standard-PH"
+                }
+              ],
+              "warehouse_id": "7000714532876273410"
+            }
+          ]
+        },
+        "message": "Success",
+        "request_id": "202203070749000101890810281E8C70B7"
+      }
+    },
+    "want": {
+      "warehouse_list": [
+        {
+          "warehouse_delivery": [
+            {
+              "delivery_option": "1",
+              "service_id": "",
+              "service_name": "LSV-Standard-PH"
+            }
+          ],
+          "warehouse_id": "7000714532876273410"
+        }
+      ]
+    },
+    "want_err": false
+  }
+]
