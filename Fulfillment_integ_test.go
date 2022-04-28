@@ -12,18 +12,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const (
-	_AK_KEY             = "AK"
-	_SHOP_KEY           = "SHOP"
-	_ORDER_KEY          = "ORDER"
-	_PAGESIZE           = 10
-	_ShippingProviderID = ""
-	_TRACKINGNUMBER     = ""
-	_PACKAGEID          = ""
-	_ORDERID            = 0
-	_FakeOrderID        = ""
-)
-
 func TestClient_SearchPreCombinePkg_Integration(t *testing.T) {
 	c := newTestClient(t)
 	type args struct {

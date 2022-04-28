@@ -108,7 +108,7 @@ func (c *Client) EditProduct(ctx context.Context, p Param, req EditProductReques
 	return
 }
 
-func (c *Client) GetProductList(ctx context.Context, p Param, req ProductSearchRequest) (list ProductSearchList, err error) {
+func (c *Client) GetProductList(ctx context.Context, p Param, req ProductSearchRequest) (list GetProductListData, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
@@ -127,7 +127,7 @@ func (c *Client) GetProductDetail(ctx context.Context, p Param, productID string
 	return
 }
 
-func (c *Client) UpdatePrice(ctx context.Context, p Param, req UpdatePriceRequest) (list UpdatePriceFailedSKU, err error) {
+func (c *Client) UpdatePrice(ctx context.Context, p Param, req UpdatePriceRequest) (list UpdatePriceData, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
@@ -145,13 +145,13 @@ func (c *Client) UpdateStock(ctx context.Context, p Param, req UpdateStockReques
 	return
 }
 
-func (c *Client) DeactivateProducts(ctx context.Context, p Param, ids []string) (list FailedProductIDs, err error) {
+func (c *Client) DeactivateProducts(ctx context.Context, p Param, productIDs []string) (list FailedProductIDs, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
 	}
 	req := map[string][]string{
-		"product_ids": ids,
+		"product_ids": productIDs,
 	}
 	err = c.Post(ctx, "/api/products/inactivated_products", param, req, &list)
 	return

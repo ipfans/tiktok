@@ -220,7 +220,7 @@ func TestClient_GetSubscribedDelivery_Integration(t *testing.T) {
 		wantErr  bool
 	}{
 		{
-			name: " TODO Integration Test ",
+			name: " GetSubscribedDelivery Integration Test ",
 			args: args{
 				ak:     os.Getenv("AK"),
 				shopID: os.Getenv("SHOP"),

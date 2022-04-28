@@ -72,9 +72,9 @@ func TestClient_RejectReverse(t *testing.T) {
 			err = c.RejectReverse(context.TODO(),
 				tiktok.Param{args.AccessToken, args.ShopID},
 				tiktok.RejectReverseRequest{
-					ReverseOrderID:           args.OrderID,
-					ReverseRejectReasonKey:   args.ReasonKey,
-					ReverseRejectReasonValue: args.Comments,
+					ReverseOrderID:         args.OrderID,
+					ReverseRejectReasonKey: args.ReasonKey,
+					ReverseRejectComments:  args.Comments,
 				},
 			)
 			if tt.WantErr {

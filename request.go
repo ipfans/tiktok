@@ -45,40 +45,40 @@ type ShipOrderRequest struct {
 }
 
 type SearchSettlementsRequest struct {
-	RequestTimeFrom int    `json:"request_time_from"`
-	RequestTimeTo   int    `json:"request_time_to"`
-	PageSize        int    `json:"page_size"`
-	Cursor          string `json:"cursor"`
-	SortType        int    `json:"sort_type"`
+	RequestTimeFrom int    `json:"request_time_from,omitempty"`
+	RequestTimeTo   int    `json:"request_time_to,omitempty"`
+	PageSize        int    `json:"page_size" validate:"required,min=1,max=100"`
+	Cursor          string `json:"cursor,omitempty"`
+	SortType        int    `json:"sort_type"  validate:"required" example:"Available values: 1 (DESC), 2 (ASC) Default value 1"`
 }
 
 type SearchTransactionsRequest struct {
-	RequestTimeFrom int   `json:"request_time_from"`
-	RequestTimeTo   int   `json:"request_time_to"`
-	TransactionType []int `json:"transaction_type" validate:"required"`
-	PageSize        int   `json:"page_size"`
-	Offset          int   `json:"offset" validate:"gte=0,lte=1000"`
+	RequestTimeFrom int   `json:"request_time_from,omitempty"`
+	RequestTimeTo   int   `json:"request_time_to,omitempty"`
+	TransactionType []int `json:"transaction_type" validate:"required,min=1" example:"Withdraw:1 Settle:2 Transfer:3 Reverse:4"`
+	PageSize        int   `json:"page_size" validate:"required,min=1,max=100" `
+	Offset          int   `json:"offset" validate:"gte=0,lte=10000"`
 }
 
 type RejectReverseRequest struct {
-	ReverseOrderID           string `json:"reverse_order_id" validate:"required"`
-	ReverseRejectReasonKey   string `json:"reverse_reject_reason_key" validate:"required"`
-	ReverseRejectReasonValue string `json:"reverse_reject_comments"`
+	ReverseOrderID         string `json:"reverse_order_id"`
+	ReverseRejectReasonKey string `json:"reverse_reject_reason_key"`
+	ReverseRejectComments  string `json:"reverse_reject_comments"`
 }
 
 type GetReverseListRequest struct {
 	UpdateTimeFrom int `json:"update_time_from"`
 	UpdateTimeTo   int `json:"update_time_to"`
-	ReverseType    int `json:"reverse_type"`
-	SortBy         int `json:"sort_by"`
-	SortType       int `json:"sort_type"`
-	Offset         int `json:"offset"`
-	Size           int `json:"size"`
+	ReverseType    int `json:"reverse_type" example:"REFUND_ONLY = 2 RETURN_AND_REFUND = 3 REQUEST_CANCEL = 4"`
+	SortBy         int `json:"sort_by" example:"REQUEST_TIME=0(default) UPDATE_TIME=1 REFUND_TOTAL=2"`
+	SortType       int `json:"sort_type"  example:"ASC=0 DESC=1(default)"`
+	Offset         int `json:"offset" validate:"required,min=0"`
+	Size           int `json:"size" validate:"required,min=1,max=100"`
 }
 
 type GetReverseReasonRequest struct {
-	ReverseActionType int `json:"reverse_action_type"`
-	ReasonType        int `json:"reason_type"`
+	ReverseActionType int `json:"reverse_action_type,omitempty" url:"reverse_action_type,omitempty" example:"Available value: CANCEL = 1;REFUND = 2;RETURN_AND_REFUND = 3;REQUEST_CANCEL_REFUND = 4 "`
+	ReasonType        int `json:"reason_type,omitempty" url:"reason_type,omitempty" example:"Available value: STARTE_REVERSE = 1; REJECT_APPLY = 2; REJECT_PARCEL = 3"`
 }
 
 type ImgScene int
@@ -156,18 +156,30 @@ type EditProductRequest struct {
 }
 
 type ProductSearchRequest struct {
-	PageSize      int      `json:"page_size"`
-	PageNumber    int      `json:"page_number"`
-	SearchStatus  int      `json:"search_status"`
-	SellerSkuList []string `json:"seller_sku_list"`
+	PageSize       int      `json:"page_size" validate:"min=1,max=100"`
+	PageNumber     int      `json:"page_number" validate:"min=1"`
+	SearchStatus   int      `json:"search_status,omitempty"`
+	SellerSkuList  []string `json:"seller_sku_list,omitempty"`
+	UpdateTimeFrom int64    `json:"update_time_from,omitempty"`
+	UpdateTimeTo   int64    `json:"update_time_to,omitempty"`
+	CreateTimeFrom int64    `json:"create_time_from,omitempty" `
+	CreateTimeTo   int64    `json:"create_time_to,omitempty"`
 }
-
 type UpdatePriceRequest struct {
-	ProductID string `json:"product_id"`
-	Skus      []SKU  `json:"skus"`
+	ProductID string `json:"product_id" validate:"required"`
+	Skus      []struct {
+		ID            string `json:"id" validate:"required"`
+		OriginalPrice string `json:"original_price" validate:"required"`
+	} `json:"skus" validate:"min=1"`
 }
 
 type UpdateStockRequest struct {
 	ProductID string `json:"product_id"`
-	Skus      []SKU  `json:"skus"`
+	Skus      []struct {
+		ID         string `json:"id"`
+		StockInfos []struct {
+			AvailableStock int    `json:"available_stock" validate:"min=0,max=99999"`
+			WarehouseID    string `json:"warehouse_id"`
+		} `json:"stock_infos"`
+	} `json:"skus"`
 }

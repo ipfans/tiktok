@@ -2,16 +2,22 @@ package tiktok
 
 import "context"
 
+const (
+	_SearchSettlementsPATH   = "/api/finance/settlements/search"
+	_GetOrderSettlementsPATH = "/api/finance/order/settlements"
+	_SearchTransactionsPATH  = "/api/finance/transactions/search"
+)
+
 // SearchSettlements search settlements. Default PageSize is 100.
 func (c *Client) SearchSettlements(ctx context.Context, p Param, query SearchSettlementsRequest) (list SettlementsList, err error) {
 	param, err := c.params(p)
 	if err != nil {
 		return
 	}
-	if query.PageSize <= 0 || query.PageSize > 100 {
-		query.PageSize = 100
+	if err = c.validate.Struct(query); err != nil {
+		return
 	}
-	err = c.Post(ctx, "/api/finance/settlements/search", param, query, &list)
+	err = c.Post(ctx, _SearchSettlementsPATH, param, query, &list)
 	return
 }
 
@@ -22,7 +28,7 @@ func (c *Client) GetOrderSettlements(ctx context.Context, p Param, ordersID stri
 		return
 	}
 	param.Set("order_id", ordersID)
-	err = c.Get(ctx, "/api/finance/order/settlements", param, &list)
+	err = c.Get(ctx, _GetOrderSettlementsPATH, param, &list)
 	return
 }
 
@@ -32,12 +38,9 @@ func (c *Client) SearchTransactions(ctx context.Context, p Param, query SearchTr
 	if err != nil {
 		return
 	}
-	if query.PageSize <= 0 || query.PageSize > 100 {
-		query.PageSize = 100
-	}
-	if err = c.validate.Struct(&query); err != nil {
+	if err = c.validate.Struct(query); err != nil {
 		return
 	}
-	err = c.Post(ctx, "/api/finance/transactions/search", param, query, &list)
+	err = c.Post(ctx, _SearchTransactionsPATH, param, query, &list)
 	return
 }

@@ -37,10 +37,10 @@ type GetSubscribedDeliveryData struct {
 	WarehouseList []struct {
 		WarehouseDelivery []struct {
 			DeliveryOption string `json:"delivery_option"`
-			ServiceId      string `json:"service_id"`
+			ServiceID      string `json:"service_id"`
 			ServiceName    string `json:"service_name"`
 		} `json:"warehouse_delivery"`
-		WarehouseId string `json:"warehouse_id"`
+		WarehouseID string `json:"warehouse_id"`
 	} `json:"warehouse_list"`
 }
 

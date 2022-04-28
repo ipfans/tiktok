@@ -145,6 +145,9 @@ type SettlementsList struct {
 	SettlementList []Settlement `json:"settlement_list"`
 }
 
+type OrdersIDRequest struct {
+	OrderID string `json:"order_id" url:"order_id" validate:"required"`
+}
 type Transaction struct {
 	TransactionType     int    `json:"transaction_type"`
 	TransactionTime     int    `json:"transaction_time"`
@@ -284,16 +287,88 @@ type ProductSKU struct {
 }
 
 type Product struct {
-	ProductID string       `json:"product_id"`
-	Skus      []ProductSKU `json:"skus"`
+	CategoryList []struct {
+		ID               string `json:"id"`
+		IsLeaf           bool   `json:"is_leaf"`
+		LocalDisplayName string `json:"local_display_name"`
+		ParentID         string `json:"parent_id"`
+	} `json:"category_list"`
+	CreateTime  int64  `json:"create_time"`
+	Description string `json:"description"`
+	Images      []struct {
+		Height       int      `json:"height"`
+		ID           string   `json:"id"`
+		ThumbUrlList []string `json:"thumb_url_list"`
+		UrlList      []string `json:"url_list"`
+		Width        int      `json:"width"`
+	} `json:"images"`
+	IsCodOpen         bool   `json:"is_cod_open"`
+	PackageHeight     int    `json:"package_height"`
+	PackageLength     int    `json:"package_length"`
+	PackageWeight     string `json:"package_weight"`
+	PackageWidth      int    `json:"package_width"`
+	ProductAttributes []struct {
+		ID     string `json:"id"`
+		Name   string `json:"name"`
+		Values []struct {
+			ID   string `json:"id"`
+			Name string `json:"name"`
+		} `json:"values"`
+	} `json:"product_attributes"`
+	ProductID     string `json:"product_id"`
+	ProductName   string `json:"product_name"`
+	ProductStatus int    `json:"product_status"`
+	Skus          []struct {
+		ID    string `json:"id"`
+		Price struct {
+			Currency      string `json:"currency"`
+			OriginalPrice string `json:"original_price"`
+		} `json:"price"`
+		SalesAttributes []struct {
+			ID        string `json:"id"`
+			Name      string `json:"name"`
+			ValueID   string `json:"value_id"`
+			ValueName string `json:"value_name"`
+		} `json:"sales_attributes"`
+		SellerSku  string `json:"seller_sku"`
+		StockInfos []struct {
+			WarehouseID    string `json:"warehouse_id"`
+			AvailableStock int    `json:"available_stock"`
+		} `json:"stock_infos"`
+	} `json:"skus"`
+	UpdateTime     int64 `json:"update_time"`
+	WarrantyPeriod struct {
+		WarrantyID          int    `json:"warranty_id"`
+		WarrantyDescription string `json:"warranty_description"`
+	} `json:"warranty_period"`
+	WarrantyPolicy string `json:"warranty_policy"`
 }
 
-type ProductSearchList struct {
-	ProductID string `json:"product_id"`
-	Skus      []SKU  `json:"skus"`
+type GetProductListData struct {
+	Products []struct {
+		CreateTime  int      `json:"create_time"`
+		ID          string   `json:"id"`
+		Name        string   `json:"name"`
+		SaleRegions []string `json:"sale_regions"`
+		Skus        []struct {
+			ID    string `json:"id"`
+			Price struct {
+				Currency      string `json:"currency"`
+				OriginalPrice string `json:"original_price"`
+			} `json:"price"`
+			SellerSku  string `json:"seller_sku"`
+			StockInfos []struct {
+				WarehouseID    string `json:"warehouse_id"`
+				AvailableStock int    `json:"available_stock"`
+			} `json:"stock_infos"`
+		} `json:"skus"`
+		Status     int `json:"status"`
+		UpdateTime int `json:"update_time"`
+	} `json:"products"`
+	Total int `json:"total"`
 }
 
-type UpdatePriceFailedSKU struct {
+type UpdatePriceData struct {
 	FailedSKUIDs []string `json:"failed_sku_ids"`
 }
 

@@ -287,7 +287,7 @@ func TestClient_GetProductList(t *testing.T) {
 		ShopID      string          `json:"shop_id"`
 		RequestJSON json.RawMessage `json:"request_json"`
 	}
-	var want tiktok.ProductSearchList
+	var want tiktok.GetProductListData
 	mockTests(t, "testdata/product/get_product_list.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
@@ -312,7 +312,7 @@ func TestClient_GetProductDetail(t *testing.T) {
 	mockTests(t, "testdata/product/get_product_detail.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
-		product, err := c.GetProductDetail(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, args.ProductID)
+		product, err := c.GetProductDetail(context.TODO(), tiktok.Param{AccessToken: args.AccessToken, ShopID: args.ShopID}, args.ProductID)
 		got = &product
 		return
 	})
@@ -326,7 +326,7 @@ func TestClient_UpdatePrice(t *testing.T) {
 		ShopID      string          `json:"shop_id"`
 		RequestJSON json.RawMessage `json:"request_json"`
 	}
-	var want tiktok.UpdatePriceFailedSKU
+	var want tiktok.UpdatePriceData
 	mockTests(t, "testdata/product/update_price.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)

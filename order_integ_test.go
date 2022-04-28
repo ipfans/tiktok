@@ -1,5 +1,4 @@
 //go:build integration
-// +build integration
 
 package tiktok_test
 
@@ -30,8 +29,8 @@ func TestClient_GetOrderList_Integration(t *testing.T) {
 		{
 			name: "Request with valid ak",
 			args: args{
-				ak:     os.Getenv("AK"),
-				shopID: os.Getenv("SHOP"),
+				ak:     os.Getenv(_AK_KEY),
+				shopID: os.Getenv(_SHOP_KEY),
 				query:  tiktok.GetOrderListRequest{},
 			},
 			wantErr: false,
@@ -39,8 +38,8 @@ func TestClient_GetOrderList_Integration(t *testing.T) {
 		{
 			name: "Request with valid ak and filter",
 			args: args{
-				ak:     os.Getenv("AK"),
-				shopID: os.Getenv("SHOP"),
+				ak:     os.Getenv(_AK_KEY),
+				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.GetOrderListRequest{
 					OrderStatus: 111,
 				},
@@ -79,8 +78,8 @@ func TestClient_GetOrderDetail_Integration(t *testing.T) {
 		{
 			name: "Request with valid ak and id",
 			args: args{
-				ak:      os.Getenv("AK"),
-				shopID:  os.Getenv("SHOP"),
+				ak:      os.Getenv(_AK_KEY),
+				shopID:  os.Getenv(_SHOP_KEY),
 				orderID: strings.Split(os.Getenv("ORDER"), ","),
 			},
 			wantErr: false,

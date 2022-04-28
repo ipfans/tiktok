@@ -110,17 +110,17 @@ type GetPackageDetailData struct {
 	DeliveryOption string `json:"delivery_option"`
 	NoteTag        int    `json:"note_tag"`
 	OrderInfoList  []struct {
-		OrderId string `json:"order_id"`
+		OrderID string `json:"order_id"`
 		SkuList []struct {
 			Quantity string `json:"quantity"`
-			SkuId    string `json:"sku_id"`
+			SkuID    string `json:"sku_id"`
 			SkuImage string `json:"sku_image"`
 			SkuName  string `json:"sku_name"`
 		} `json:"sku_list"`
 	} `json:"order_info_list"`
-	OrderLineIdList     string `json:"order_line_id_list"`
+	OrderLineIDList     string `json:"order_line_id_list"`
 	PackageFreezeStatus int    `json:"package_freeze_status"`
-	PackageId           string `json:"package_id"`
+	PackageID           string `json:"package_id"`
 	PackageStatus       int    `json:"package_status"`
 	PickUpEndTime       int    `json:"pick_up_end_time"`
 	PickUpStartTime     int    `json:"pick_up_start_time"`
@@ -128,7 +128,7 @@ type GetPackageDetailData struct {
 	PrintTag            int    `json:"print_tag"`
 	ScTag               int    `json:"sc_tag"`
 	ShippingProvider    string `json:"shipping_provider"`
-	ShippingProviderId  string `json:"shipping_provider_id"`
+	ShippingProviderID  string `json:"shipping_provider_id"`
 	SkuTag              string `json:"sku_tag"`
 	TrackingNumber      string `json:"tracking_number"`
 	UpdateTime          int    `json:"update_time"`
@@ -169,10 +169,10 @@ type VerifyOrderSplitRequest struct {
 type VerifyOrderSplitData struct {
 	FailList []struct {
 		FailReason string `json:"fail_reason"`
-		OrderId    int64  `json:"order_id"`
+		OrderID    int64  `json:"order_id"`
 	} `json:"fail_list"`
 	ResultList []struct {
-		OrderId           int64 `json:"order_id"`
+		OrderID           int64 `json:"order_id"`
 		VerifyOrderResult bool  `json:"verify_order_result"`
 	} `json:"result_list"`
 }
