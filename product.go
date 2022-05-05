@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"io"
 	"net/url"
+	"strings"
 )
 
 // GetCategory
@@ -70,20 +71,24 @@ func (c *Client) UploadImg(ctx context.Context, p Param, scene ImgScene, body st
 	return
 }
 
-func (c *Client) UploadFile(ctx context.Context, p Param, fn string, body []byte) (info FileInfo, err error) {
+func (c *Client) UploadFile(ctx context.Context, p Param, fileName string, body []byte) (info FileInfo, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
 	}
+	suffix := ".pdf"
+	if !strings.HasSuffix(fileName, suffix) {
+		fileName = fileName + suffix
+	}
 	m := map[string]interface{}{
-		"file_name": fn,
+		"file_name": fileName,
 		"file_data": base64.StdEncoding.EncodeToString(body),
 	}
 	err = c.Post(ctx, "/api/products/upload_files", param, m, &info)
 	return
 }
 
-func (c *Client) CreateProduct(ctx context.Context, p Param, req CreateProductRequest) (product Product, err error) {
+func (c *Client) CreateProduct(ctx context.Context, p Param, req CreateProductRequest) (product ProductData, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
@@ -95,7 +100,7 @@ func (c *Client) CreateProduct(ctx context.Context, p Param, req CreateProductRe
 	return
 }
 
-func (c *Client) EditProduct(ctx context.Context, p Param, req EditProductRequest) (product Product, err error) {
+func (c *Client) EditProduct(ctx context.Context, p Param, req EditProductRequest) (product ProductData, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
@@ -117,7 +122,7 @@ func (c *Client) GetProductList(ctx context.Context, p Param, req ProductSearchR
 	return
 }
 
-func (c *Client) GetProductDetail(ctx context.Context, p Param, productID string) (product Product, err error) {
+func (c *Client) GetProductDetail(ctx context.Context, p Param, productID string) (product ProductData, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return

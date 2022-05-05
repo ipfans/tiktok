@@ -32,7 +32,7 @@ func TestClient_SearchSettlements_Integration(t *testing.T) {
 				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.SearchSettlementsRequest{
 					PageSize:        _PAGESIZE,
-					SortType:        _DESC_TYPE,
+					SortType:        _DESC,
 					RequestTimeTo:   1691224452,
 					RequestTimeFrom: 1558152466,
 				},

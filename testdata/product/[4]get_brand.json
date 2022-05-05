@@ -1,6 +1,6 @@
 [
     {
-        "name": "Official example",
+        "name": "GetBrand unit test",
         "args": {
             "app_key": "12abcd",
             "app_secret": "123",

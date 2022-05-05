@@ -23,7 +23,7 @@
         "code": 0,
         "data": {
           "create_time": 1635338186,
-          "delivery_option": "STANDARD",
+          "delivery_option": 1,
           "note_tag": 1,
           "order_info_list": [
             {
@@ -59,7 +59,7 @@
     },
     "want":  {
       "create_time": 1635338186,
-      "delivery_option": "STANDARD",
+      "delivery_option": 1,
       "note_tag": 1,
       "order_info_list": [
         {
