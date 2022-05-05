@@ -21,20 +21,17 @@ func TestClient_GetCategory(t *testing.T) {
 
 	restore := mockTime()
 	defer restore()
-
-	tests := loadTestData(t, "testdata/product/get_category.json")
+	tests := loadTestData(t, "testdata/product/[1]get_category.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			var want tiktok.CategoryList
 			setupMock(t, tt, &args, &want)
-
 			c, err := tiktok.New(args.AppKey, args.AppSecret)
 			require.NoError(t, err)
-
 			list, err := c.GetCategory(context.TODO(),
-				tiktok.Param{args.AccessToken, args.ShopID},
+				tiktok.Param{AccessToken: args.AccessToken, ShopID: args.ShopID},
 			)
 			if tt.WantErr {
 				require.Error(t, err)
@@ -59,7 +56,7 @@ func TestClient_GetAttribute(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/product/get_attribute.json")
+	tests := loadTestData(t, "testdata/product/[2]get_attribute.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
@@ -97,7 +94,7 @@ func TestClient_GetCategoryRule(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/product/get_category_rule.json")
+	tests := loadTestData(t, "testdata/product/[3]get_category_rule.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
@@ -134,7 +131,7 @@ func TestClient_GetBrand(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/product/get_brand.json")
+	tests := loadTestData(t, "testdata/product/[4]get_brand.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
@@ -171,7 +168,7 @@ func TestClient_UploadImg(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/product/upload_img.json")
+	tests := loadTestData(t, "testdata/product/[5]upload_img.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
@@ -211,7 +208,7 @@ func TestClient_UploadFile(t *testing.T) {
 	restore := mockTime()
 	defer restore()
 
-	tests := loadTestData(t, "testdata/product/upload_file.json")
+	tests := loadTestData(t, "testdata/product/[6]upload_file.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
 			httpmock.Activate()
@@ -239,65 +236,114 @@ func TestClient_UploadFile(t *testing.T) {
 
 func TestClient_CreateProduct(t *testing.T) {
 	var args struct {
-		AppKey      string          `json:"app_key"`
-		AppSecret   string          `json:"app_secret"`
-		AccessToken string          `json:"access_token"`
-		ShopID      string          `json:"shop_id"`
-		RequestJSON json.RawMessage `json:"request_json"`
+		AppKey      string                      `json:"app_key"`
+		AppSecret   string                      `json:"app_secret"`
+		AccessToken string                      `json:"access_token"`
+		ShopID      string                      `json:"shop_id"`
+		Req         tiktok.CreateProductRequest `json:"req"`
 	}
-	var want tiktok.Product
-	mockTests(t, "testdata/product/create_product.json", &args, &want, func() (got interface{}, err error) {
-		c, err := tiktok.New(args.AppKey, args.AppSecret)
-		require.NoError(t, err)
-		var req tiktok.CreateProductRequest
-		err = json.Unmarshal(args.RequestJSON, &req)
-		require.NoError(t, err)
-		product, err := c.CreateProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
-		got = &product
-		return
-	})
+	var response tiktok.ProductData
+	restore := mockTime()
+	defer restore()
+	tests := loadTestData(t, "testdata/product/[7]create_product.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, &args, &response)
+			var ans tiktok.ProductData
+			err := json.Unmarshal(tt.Want, &ans)
+			require.NoError(t, err)
+			c, err := tiktok.New(args.AppKey, args.AppSecret)
+			require.NoError(t, err)
+
+			res, err := c.CreateProduct(context.Background(), tiktok.Param{
+				AccessToken: args.AccessToken, ShopID: args.ShopID,
+			}, args.Req)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+			}
+			require.Equal(t, ans, res)
+		})
+	}
 }
 
 func TestClient_EditProduct(t *testing.T) {
 	var args struct {
-		AppKey      string          `json:"app_key"`
-		AppSecret   string          `json:"app_secret"`
-		AccessToken string          `json:"access_token"`
-		ShopID      string          `json:"shop_id"`
-		RequestJSON json.RawMessage `json:"request_json"`
+		AppKey      string                    `json:"app_key"`
+		AppSecret   string                    `json:"app_secret"`
+		AccessToken string                    `json:"access_token"`
+		ShopID      string                    `json:"shop_id"`
+		Req         tiktok.EditProductRequest `json:"req"`
 	}
-	var want tiktok.Product
-	mockTests(t, "testdata/product/edit_product.json", &args, &want, func() (got interface{}, err error) {
-		c, err := tiktok.New(args.AppKey, args.AppSecret)
-		require.NoError(t, err)
-		var req tiktok.EditProductRequest
-		err = json.Unmarshal(args.RequestJSON, &req)
-		require.NoError(t, err)
-		product, err := c.EditProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
-		got = &product
-		return
-	})
+
+	var response tiktok.ProductData
+	restore := mockTime()
+	defer restore()
+	tests := loadTestData(t, "testdata/product/[8]edit_product.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, &args, &response)
+			var ans tiktok.ProductData
+			err := json.Unmarshal(tt.Want, &ans)
+			require.NoError(t, err)
+			c, err := tiktok.New(args.AppKey, args.AppSecret)
+			require.NoError(t, err)
+
+			res, err := c.EditProduct(context.Background(), tiktok.Param{
+				AccessToken: args.AccessToken, ShopID: args.ShopID,
+			}, args.Req)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+			}
+			require.Equal(t, ans, res)
+		})
+	}
 }
 
 func TestClient_GetProductList(t *testing.T) {
 	var args struct {
-		AppKey      string          `json:"app_key"`
-		AppSecret   string          `json:"app_secret"`
-		AccessToken string          `json:"access_token"`
-		ShopID      string          `json:"shop_id"`
-		RequestJSON json.RawMessage `json:"request_json"`
+		AppKey      string                      `json:"app_key"`
+		AppSecret   string                      `json:"app_secret"`
+		AccessToken string                      `json:"access_token"`
+		ShopID      string                      `json:"shop_id"`
+		Req         tiktok.ProductSearchRequest `json:"req"`
 	}
-	var want tiktok.GetProductListData
-	mockTests(t, "testdata/product/get_product_list.json", &args, &want, func() (got interface{}, err error) {
-		c, err := tiktok.New(args.AppKey, args.AppSecret)
-		require.NoError(t, err)
-		var req tiktok.ProductSearchRequest
-		err = json.Unmarshal(args.RequestJSON, &req)
-		require.NoError(t, err)
-		product, err := c.GetProductList(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, req)
-		got = &product
-		return
-	})
+	var response tiktok.GetProductListData
+	restore := mockTime()
+	defer restore()
+	tests := loadTestData(t, "testdata/product/[9]get_product_list.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, &args, &response)
+			var ans tiktok.GetProductListData
+			err := json.Unmarshal(tt.Want, &ans)
+			require.NoError(t, err)
+			c, err := tiktok.New(args.AppKey, args.AppSecret)
+			require.NoError(t, err)
+
+			res, err := c.GetProductList(context.Background(), tiktok.Param{
+				AccessToken: args.AccessToken, ShopID: args.ShopID,
+			}, args.Req)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+			}
+			require.Equal(t, ans, res)
+		})
+	}
 }
 
 func TestClient_GetProductDetail(t *testing.T) {
@@ -308,8 +354,8 @@ func TestClient_GetProductDetail(t *testing.T) {
 		ShopID      string `json:"shop_id"`
 		ProductID   string `json:"product_id"`
 	}
-	var want tiktok.Product
-	mockTests(t, "testdata/product/get_product_detail.json", &args, &want, func() (got interface{}, err error) {
+	var want tiktok.ProductData
+	mockTests(t, "testdata/product/[10]get_product_detail.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		product, err := c.GetProductDetail(context.TODO(), tiktok.Param{AccessToken: args.AccessToken, ShopID: args.ShopID}, args.ProductID)
@@ -327,7 +373,7 @@ func TestClient_UpdatePrice(t *testing.T) {
 		RequestJSON json.RawMessage `json:"request_json"`
 	}
 	var want tiktok.UpdatePriceData
-	mockTests(t, "testdata/product/update_price.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[11]update_price.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		var req tiktok.UpdatePriceRequest
@@ -348,7 +394,7 @@ func TestClient_UpdateStock(t *testing.T) {
 		RequestJSON json.RawMessage `json:"request_json"`
 	}
 	var want tiktok.UpdateStockFailedSKU
-	mockTests(t, "testdata/product/update_stock.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[12]update_stock.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		var req tiktok.UpdateStockRequest
@@ -369,7 +415,7 @@ func TestClient_DeactivateProducts(t *testing.T) {
 		ProductID   []string `json:"product_id"`
 	}
 	var want tiktok.FailedProductIDs
-	mockTests(t, "testdata/product/deactivate_products.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[13]deactivate_products.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		product, err := c.DeactivateProducts(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, args.ProductID)
@@ -387,7 +433,7 @@ func TestClient_DeleteProducts(t *testing.T) {
 		ProductID   []string `json:"product_id"`
 	}
 	var want tiktok.FailedProductIDs
-	mockTests(t, "testdata/product/delete_products.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[14]delete_products.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		product, err := c.DeleteProducts(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, args.ProductID)
@@ -405,7 +451,7 @@ func TestClient_RecoverProduct(t *testing.T) {
 		ProductID   []string `json:"product_id"`
 	}
 	var want tiktok.FailedProductIDs
-	mockTests(t, "testdata/product/recover_product.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[15]recover_product.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		product, err := c.RecoverProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, args.ProductID)
@@ -423,7 +469,7 @@ func TestClient_ActivateProduct(t *testing.T) {
 		ProductID   []string `json:"product_id"`
 	}
 	var want tiktok.FailedProductIDs
-	mockTests(t, "testdata/product/activate_product.json", &args, &want, func() (got interface{}, err error) {
+	mockTests(t, "testdata/product/[16]activate_product.json", &args, &want, func() (got interface{}, err error) {
 		c, err := tiktok.New(args.AppKey, args.AppSecret)
 		require.NoError(t, err)
 		product, err := c.ActivateProduct(context.TODO(), tiktok.Param{args.AccessToken, args.ShopID}, args.ProductID)

@@ -5,8 +5,9 @@ package tiktok_test
 import (
 	"context"
 	"encoding/json"
+	"io/ioutil"
+	"log"
 	"os"
-	"strings"
 	"testing"
 
 	"github.com/ipfans/tiktok"
@@ -105,7 +106,7 @@ func TestClient_GetCategoryRule_Integration(t *testing.T) {
 			args: args{
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
-				query:  "600100",
+				query:  "605289",
 			},
 			wantErr: false,
 		},
@@ -161,13 +162,12 @@ func TestClient_GetBrand_Integration(t *testing.T) {
 	}
 }
 
-// TODO
-func TestClient_UploadImg_Integration(t *testing.T) {
+func TestClient_UploadImgReader_Integration(t *testing.T) {
 	c := newTestClient(t)
 	type args struct {
-		ak     string
-		shopID string
-		File   string
+		ak       string
+		shopID   string
+		filePath string
 	}
 	tests := []struct {
 		name     string
@@ -178,16 +178,21 @@ func TestClient_UploadImg_Integration(t *testing.T) {
 		{
 			name: " UploadImgReader Integration Test ",
 			args: args{
-				ak:     os.Getenv(_AK_KEY),
-				shopID: os.Getenv(_SHOP_KEY),
-				File:   "testdata/refresh_token.json",
+				ak:       os.Getenv(_AK_KEY),
+				shopID:   os.Getenv(_SHOP_KEY),
+				filePath: "testdata/product/pic-teapot.jpeg",
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ans, err := c.UploadImgReader(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID}, tiktok.ImgSceneAttributeImage, strings.NewReader(tt.args.File))
+			fd, err := os.Open(tt.args.filePath)
+			if err != nil {
+				log.Fatalf("cannot read %v, err: %v\n", tt.args.filePath, err)
+			}
+			defer fd.Close()
+			ans, err := c.UploadImgReader(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID}, tiktok.ImgSceneProductImage, fd)
 			require.Equal(t, tt.wantErr, err != nil, "Client.UploadImgReader() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return
@@ -203,10 +208,10 @@ func TestClient_UploadImg_Integration(t *testing.T) {
 func TestClient_UploadFile_Integration(t *testing.T) {
 	c := newTestClient(t)
 	type args struct {
-		ak     string
-		shopID string
-		File   string
-		Name   string
+		ak       string
+		shopID   string
+		FilePath string
+		Name     string
 	}
 	tests := []struct {
 		name     string
@@ -217,17 +222,26 @@ func TestClient_UploadFile_Integration(t *testing.T) {
 		{
 			name: " UploadFile Integration Test ",
 			args: args{
-				ak:     os.Getenv(_AK_KEY),
-				shopID: os.Getenv(_SHOP_KEY),
-				File:   "",
-				Name:   "",
+				ak:       os.Getenv(_AK_KEY),
+				shopID:   os.Getenv(_SHOP_KEY),
+				FilePath: "testdata/product/sample.pdf",
+				Name:     "tiktok-sample-test.pdf",
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ans, err := c.UploadFile(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID}, tt.args.File, []byte(tt.args.Name))
+			fd, err := os.Open(tt.args.FilePath)
+			if err != nil {
+				log.Fatalf("cannot read %v, err: %v\n", tt.args.FilePath, err)
+			}
+			defer fd.Close()
+			body, err := ioutil.ReadAll(fd)
+			if err != nil {
+				log.Fatalf(" ioutil.ReadAll err: %v", err)
+			}
+			ans, err := c.UploadFile(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID}, tt.args.Name, body)
 			require.Equal(t, tt.wantErr, err != nil, "Client.UploadFile() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return
@@ -259,10 +273,39 @@ func TestClient_CreateProductRequest_Integration(t *testing.T) {
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.CreateProductRequest{
-					ProductName: "teapot-jingdezheng",
-					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\\\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\\\" width=\\\"1920\\\" height=\\\"1080\\\">",
-					CategoryID:  "600100",
-					BrandID:     "", // brand_id
+					ProductName: "tiktok-air-model",
+					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\">",
+					CategoryID:  "903560",
+					BrandID:     "0",
+					Images: []tiktok.Image{
+						{ID: "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"},
+					},
+					WarrantyPeriod: 1,
+					WarrantyPolicy: "warrant policy based in week ",
+					PackageLength:  10,
+					PackageWidth:   10,
+					PackageHeight:  10,
+					PackageWeight:  "1", // required
+					SizeChart: struct {
+						ImgID string `json:"img_id" validate:"required"`
+					}(struct{ ImgID string }{ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"}),
+					IsCodOpen: false,
+					Skus: []tiktok.SKU{
+						{
+							ID: "1729426618893830721",
+							SalesAttributes: []tiktok.SalesAttribute{
+								{AttributeID: "100000", ValueID: "7007745555669501697", CustomValue: "red"},
+							},
+							SellerSku:     "tiktok-china-test-sku",
+							OriginalPrice: "120",
+							StockInfos: []tiktok.StockInfo{
+								{
+									WarehouseID:    "7054379554541963010",
+									AvailableStock: 2,
+								},
+							},
+						},
+					},
 				},
 			},
 			wantErr: false,
@@ -302,8 +345,41 @@ func TestClient_EditProduct_Integration(t *testing.T) {
 			args: args{
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
-				query:  tiktok.EditProductRequest{
-					// TODO
+				query: tiktok.EditProductRequest{
+					ProductID:   "1729426618893765185",
+					ProductName: "tiktok-air-model",
+					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\">",
+					CategoryID:  "903560",
+					BrandID:     "0",
+					Images: []tiktok.Image{
+						{ID: "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"},
+					},
+					WarrantyPeriod: 1,
+					WarrantyPolicy: "warrant policy based in week ",
+					PackageLength:  15,
+					PackageWidth:   15,
+					PackageHeight:  15,
+					PackageWeight:  "9", // required
+					SizeChart: struct {
+						ImgID string `json:"img_id" validate:"required"`
+					}(struct{ ImgID string }{ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"}),
+
+					Skus: []tiktok.SKU{
+						{
+							ID: "1729426618893830721",
+							SalesAttributes: []tiktok.SalesAttribute{
+								{AttributeID: "100000", ValueID: "7087771520205850373", CustomValue: "Blue"},
+							},
+							SellerSku:     "tiktok-china-test-sku",
+							OriginalPrice: "999",
+							StockInfos: []tiktok.StockInfo{
+								{
+									WarehouseID:    "7054379554541963010",
+									AvailableStock: 10,
+								},
+							},
+						},
+					},
 				},
 			},
 			wantErr: false,
@@ -316,7 +392,7 @@ func TestClient_EditProduct_Integration(t *testing.T) {
 			if err != nil {
 				return
 			}
-			require.NotEmpty(t, ans)
+
 			require.NotEmpty(t, ans.Skus)
 			b, _ := json.Marshal(ans)
 			jsonData := string(b)

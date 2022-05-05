@@ -26,7 +26,7 @@ const (
 	_SKUID              = ""
 	_WAREHOUSEID        = ""
 	_CATEGORYID         = ""
-	_DESC_TYPE          = 1 // Available values: 1 (DESC), 2 (ASC) Default value 1
+	_SORT_TYPE          = 1 // Available values: 1 (DESC), 2 (ASC) Default value 1
 )
 
 func newTestClient(t *testing.T) *tiktok.Client {

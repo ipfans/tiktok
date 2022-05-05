@@ -286,7 +286,7 @@ type ProductSKU struct {
 	SalesAttributes []SalesAttribute `json:"sales_attributes"`
 }
 
-type Product struct {
+type ProductData struct {
 	CategoryList []struct {
 		ID               string `json:"id"`
 		IsLeaf           bool   `json:"is_leaf"`

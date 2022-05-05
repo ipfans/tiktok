@@ -1,0 +1,143 @@
+[
+  {
+    "name": "EditProduct example",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "product_id": "1725",
+        "product_name": "tiktok-air-model",
+        "description": "undone",
+        "category_id": "903540",
+        "brand_id": "0",
+        "images": [
+          {
+            "id": "1d0af5eb490cae9"
+          }
+        ],
+        "warranty_period": 1,
+        "warranty_policy": "warrant policy based in week ",
+        "package_length": 15,
+        "package_height": 15,
+        "package_width": 15,
+        "package_weight": "9",
+        "size_chart": {
+          "img_id": "1d0af5eb490cae9"
+        },
+        "product_certifications": null,
+        "skus": [
+          {
+            "id": "1721",
+            "sales_attributes": [
+              {
+                "attribute_id": "100000",
+                "custom_value": "Blue",
+                "value_id": "7087771520205850373"
+              }
+            ],
+            "stock_infos": [
+              {
+                "warehouse_id": "7054379554541963010",
+                "available_stock": 10
+              }
+            ],
+            "seller_sku": "tiktok-china-test-sku",
+            "original_price": "999"
+          }
+        ],
+        "delivery_service_ids": ""
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "https://open-api.tiktokglobalshop.com/api/products",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=0bd65a4d92ab3328d0237c1714eb8664616efc55dfb41a7223f48517eb2e1358&timestamp=1600000000",
+      "body": {
+        "product_id": "1725",
+        "product_name": "tiktok-air-model",
+        "description": "undone",
+        "category_id": "903540",
+        "brand_id": "0",
+        "images": [
+          {
+            "id": "1d0af5eb490cae9"
+          }
+        ],
+        "warranty_period": 1,
+        "warranty_policy": "warrant policy based in week ",
+        "package_length": 15,
+        "package_height": 15,
+        "package_width": 15,
+        "package_weight": "9",
+        "size_chart": {
+          "img_id": "1d0af5eb490cae9"
+        },
+        "product_certifications": null,
+        "skus": [
+          {
+            "id": "1721",
+            "sales_attributes": [
+              {
+                "attribute_id": "100000",
+                "custom_value": "Blue",
+                "value_id": "7087771520205850373"
+              }
+            ],
+            "stock_infos": [
+              {
+                "warehouse_id": "7054379554541963010",
+                "available_stock": 10
+              }
+            ],
+            "seller_sku": "tiktok-china-test-sku",
+            "original_price": "999"
+          }
+        ],
+        "delivery_service_ids": ""
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {},
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "202205051139410101890531330D19908D",
+        "data": {
+          "product_id": "1729426618893765185",
+          "skus": [
+            {
+              "id": "1729426618893830721",
+              "sales_attributes": [
+                {
+                  "attribute_id": "100000",
+                  "value_id": "7087771520205850373"
+                }
+              ],
+              "seller_sku": "tiktok-china-test-sku"
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "product_id": "1729426618893765185",
+      "skus": [
+        {
+          "id": "1729426618893830721",
+          "sales_attributes": [
+            {
+              "attribute_id": "100000",
+              "value_id": "7087771520205850373"
+            }
+          ],
+          "seller_sku": "tiktok-china-test-sku"
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

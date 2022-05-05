@@ -130,7 +130,6 @@ func TestClient_RemovePackageOrder_Integration(t *testing.T) {
 			if err != nil {
 				return
 			}
-			// TODO
 			require.NotEmpty(t, ans.PackageList)
 			b, _ := json.Marshal(ans)
 			jsonData := string(b)
@@ -171,7 +170,6 @@ func TestClient_GetPackagePickupConfig_Integration(t *testing.T) {
 			if err != nil {
 				return
 			}
-			// TODO
 			require.NotEmpty(t, ans.PickUpTimeList)
 			b, _ := json.Marshal(ans)
 			jsonData := string(b)
