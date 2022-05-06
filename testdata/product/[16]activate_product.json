@@ -1,13 +1,13 @@
 [
     {
-        "name": "Official example",
+        "name": "ActivateProduct unit tets",
         "args": {
             "app_key": "12abcd",
             "app_secret": "123",
             "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
             "shop_id": "123456",
             "product_id": [
-                "123123123123",
+                "12312312123",
                 "123123123",
                 "123123123",
                 "1231231231"
@@ -15,12 +15,12 @@
         },
         "request": {
             "method": "POST",
-            "url": "https://open-api.tiktokglobalshop.com/api/products/inactivated_products",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/activate",
             "headers": {},
-            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=56d278da67aca36b5efe1bc7c4d164be0f9e2b8b6312d1af41911ab55b5c46f8&timestamp=1600000000",
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=d84e77bfa3701c3c3e4d37ad21b5b429478825b7e8af596cae74f2801859e2ea&timestamp=1600000000",
             "body": {
                 "product_ids": [
-                    "123123123123",
+                    "12312312123",
                     "123123123",
                     "123123123",
                     "1231231231"
@@ -36,7 +36,7 @@
                 "data": {
                     "failed_product_ids": [
                         "123123123",
-                        "12312312312"
+                        "123123123"
                     ]
                 }
             }
@@ -44,7 +44,7 @@
         "want": {
             "failed_product_ids": [
                 "123123123",
-                "12312312312"
+                "123123123"
             ]
         },
         "want_err": false

@@ -11,6 +11,24 @@ import (
 	"github.com/ipfans/tiktok"
 )
 
+const (
+	_AK_KEY             = "AK"
+	_SHOP_KEY           = "SHOP"
+	_ORDER_KEY          = "ORDER"
+	_PAGESIZE           = 10
+	_ShippingProviderID = ""
+	_TRACKINGNUMBER     = ""
+	_PACKAGEID          = ""
+	_ORDERID            = 0
+	_ORDERIDStr         = ""
+	_FakeOrderID        = ""
+	_PRODUCTID          = ""
+	_SKUID              = ""
+	_WAREHOUSEID        = ""
+	_CATEGORYID         = ""
+	_SORT_TYPE          = 1 // Available values: 1 (DESC), 2 (ASC) Default value 1
+)
+
 func newTestClient(t *testing.T) *tiktok.Client {
 	t.Helper()
 	appKey := os.Getenv("APPKEY")

@@ -1,0 +1,140 @@
+[
+  {
+    "name": " CreateProduct unit test",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "product_name": "tiktok-air-model",
+        "description": "\u003cul\u003e\u003cli\u003eIt is recommended to avoid using Chinese because the copy will be displayed to local users\u003c/li\u003e\u003c/ul\u003e\u003cimg src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\"\u003e",
+        "category_id": "903560",
+        "brand_id": "0",
+        "images": [
+          {
+            "id": "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"
+          }
+        ],
+        "warranty_period": 1,
+        "warranty_policy": "warrant policy based in week ",
+        "package_length": 10,
+        "package_width": 10,
+        "package_height": 10,
+        "package_weight": "1",
+        "size_chart": {
+          "img_id": "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"
+        },
+        "product_certifications": null,
+        "is_cod_open": false,
+        "skus": [
+          {
+            "id": "1729426618893830721",
+            "sales_attributes": [
+              {
+                "attribute_id": "100000",
+                "custom_value": "red",
+                "value_id": "7007745555669501697"
+              }
+            ],
+            "stock_infos": [
+              {
+                "warehouse_id": "7054379554541963010",
+                "available_stock": 2
+              }
+            ],
+            "seller_sku": "tiktok-china-test-sku",
+            "original_price": "120"
+          }
+        ]
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/products",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=0bd65a4d92ab3328d0237c1714eb8664616efc55dfb41a7223f48517eb2e1358&timestamp=1600000000",
+      "body": {
+        "product_name": "tiktok-air-model",
+        "description": "\u003cul\u003e\u003cli\u003eIt is recommended to avoid using Chinese because the copy will be displayed to local users\u003c/li\u003e\u003c/ul\u003e\u003cimg src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\"\u003e",
+        "category_id": "903560",
+        "brand_id": "0",
+        "images": [
+          {
+            "id": "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"
+          }
+        ],
+        "warranty_period": 1,
+        "warranty_policy": "warrant policy based in week ",
+        "package_length": 10,
+        "package_width": 10,
+        "package_height": 10,
+        "package_weight": "1",
+        "size_chart": {
+          "img_id": "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"
+        },
+        "product_certifications": null,
+        "is_cod_open": false,
+        "skus": [
+          {
+            "id": "1729426618893830721",
+            "sales_attributes": [
+              {
+                "attribute_id": "100000",
+                "custom_value": "red",
+                "value_id": "7007745555669501697"
+              }
+            ],
+            "stock_infos": [
+              {
+                "warehouse_id": "7054379554541963010",
+                "available_stock": 2
+              }
+            ],
+            "seller_sku": "tiktok-china-test-sku",
+            "original_price": "120"
+          }
+        ]
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "202205051052270101890531330C12A111",
+        "data": {
+          "product_id": "1729429451816405569",
+          "skus": [
+            {
+              "id": "1729429451816471105",
+              "sales_attributes": [
+                {
+                  "attribute_id": "100000",
+                  "value_id": "7007745555669501697"
+                }
+              ],
+              "seller_sku": "tiktok-china-test-sku"
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "product_id": "1729429451816405569",
+      "skus": [
+        {
+          "id": "1729429451816471105",
+          "sales_attributes": [
+            {
+              "attribute_id": "100000",
+              "value_id": "7007745555669501697"
+            }
+          ],
+          "seller_sku": "tiktok-china-test-sku"
+        }
+      ]
+    },
+    "want_err": false
+  }
+]

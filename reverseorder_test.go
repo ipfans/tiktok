@@ -72,9 +72,9 @@ func TestClient_RejectReverse(t *testing.T) {
 			err = c.RejectReverse(context.TODO(),
 				tiktok.Param{args.AccessToken, args.ShopID},
 				tiktok.RejectReverseRequest{
-					ReverseOrderID:           args.OrderID,
-					ReverseRejectReasonKey:   args.ReasonKey,
-					ReverseRejectReasonValue: args.Comments,
+					ReverseOrderID:         args.OrderID,
+					ReverseRejectReasonKey: args.ReasonKey,
+					ReverseRejectComments:  args.Comments,
 				},
 			)
 			if tt.WantErr {
@@ -89,17 +89,11 @@ func TestClient_RejectReverse(t *testing.T) {
 
 func TestClient_GetReverseList(t *testing.T) {
 	var args struct {
-		AppKey         string `json:"app_key"`
-		AppSecret      string `json:"app_secret"`
-		AccessToken    string `json:"access_token"`
-		ShopID         string `json:"shop_id"`
-		UpdateTimeFrom int    `json:"update_time_from"`
-		UpdateTimeTo   int    `json:"update_time_to"`
-		ReverseType    int    `json:"reverse_type"`
-		SortBy         int    `json:"sort_by"`
-		SortType       int    `json:"sort_type"`
-		Offset         int    `json:"offset"`
-		Size           int    `json:"size"`
+		AppKey      string                       `json:"app_key"`
+		AppSecret   string                       `json:"app_secret"`
+		AccessToken string                       `json:"access_token"`
+		ShopID      string                       `json:"shop_id"`
+		Req         tiktok.GetReverseListRequest `json:"req"`
 	}
 
 	restore := mockTime()
@@ -117,16 +111,7 @@ func TestClient_GetReverseList(t *testing.T) {
 			require.NoError(t, err)
 
 			gotList, err := c.GetReverseList(context.TODO(),
-				tiktok.Param{args.AccessToken, args.ShopID},
-				tiktok.GetReverseListRequest{
-					UpdateTimeFrom: args.UpdateTimeFrom,
-					UpdateTimeTo:   args.UpdateTimeTo,
-					ReverseType:    args.ReverseType,
-					SortBy:         args.SortBy,
-					SortType:       args.SortType,
-					Offset:         args.Offset,
-					Size:           args.Size,
-				},
+				tiktok.Param{AccessToken: args.AccessToken, ShopID: args.ShopID}, args.Req,
 			)
 			if tt.WantErr {
 				require.Error(t, err)

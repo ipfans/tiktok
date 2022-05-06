@@ -1,6 +1,6 @@
 [
     {
-        "name": "Official example",
+        "name": "UploadFile unit test",
         "args": {
             "app_key": "12abcd",
             "app_secret": "123",

@@ -3,7 +3,15 @@ package tiktok
 import (
 	"context"
 	"net/url"
-	"strconv"
+
+	"github.com/google/go-querystring/query"
+)
+
+const (
+	_ConfirmReversePATH   = "/api/reverse/reverse_request/confirm"
+	_RejectReversePATH    = "/api/reverse/reverse_request/reject"
+	_GetReverseListPATH   = "/api/reverse/reverse_order/list"
+	_GetReverseReasonPATH = "/api/reverse/reverse_reason/list"
 )
 
 func (c *Client) ConfirmReverse(ctx context.Context, p Param, orderID string) (err error) {
@@ -14,7 +22,7 @@ func (c *Client) ConfirmReverse(ctx context.Context, p Param, orderID string) (e
 	m := map[string]string{
 		"reverse_order_id": orderID,
 	}
-	err = c.Post(ctx, "/api/reverse/reverse_request/confirm", params, m, nil)
+	err = c.Post(ctx, _ConfirmReversePATH, params, m, nil)
 	return
 }
 
@@ -26,7 +34,7 @@ func (c *Client) RejectReverse(ctx context.Context, p Param, query RejectReverse
 	if err = c.validate.Struct(&query); err != nil {
 		return
 	}
-	err = c.Post(ctx, "/api/reverse/reverse_request/reject", params, query, nil)
+	err = c.Post(ctx, _RejectReversePATH, params, query, nil)
 	return
 }
 
@@ -38,25 +46,31 @@ func (c *Client) GetReverseList(ctx context.Context, p Param, query GetReverseLi
 	if err = c.validate.Struct(&query); err != nil {
 		return
 	}
-	err = c.Post(ctx, "/api/reverse/reverse_order/list", params, query, &list)
+	err = c.Post(ctx, _GetReverseListPATH, params, query, &list)
 	return
 }
 
-func (c *Client) GetReverseReason(ctx context.Context, p Param, query GetReverseReasonRequest) (list ReverseReasonList, err error) {
+func (c *Client) GetReverseReason(ctx context.Context, p Param, req GetReverseReasonRequest) (list ReverseReasonList, err error) {
 	var params url.Values
 	if params, err = c.params(p); err != nil {
 		return
 	}
-	if err = c.validate.Struct(&query); err != nil {
+	if err = c.validate.Struct(&req); err != nil {
 		return
 	}
-	if query.ReverseActionType != 0 {
-		params.Set("reverse_action_type", strconv.Itoa(query.ReverseActionType))
+
+	values, err := query.Values(req)
+	if err != nil {
+		return
 	}
-	if query.ReasonType != 0 {
-		params.Set("reason_type​", strconv.Itoa(query.ReasonType))
+	for k, data := range values {
+		if items, ok := params[k]; ok {
+			params[k] = append(items, data...)
+		} else {
+			params[k] = data
+		}
 	}
 
-	err = c.Get(ctx, "/api/reverse/reverse_reason/list", params, &list)
+	err = c.Get(ctx, _GetReverseReasonPATH, params, &list)
 	return
 }

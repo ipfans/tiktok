@@ -1,0 +1,196 @@
+[
+  {
+    "name": " GetProductList unit test",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "req": {
+        "page_size": 10,
+        "page_number": 1
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://open-api.tiktokglobalshop.com/api/products/search",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=daefe57b6b9447f2beb621e7277632e9f14c06537a96fed5444f194e61b86e17&timestamp=1600000000",
+      "body": {
+        "page_size": 10,
+        "page_number": 1
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "123123123",
+        "data": {
+          "total": 15677,
+          "products": [
+            {
+              "id": "123123123",
+              "name": "aaa",
+              "status": 4,
+              "sale_regions": [
+                "ID"
+              ],
+              "skus": [
+                {
+                  "id": "123123123123",
+                  "seller_sku": "bbbb",
+                  "price": {
+                    "original_price": "1200",
+                    "currency": "IDR"
+                  },
+                  "stock_infos": [
+                    {
+                      "warehouse_id": "123123123123123",
+                      "available_stock": 161
+                    }
+                  ]
+                },
+                {
+                  "id": "12312312312",
+                  "seller_sku": "bbbb",
+                  "price": {
+                    "original_price": "1600",
+                    "currency": "IDR"
+                  },
+                  "stock_infos": [
+                    {
+                      "warehouse_id": "123123123123",
+                      "available_stock": 200
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1231231231",
+              "name": "aaa",
+              "status": 3,
+              "sale_regions": [
+                "ID"
+              ],
+              "skus": [
+                {
+                  "id": "123123123123",
+                  "seller_sku": "bbbb",
+                  "price": {
+                    "original_price": "1000",
+                    "currency": "IDR"
+                  },
+                  "stock_infos": [
+                    {
+                      "warehouse_id": "123123123123",
+                      "available_stock": 150
+                    }
+                  ]
+                },
+                {
+                  "id": "12312312312312",
+                  "seller_sku": "bbbb",
+                  "price": {
+                    "original_price": "1500",
+                    "currency": "IDR"
+                  },
+                  "stock_infos": [
+                    {
+                      "warehouse_id": "123123123123",
+                      "available_stock": 3000
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "total": 15677,
+      "products": [
+        {
+          "id": "123123123",
+          "name": "aaa",
+          "status": 4,
+          "sale_regions": [
+            "ID"
+          ],
+          "skus": [
+            {
+              "id": "123123123123",
+              "seller_sku": "bbbb",
+              "price": {
+                "original_price": "1200",
+                "currency": "IDR"
+              },
+              "stock_infos": [
+                {
+                  "warehouse_id": "123123123123123",
+                  "available_stock": 161
+                }
+              ]
+            },
+            {
+              "id": "12312312312",
+              "seller_sku": "bbbb",
+              "price": {
+                "original_price": "1600",
+                "currency": "IDR"
+              },
+              "stock_infos": [
+                {
+                  "warehouse_id": "123123123123",
+                  "available_stock": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1231231231",
+          "name": "aaa",
+          "status": 3,
+          "sale_regions": [
+            "ID"
+          ],
+          "skus": [
+            {
+              "id": "123123123123",
+              "seller_sku": "bbbb",
+              "price": {
+                "original_price": "1000",
+                "currency": "IDR"
+              },
+              "stock_infos": [
+                {
+                  "warehouse_id": "123123123123",
+                  "available_stock": 150
+                }
+              ]
+            },
+            {
+              "id": "12312312312312",
+              "seller_sku": "bbbb",
+              "price": {
+                "original_price": "1500",
+                "currency": "IDR"
+              },
+              "stock_infos": [
+                {
+                  "warehouse_id": "123123123123",
+                  "available_stock": 3000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "want_err": false
+  }
+]
