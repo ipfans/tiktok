@@ -99,20 +99,14 @@ type SKU struct {
 	OriginalPrice   string           `json:"original_price,omitempty"`
 }
 
-type File struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-}
-
-type Image struct {
+type ImgID struct {
 	ID string `json:"id"`
 }
 
 type ProductCertificationRequest struct {
 	ID     string  `json:"id"`
 	Files  []File  `json:"files"`
-	Images []Image `json:"images"`
+	Images []ImgID `json:"images"`
 }
 
 // CreateProductRequest is creating product
@@ -122,7 +116,7 @@ type CreateProductRequest struct {
 	Description    string  `json:"description"  validate:"required"`
 	CategoryID     string  `json:"category_id"  validate:"required"`
 	BrandID        string  `json:"brand_id"`
-	Images         []Image `json:"images,omitempty"`
+	Images         []ImgID `json:"images,omitempty"`
 	WarrantyPeriod int     `json:"warranty_period"`
 	WarrantyPolicy string  `json:"warranty_policy"`
 	PackageLength  int     `json:"package_length"`
@@ -180,7 +174,7 @@ type EditProductRequest struct {
 	Description    string  `json:"description" validate:"required"`
 	CategoryID     string  `json:"category_id" validate:"required"`
 	BrandID        string  `json:"brand_id"`
-	Images         []Image `json:"images,omitempty"`
+	Images         []ImgID `json:"images,omitempty"`
 	WarrantyPeriod int     `json:"warranty_period" example:"Need to choose among the candidate values provided by the platform: 1: 4 weeks" 2:"2 months" 3:"3 months" 4:"4 months" 5:"5 months" 6:"6 months" 7:"7 months" 8:"8 months" 9:"9 months" 10:"10 months" 11:"11 months" 12:"12 months" 13:"2 years" 14:"3 years" 15:"1 week" 16:"2 weeks" 17:"18 months" 18:"4 years" 19:"5 years" 20:"10 years" 21:"lifetime warranty"`
 	WarrantyPolicy string  `json:"warranty_policy"`
 	PackageLength  int     `json:"package_length" example:"14. unit is cm"`
