@@ -1,0 +1,1030 @@
+basePath: /v1
+definitions:
+  api.AddEditProductReq:
+    properties:
+      brand_id:
+        type: string
+      brand_name:
+        type: string
+      category_id:
+        type: string
+      condition:
+        type: string
+      description:
+        type: string
+      images:
+        items:
+          $ref: '#/definitions/api.Image'
+        type: array
+      is_single_product:
+        type: boolean
+      min_order:
+        type: integer
+      name:
+        type: string
+      product_weight:
+        type: integer
+      standard_shipper_option_list:
+        items:
+          $ref: '#/definitions/api.StandardShipperOption'
+        type: array
+      standard_sku_list:
+        items:
+          $ref: '#/definitions/api.StandardSKU'
+        type: array
+      status:
+        type: string
+      stock:
+        type: integer
+      stock_unit:
+        type: string
+      weight_unit:
+        type: string
+    type: object
+  api.Attribute:
+    properties:
+      attribute_type:
+        type: integer
+      id:
+        type: string
+      input_type:
+        $ref: '#/definitions/api.InputType'
+      label:
+        type: string
+      name:
+        type: string
+      values:
+        items:
+          $ref: '#/definitions/api.Value'
+        type: array
+    type: object
+  api.Brand:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  api.CreateProductData:
+    properties:
+      fail_rows_data:
+        items:
+          properties:
+            fail_reason:
+              type: string
+            request_id:
+              type: string
+            seller_sku:
+              type: string
+          type: object
+        type: array
+      success_count:
+        type: integer
+      success_rows_data:
+        items:
+          properties:
+            product_id:
+              type: integer
+          type: object
+        type: array
+      total_count:
+        type: integer
+    type: object
+  api.GetBrandListData:
+    properties:
+      brand_list:
+        items:
+          $ref: '#/definitions/api.Brand'
+        type: array
+      page:
+        type: integer
+      total_count:
+        type: integer
+    type: object
+  api.GetProductAttrsData:
+    properties:
+      attributes:
+        items:
+          $ref: '#/definitions/api.Attribute'
+        type: array
+    type: object
+  api.HTTPCreateProductResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.CreateProductData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPEmptyResp:
+    properties:
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPErrResp:
+    properties:
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPGetBrandListResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.GetBrandListData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPGetCategoryTreeResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.ShipperCategoryTreeData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPGetProductAttrsResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.GetProductAttrsData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPProductListResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.ProductPageResultData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.HTTPUpdateProductResp:
+    properties:
+      data:
+        $ref: '#/definitions/api.CreateProductData'
+      metadata:
+        $ref: '#/definitions/api.Meta'
+    type: object
+  api.Image:
+    properties:
+      id:
+        type: string
+    type: object
+  api.InputType:
+    properties:
+      is_customized:
+        type: boolean
+      is_mandatory:
+        type: boolean
+      is_multiple_selected:
+        type: boolean
+    type: object
+  api.Meta:
+    properties:
+      error:
+        type: integer
+      message:
+        type: string
+      path:
+        type: string
+      status:
+        type: string
+      status_code:
+        type: integer
+      timestamp:
+        type: string
+    type: object
+  api.ProductIDSRequest:
+    properties:
+      product_ids:
+        items:
+          type: string
+        type: array
+    type: object
+  api.ProductPageResultData:
+    properties:
+      edges:
+        items:
+          properties:
+            node:
+              properties:
+                channel:
+                  type: string
+                createdAt:
+                  type: string
+                createdBy:
+                  type: integer
+                internalShopId:
+                  type: string
+                isSingleProduct:
+                  description: one productID(spuID) only have one skuID
+                  type: boolean
+                marketplaceProductId:
+                  type: integer
+                marketplaceShopId:
+                  description: MerchantId           int       `json:"merchantId"`
+                  type: integer
+                productId:
+                  type: string
+                productImage:
+                  type: string
+                productName:
+                  type: string
+                shopName:
+                  description: "ReasonUpload         string    `json:\"reasonUpload\"`\n\tStatusUpload
+                    \        string    `json:\"statusUpload\"`"
+                  type: string
+                status:
+                  type: string
+                updatedAt:
+                  type: string
+                variants:
+                  items:
+                    properties:
+                      availableStock:
+                        type: integer
+                      channel:
+                        type: string
+                      marketplaceProductVariantId:
+                        type: integer
+                      merchantId:
+                        type: integer
+                      price:
+                        type: integer
+                      productId:
+                        type: string
+                      shopName:
+                        description: VariantId                   string `json:"variantId"`
+                        type: string
+                      skuMaster:
+                        type: string
+                      skuVariant:
+                        type: string
+                      status:
+                        type: string
+                      stock:
+                        type: integer
+                      variation:
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        type: array
+      page:
+        type: integer
+      total_count:
+        type: integer
+    type: object
+  api.SKUPrice:
+    properties:
+      price:
+        description: example:"default Rp"
+        type: integer
+      sku_id:
+        type: string
+    type: object
+  api.SKUStock:
+    properties:
+      sku_id:
+        type: string
+      stock:
+        description: example:"default Rp"
+        type: integer
+    type: object
+  api.ShipperCategoryTreeData:
+    properties:
+      display_name:
+        type: string
+      id:
+        type: string
+      is_leaf:
+        type: boolean
+      parent_id:
+        type: string
+    type: object
+  api.StandardSKU:
+    properties:
+      available_stock:
+        type: integer
+      brand_id:
+        type: string
+      brand_name:
+        type: string
+      images:
+        items:
+          $ref: '#/definitions/api.Image'
+        type: array
+      price:
+        type: integer
+      seller_sku:
+        type: integer
+      warehouse_id:
+        type: integer
+      weight:
+        type: integer
+    type: object
+  api.StandardShipperOption:
+    properties:
+      enabled:
+        type: boolean
+      is_free_ship:
+        type: boolean
+      logistic_id:
+        type: integer
+      ship_fee:
+        type: integer
+      size_id:
+        type: integer
+    type: object
+  api.UpDownShelfReq:
+    properties:
+      skus:
+        items:
+          properties:
+            id:
+              type: integer
+            name:
+              description: |-
+                SKUNo       string `json:"sku_no"`
+                SellerSKUNo string `json:"seller_sku_no"`
+              type: string
+            on_shelf:
+              type: boolean
+          type: object
+        type: array
+      spu_id:
+        type: string
+    required:
+    - skus
+    type: object
+  api.UpdateProductPriceRequest:
+    properties:
+      prices:
+        items:
+          $ref: '#/definitions/api.SKUPrice'
+        type: array
+    type: object
+  api.UpdateProductStockRequest:
+    properties:
+      stocks:
+        items:
+          $ref: '#/definitions/api.SKUStock'
+        type: array
+    type: object
+  api.Value:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+host: 127.0.0.1:10000
+info:
+  contact:
+    email: yan.jinbin@shipper.id
+    name: yan.jinbin
+  description: This is product api swagger doc.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger Product API
+  version: v0.0.1
+paths:
+  /v1/product:
+    delete:
+      consumes:
+      - application/json
+      description: |-
+        tokopedia: https://bit.ly/38fpR4n, lazada: https://bit.ly/3yCt7l4 shopee: https://bit.ly/3wtMMAY tiktok: https://bit.ly/38qiuHe
+        delete product from product list, e.g. delete iphone 13 red 256GB from shop product list
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: Delete Product From Shelf
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.ProductIDSRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPEmptyResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: delete product from product list
+      tags:
+      - product
+    post:
+      consumes:
+      - application/json
+      description: |-
+        so we need do shipper standard category id and brand id mapping , many attributes to special marketplace category id, brand id, and product attributes
+        Lazada: https://bit.ly/3PwiIgO shopee: https://bit.ly/3LjQimY Tokopedia: https://bit.ly/3wqKD9c  Tiktok: https://bit.ly/3NaZiMr
+        Need to be design seriously, talked and review, especially for request body
+        create product on multiple marketplaces, e.g. create iphone13 256gb on tiktok shop.
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: Create Product Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.AddEditProductReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPCreateProductResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: 'create product on multiple marketplaces, how to create a product refer
+        link: lazada usecase-> https://bit.ly/3yym6BG'
+      tags:
+      - product
+  /v1/product/brand:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        Lazada: https://bit.ly/3l8loTF shopee: https://bit.ly/3L7JMQ5 Tokopedia: (NONE,not found brand api) Tiktok: https://bit.ly/3FO6Pym
+        need to brand_id  mapping to marketplace brand id(TODO)
+        support pagination query
+        get brand list from marketplace e.g. get brand list like Apple Google Facebook Airbnb
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: 'common query params: page number'
+        in: query
+        name: page_no
+        required: true
+        type: integer
+      - description: 'common query params: page size'
+        in: query
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPGetBrandListResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: get brand list from marketplace
+      tags:
+      - brand
+  /v1/product/category:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        Lazada: https://bit.ly/3wbFq64 shopee: https://bit.ly/3l7cjKT Tokopedia:  https://bit.ly/39fr2Rj Tiktok: https://bit.ly/3FI0HaM
+        get category tree or dictionary from marketplace
+        e.g. get category tree, like telecommunication->mobile phone-> iphone -> iphone 13 series
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPGetCategoryTreeResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: get category tree or dictionary from marketplace
+      tags:
+      - category
+  /v1/product/category/attribute:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        Lazada: https://bit.ly/3Ncd0yp  shopee: https://bit.ly/3PxuYOb  Tokopedia: https://bit.ly/3wkdMCQ Tiktok: https://bit.ly/3wtQdrm
+        Need to category_id mapping to marketplace category id(TODO)
+        Get product attributes from marketplace e.g. under category_id 100, product attributes is waterproof fireproof isDangerous R18
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: category_id
+        in: query
+        name: category_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPGetProductAttrsResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: get product attributes from marketplace, in other words, category attributes
+      tags:
+      - category
+  /v1/product/edit:
+    patch:
+      consumes:
+      - application/json
+      description: |-
+        a bit different like createProduct API, we query product attributes from specific marketplace when we create product, product info stored in our database
+        lazada: https://bit.ly/3ld8CU5 shopee: https://bit.ly/3lg4vX7 tokopedia: https://bit.ly/3FJFEV4 tiktok: https://bit.ly/3lb5VCs
+        support single edie, bulk edit not supported
+        edit product attributes, e.g. package weight,width,height,is_dangerous,
+      parameters:
+      - description: Update Product attributes
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.AddEditProductReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPUpdateProductResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: is edit product attributes
+      tags:
+      - product
+  /v1/product/info:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        Lazada: 批量查询 https://bit.ly/3MfPaBQ 单条查询 https://bit.ly/39mmw3i 数据都是一模一样得,
+        shopee: https://bit.ly/3syQb0h get_item_list->get_item_base_info->get_item_extra_info
+        Tokopedia: https://bit.ly/3PdbI8e Tiktok: https://bit.ly/3l7AkBy
+        fetch product id list, e.g. get product list ["123","345","456"]
+      parameters:
+      - description: tiktok  lazada
+        in: query
+        name: create_time_from
+        type: integer
+      - in: query
+        name: create_time_to
+        type: integer
+      - description: "4个 MP 都有\n tiktok  lazada   tokopedia  shopee\n\tMarketplaceType
+          int `json:\"marketplace_type\"`"
+        in: query
+        name: page_no
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
+      - description: priority order desc
+        in: query
+        items:
+          type: string
+        name: product_id_list
+        type: array
+      - in: query
+        items:
+          type: string
+        name: seller_sku_list
+        type: array
+      - in: query
+        items:
+          type: string
+        name: sku_id_list
+        type: array
+      - description: tiktok  shopee
+        in: query
+        name: update_time_from
+        type: integer
+      - in: query
+        name: update_time_to
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPProductListResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: '返回结果 参考现有 Atoor: https://dashboard.staging.atoor.com/ocms/product
+        返回数据 设计, 还会结合当前做一定改动,删除一些不能获取数据的字段!'
+      tags:
+      - product
+  /v1/product/price:
+    put:
+      consumes:
+      - application/json
+      description: |-
+        lazada: https://bit.ly/3yBQVVV shopee: https://bit.ly/3Pn4HSe tokopedia: https://bit.ly/3PoACBR tiktok: https://bit.ly/3szsTHt
+        update product original price, e.g. old price is 1000Rp, new price is 668Rp
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: Update Product Price
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpdateProductPriceRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPEmptyResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: update product original price
+      tags:
+      - product
+  /v1/product/shelf/up-down:
+    put:
+      consumes:
+      - application/json
+      description: |-
+        Lazada: https://bit.ly/37Ix6kR shopee: https://bit.ly/3wbm6G6 Tokopedia: https://bit.ly/3wkDsiH Tiktok: https://bit.ly/3sxkOTu
+        activate/deactivate products on/from shelf, in other words, list/unlist product. e.g. iphone 13 red 256GB is top seller goods. so we often deactivate it for the sake of shortage
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: deactivate Product From Shelf
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpDownShelfReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPEmptyResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: activate/deactivate products on/from shelf, in other words, list/unlist
+        product
+      tags:
+      - product
+  /v1/product/stock:
+    put:
+      consumes:
+      - application/json
+      description: |-
+        lazada: https://bit.ly/3yBQVVV shopee: https://bit.ly/3wrusIL tokopedia: https://bit.ly/3NcVf1Z tiktok: https://bit.ly/3sAyf57
+        update product stock at specific warehouse, e.g. update stock from 1 to 100 at specific warehouse
+      parameters:
+      - description: 'common query params: shop_id'
+        in: query
+        name: shop_id
+        required: true
+        type: integer
+      - description: 'common query params: marketplace type'
+        in: query
+        name: mp
+        required: true
+        type: integer
+      - description: Update Product Stock
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpdateProductStockRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.HTTPEmptyResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "429":
+          description: Too Many Requests
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/api.HTTPErrResp'
+      summary: update product stock at specific warehouse
+      tags:
+      - product
+swagger: "2.0"
