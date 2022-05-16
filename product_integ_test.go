@@ -277,7 +277,7 @@ func TestClient_CreateProductRequest_Integration(t *testing.T) {
 					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\">",
 					CategoryID:  "903560",
 					BrandID:     "0",
-					Images: []tiktok.Image{
+					Images: []tiktok.ImgID{
 						{ID: "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"},
 					},
 					WarrantyPeriod: 1,
@@ -351,7 +351,7 @@ func TestClient_EditProduct_Integration(t *testing.T) {
 					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\">",
 					CategoryID:  "903560",
 					BrandID:     "0",
-					Images: []tiktok.Image{
+					Images: []tiktok.ImgID{
 						{ID: "tos-maliva-i-o3syd03w52-us/342ff2ab5fac414fb1d0af5eb490cae9"},
 					},
 					WarrantyPeriod: 1,

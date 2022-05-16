@@ -250,10 +250,6 @@ type CategoryRules struct {
 	CategoryRules []CategoryRule `json:"category_rules"`
 }
 
-type Brand struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
 type BrandList struct {
 	BrandList []Brand `json:"brand_list"`
 }
@@ -276,7 +272,7 @@ type FileInfo struct {
 type SalesAttribute struct {
 	AttributeID string `json:"attribute_id"`
 	CustomValue string `json:"custom_value,omitempty"`
-	SKUImage    *Image `json:"sku_img,omitempty"`
+	SKUImage    *ImgID `json:"sku_img,omitempty"`
 	ValueID     string `json:"value_id,omitempty"`
 }
 
@@ -285,63 +281,129 @@ type ProductSKU struct {
 	SellerSku       string           `json:"seller_sku"`
 	SalesAttributes []SalesAttribute `json:"sales_attributes"`
 }
+type Brand struct {
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Status int    `json:"status"` // ONLINE=1;  OFFLINE=2;
+}
+
+type File struct {
+	ID   string   `json:"id"`
+	List []string `json:"list,omitempty"`
+	Name string   `json:"name"`
+	Type string   `json:"type"`
+}
+
+type Image struct {
+	ID           string   `json:"id"`
+	Height       int      `json:"height"`
+	Width        int      `json:"width"`
+	ThumbUrlList []string `json:"thumb_url_list"`
+	UrlList      []string `json:"url_list"`
+}
+
+type Certification struct {
+	ID     string  `json:"id"`
+	Title  string  `json:"title"`
+	Files  []File  `json:"files"`
+	Images []Image `json:"images"`
+}
+
+type QCReason struct {
+	Reason     string   `json:"reason"`
+	SubReasons []string `json:"sub_reasons"`
+}
+
+type DeliveryService struct {
+	DeliveryServiceID     int64  `json:"delivery_service_id"`
+	DeliveryOptionName    string `json:"delivery_option_name"`
+	DeliveryServiceStatus bool   `json:"delivery_service_status"`
+}
+
+type SizeChart struct {
+	Height       int    `json:"height"`
+	ID           string `json:"id"`
+	ThumbUrlList string `json:"thumb_url_list"`
+	UrlList      string `json:"url_list"`
+	Width        int    `json:"width"`
+}
+
+type VideoInfo struct {
+	BackupUrl string `json:"backup_url"`
+	Bitrate   int    `json:"bitrate"`
+	FileHash  string `json:"file_hash"`
+	Format    string `json:"format"`
+	Height    int    `json:"height"`
+	MainUrl   string `json:"main_url"`
+	Size      int    `json:"size"`
+	UrlExpire int64  `json:"url_expire"`
+	Width     int    `json:"width"`
+}
+
+type Video struct {
+	Duration   float64     `json:"duration"`
+	ID         string      `json:"id"`
+	MediaType  string      `json:"media_type"`
+	PostUrl    string      `json:"post_url"`
+	VideoInfos []VideoInfo `json:"video_infos"`
+}
+type Value struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Price struct {
+	Currency        string `json:"currency"`
+	OriginalPrice   string `json:"original_price"`
+	PriceIncludeVat string `json:"price_include_vat"`
+}
+type SalesAttr struct {
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	ValueID   string `json:"value_id"`
+	ValueName string `json:"value_name"`
+	SkuImg    Image  `json:"sku_img"`
+}
+type SKUData struct {
+	ID              string      `json:"id"`
+	SellerSku       string      `json:"seller_sku"`
+	Price           Price       `json:"price"`
+	StockInfos      []StockInfo `json:"stock_infos"`
+	SalesAttributes []SalesAttr `json:"sales_attributes"`
+}
+type ProductAttribute struct {
+	ID     string  `json:"id"`
+	Name   string  `json:"name"`
+	Values []Value `json:"values"`
+}
 
 type ProductData struct {
-	CategoryList []struct {
-		ID               string `json:"id"`
-		IsLeaf           bool   `json:"is_leaf"`
-		LocalDisplayName string `json:"local_display_name"`
-		ParentID         string `json:"parent_id"`
-	} `json:"category_list"`
-	CreateTime  int64  `json:"create_time"`
-	Description string `json:"description"`
-	Images      []struct {
-		Height       int      `json:"height"`
-		ID           string   `json:"id"`
-		ThumbUrlList []string `json:"thumb_url_list"`
-		UrlList      []string `json:"url_list"`
-		Width        int      `json:"width"`
-	} `json:"images"`
-	IsCodOpen         bool   `json:"is_cod_open"`
-	PackageHeight     int    `json:"package_height"`
-	PackageLength     int    `json:"package_length"`
-	PackageWeight     string `json:"package_weight"`
-	PackageWidth      int    `json:"package_width"`
-	ProductAttributes []struct {
-		ID     string `json:"id"`
-		Name   string `json:"name"`
-		Values []struct {
-			ID   string `json:"id"`
-			Name string `json:"name"`
-		} `json:"values"`
-	} `json:"product_attributes"`
-	ProductID     string `json:"product_id"`
-	ProductName   string `json:"product_name"`
-	ProductStatus int    `json:"product_status"`
-	Skus          []struct {
-		ID    string `json:"id"`
-		Price struct {
-			Currency      string `json:"currency"`
-			OriginalPrice string `json:"original_price"`
-		} `json:"price"`
-		SalesAttributes []struct {
-			ID        string `json:"id"`
-			Name      string `json:"name"`
-			ValueID   string `json:"value_id"`
-			ValueName string `json:"value_name"`
-		} `json:"sales_attributes"`
-		SellerSku  string `json:"seller_sku"`
-		StockInfos []struct {
-			WarehouseID    string `json:"warehouse_id"`
-			AvailableStock int    `json:"available_stock"`
-		} `json:"stock_infos"`
-	} `json:"skus"`
-	UpdateTime     int64 `json:"update_time"`
+	ProductID      string     `json:"product_id"`
+	ProductStatus  int        `json:"product_status"` // 1-draft、2-pending、3-failed(initial creation)、4-live、5-seller_deactivated、6-platform_deactivated、7-freeze 8-deleted
+	ProductName    string     `json:"product_name"`
+	CategoryList   []Category `json:"category_list"`
+	Brand          Brand      `json:"brand"`
+	Images         []Image    `json:"images"`
+	Video          Video      `json:"video"`
+	Description    string     `json:"description"`
 	WarrantyPeriod struct {
 		WarrantyID          int    `json:"warranty_id"`
 		WarrantyDescription string `json:"warranty_description"`
 	} `json:"warranty_period"`
-	WarrantyPolicy string `json:"warranty_policy"`
+	WarrantyPolicy        string             `json:"warranty_policy"`
+	PackageHeight         int                `json:"package_height"`
+	PackageLength         int                `json:"package_length"`
+	PackageWidth          int                `json:"package_width"`
+	PackageWeight         string             `json:"package_weight"`
+	Skus                  []SKUData          `json:"skus"`
+	ProductCertifications []Certification    `json:"product_certifications"`
+	SizeChart             Image              `json:"size_chart"`
+	IsCodOpen             bool               `json:"is_cod_open"`
+	ProductAttributes     []ProductAttribute `json:"product_attributes"`
+	QcReasons             []QCReason         `json:"qc_reasons"`
+	UpdateTime            int64              `json:"update_time"`
+	CreateTime            int64              `json:"create_time"`
+	DeliveryServices      []DeliveryService  `json:"delivery_services"`
 }
 
 type GetProductListData struct {

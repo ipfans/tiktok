@@ -1,431 +1,351 @@
 [
-    {
-        "name": "GetProductDetail unit test",
-        "args": {
-            "app_key": "12abcd",
-            "app_secret": "123",
-            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
-            "shop_id": "123456",
-            "product_id": "123123123123123"
-        },
-        "request": {
-            "method": "GET",
-            "url": "https://open-api.tiktokglobalshop.com/api/products/details",
-            "headers": {},
-            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&product_id=123123123123123&shop_id=123456&sign=3c859ee8285fde6816f31aff7cca15dd75e6cc9061d6bb32c22ccf8429c931f8&timestamp=1600000000"
-        },
-        "response": {
-            "status": 200,
-            "body": {
-                "code": 0,
-                "message": "Success",
-                "request_id": "123123123",
-                "data": {
-                    "product_id": "123123123",
-                    "product_status": 4,
-                    "product_name": "aaaa",
-                    "category_list": [
-                        {
-                            "id": "123123",
-                            "parent_id": "0",
-                            "local_display_name": "aaaa",
-                            "is_leaf": false
-                        },
-                        {
-                            "id": "123123123",
-                            "parent_id": "1111",
-                            "local_display_name": "bbb",
-                            "is_leaf": false
-                        },
-                        {
-                            "id": "123123123",
-                            "parent_id": "2222",
-                            "local_display_name": "cccc",
-                            "is_leaf": false
-                        },
-                        {
-                            "id": "123123123",
-                            "parent_id": "3333",
-                            "local_display_name": "ddddd",
-                            "is_leaf": true
-                        }
-                    ],
-                    "brand": {
-                        "id": "123123123",
-                        "name": "aaa",
-                        "status": 1
-                    },
-                    "images": [
-                        {
-                            "height": 600,
-                            "width": 600,
-                            "thumb_url_list": [
-                                "https://sadfasdfasdfasdfasdf",
-                                "https://sadfasdfasdfadsf"
-                            ],
-                            "id": "asdfasdfasdf",
-                            "url_list": [
-                                "https://asdfasdfasdf",
-                                "https://afsdfasdfasdf"
-                            ]
-                        },
-                        {
-                            "height": 720,
-                            "width": 720,
-                            "thumb_url_list": [
-                                "https://asdfasdfasdfasdfas",
-                                "https://asdfasfasdfasfasdf"
-                            ],
-                            "id": "afsdfasdfasdf",
-                            "url_list": [
-                                "https://asdfasdfasdfas",
-                                "https://fasdfasdfasdf"
-                            ]
-                        },
-                        {
-                            "height": 1080,
-                            "width": 1080,
-                            "thumb_url_list": [
-                                "https://asdfasdfasdf",
-                                "https://asdfasdfasdf"
-                            ],
-                            "id": "asdfasdfasdf",
-                            "url_list": [
-                                "https://asdfasfdasdfasf",
-                                "https://asdfasdfasdfsadf"
-                            ]
-                        }
-                    ],
-                    "description": "aaaa",
-                    "warranty_period": {
-                        "warranty_id": 2,
-                        "warranty_description": "2 months"
-                    },
-                    "warranty_policy": "warranty policy test",
-                    "package_length": 30,
-                    "package_width": 20,
-                    "package_height": 30,
-                    "package_weight": "5",
-                    "skus": [
-                        {
-                            "id": "123123123",
-                            "seller_sku": "aaaa",
-                            "price": {
-                                "original_price": "1200",
-                                "currency": "IDR"
-                            },
-                            "stock_infos": [
-                                {
-                                    "warehouse_id": "123123123",
-                                    "available_stock": 160
-                                }
-                            ],
-                            "sales_attributes": [
-                                {
-                                    "id": "123123123",
-                                    "name": "aaa",
-                                    "value_id": "123123123",
-                                    "value_name": "red",
-                                    "sku_img": {
-                                        "height": 600,
-                                        "width": 600,
-                                        "thumb_url_list": [
-                                            "https://asdfasdfasdfasdfa",
-                                            "https://asdfasdfasdfasdf"
-                                        ],
-                                        "id": "asdfasdfasdfasdf",
-                                        "url_list": [
-                                            "https://asdfasdfasdfasf",
-                                            "https://asdfasdfasdfasdf"
-                                        ]
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "id": "123123123",
-                            "seller_sku": "bbbb",
-                            "price": {
-                                "original_price": "1600",
-                                "currency": "IDR"
-                            },
-                            "stock_infos": [
-                                {
-                                    "warehouse_id": "123123123",
-                                    "available_stock": 3000
-                                }
-                            ],
-                            "sales_attributes": [
-                                {
-                                    "id": "123123123",
-                                    "name": "aaaa",
-                                    "value_id": "123123123",
-                                    "value_name": "black",
-                                    "sku_img": {
-                                        "height": 1080,
-                                        "width": 1080,
-                                        "thumb_url_list": [
-                                            "https://sadfasdfasdfasdfa",
-                                            "https://asdfasfasdfasdf"
-                                        ],
-                                        "id": "asdfasdfasdfasdf",
-                                        "url_list": [
-                                            "https://asdfasdfasdf?",
-                                            "https://asdfasdfasdfasdf"
-                                        ]
-                                    }
-                                }
-                            ]
-                        }
-                    ],
-                    "product_certifications": [
-                        {
-                            "id": "123123123",
-                            "title": "aaaaa",
-                            "images": [
-                                {
-                                    "height": 1080,
-                                    "width": 1080,
-                                    "thumb_url_list": [
-                                        "https://asdfasdfasdfasd",
-                                        "https://asdfasdfasdfasd"
-                                    ],
-                                    "id": "asdfasdfasdfasdfasdf",
-                                    "url_list": [
-                                        "https://afsdfasdfasdfasdf",
-                                        "https://asdfasdfasdfasdfsdaf"
-                                    ]
-                                }
-                            ],
-                            "files": [
-                                {
-                                    "id": "asdfadsfasdfasd",
-                                    "list": [
-                                        "http://asdfasdfasdf",
-                                        "http://asdfasdfasdfa"
-                                    ],
-                                    "name": "test1.pdf",
-                                    "type": "PDF"
-                                },
-                                {
-                                    "id": "asdfasdfasdfasdf",
-                                    "list": [
-                                        "http://asdfasdfasdfasdf",
-                                        "http://fasdfasdfasdfasdf"
-                                    ],
-                                    "name": "test2.pdf",
-                                    "type": "PDF"
-                                }
-                            ]
-                        }
-                    ],
-                    "is_cod_open": false,
-                    "update_time": 1111111111
-                }
+  {
+    "name": "GetProductDetail unit test",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "product_id": "123123123123123"
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/products/details",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&product_id=123123123123123&shop_id=123456&sign=3c859ee8285fde6816f31aff7cca15dd75e6cc9061d6bb32c22ccf8429c931f8&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "123123123",
+        "data": {
+          "product_id": "A",
+          "product_status": 1,
+          "product_name": "A",
+          "category_list": [
+            {
+              "id": "C1",
+              "parent_id": "003",
+              "local_display_name": "LAKE-NIKE",
+              "is_leaf": false
             }
-        },
-        "want": {
-            "product_id": "123123123",
-            "product_status": 4,
-            "product_name": "aaaa",
-            "category_list": [
+          ],
+          "brand": {
+            "id": "P",
+            "name": "Nike",
+            "status": 0
+          },
+          "images": [
+            {
+              "id": "ACC",
+              "height": 1,
+              "width": 2,
+              "thumb_url_list": [
+                "01.JPG",
+                "02.JPG"
+              ],
+              "url_list": [
+                "www.google.com",
+                "twitter.com"
+              ]
+            }
+          ],
+          "video": {
+            "duration": 12.5,
+            "id": "tokyo",
+            "media_type": "mkv",
+            "post_url": "www.yyets.com",
+            "video_infos": [
+              {
+                "backup_url": "www.g.com",
+                "bitrate": 1024,
+                "file_hash": "29393ns9s23=",
+                "format": "mpv",
+                "height": 1,
+                "main_url": "shipping.com",
+                "size": 1,
+                "url_expire": 3600,
+                "width": 2
+              }
+            ]
+          },
+          "description": "nike sb series",
+          "warranty_period": {
+            "warranty_id": 996,
+            "warranty_description": "996 day"
+          },
+          "warranty_policy": "free return",
+          "package_height": 100,
+          "package_length": 99,
+          "package_width": 7,
+          "package_weight": "100kg",
+          "skus": [
+            {
+              "id": "zh-fz-01",
+              "seller_sku": "ship-id-iphone13",
+              "price": {
+                "currency": "IDR",
+                "original_price": "100",
+                "price_include_vat": "1"
+              },
+              "stock_infos": [
                 {
-                    "id": "123123",
-                    "parent_id": "0",
-                    "local_display_name": "aaaa",
-                    "is_leaf": false
-                },
-                {
-                    "id": "123123123",
-                    "parent_id": "1111",
-                    "local_display_name": "bbb",
-                    "is_leaf": false
-                },
-                {
-                    "id": "123123123",
-                    "parent_id": "2222",
-                    "local_display_name": "cccc",
-                    "is_leaf": false
-                },
-                {
-                    "id": "123123123",
-                    "parent_id": "3333",
-                    "local_display_name": "ddddd",
-                    "is_leaf": true
+                  "warehouse_id": "001",
+                  "available_stock": 10
                 }
-            ],
-            "brand": {
-                "id": "123123123",
-                "name": "aaa",
-                "status": 1
-            },
-            "images": [
+              ],
+              "sales_attributes": [
                 {
-                    "height": 600,
-                    "width": 600,
+                  "id": "001",
+                  "name": "ABC",
+                  "value_id": "9",
+                  "value_name": "COLOR",
+                  "sku_img": {
+                    "id": "ACC",
+                    "height": 1,
+                    "width": 2,
                     "thumb_url_list": [
-                        "https://sadfasdfasdfasdfasdf",
-                        "https://sadfasdfasdfadsf"
+                      "01.JPG",
+                      "02.JPG"
                     ],
-                    "id": "asdfasdfasdf",
                     "url_list": [
-                        "https://asdfasdfasdf",
-                        "https://afsdfasdfasdf"
+                      "www.google.com",
+                      "twitter.com"
                     ]
-                },
-                {
-                    "height": 720,
-                    "width": 720,
-                    "thumb_url_list": [
-                        "https://asdfasdfasdfasdfas",
-                        "https://asdfasfasdfasfasdf"
-                    ],
-                    "id": "afsdfasdfasdf",
-                    "url_list": [
-                        "https://asdfasdfasdfas",
-                        "https://fasdfasdfasdf"
-                    ]
-                },
-                {
-                    "height": 1080,
-                    "width": 1080,
-                    "thumb_url_list": [
-                        "https://asdfasdfasdf",
-                        "https://asdfasdfasdf"
-                    ],
-                    "id": "asdfasdfasdf",
-                    "url_list": [
-                        "https://asdfasfdasdfasf",
-                        "https://asdfasdfasdfsadf"
-                    ]
+                  }
                 }
-            ],
-            "description": "aaaa",
-            "warranty_period": {
-                "warranty_id": 2,
-                "warranty_description": "2 months"
-            },
-            "warranty_policy": "warranty policy test",
-            "package_length": 30,
-            "package_width": 20,
-            "package_height": 30,
-            "package_weight": "5",
-            "skus": [
+              ]
+            }
+          ],
+          "product_certifications": [
+            {
+              "id": "1a",
+              "title": "disney",
+              "files": [
                 {
-                    "id": "123123123",
-                    "seller_sku": "aaaa",
-                    "price": {
-                        "original_price": "1200",
-                        "currency": "IDR"
-                    },
-                    "stock_infos": [
-                        {
-                            "warehouse_id": "123123123",
-                            "available_stock": 160
-                        }
-                    ],
-                    "sales_attributes": [
-                        {
-                            "id": "123123123",
-                            "name": "aaa",
-                            "value_id": "123123123",
-                            "value_name": "red",
-                            "sku_img": {
-                                "height": 600,
-                                "width": 600,
-                                "thumb_url_list": [
-                                    "https://asdfasdfasdfasdfa",
-                                    "https://asdfasdfasdfasdf"
-                                ],
-                                "id": "asdfasdfasdfasdf",
-                                "url_list": [
-                                    "https://asdfasdfasdfasf",
-                                    "https://asdfasdfasdfasdf"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "id": "123123123",
-                    "seller_sku": "bbbb",
-                    "price": {
-                        "original_price": "1600",
-                        "currency": "IDR"
-                    },
-                    "stock_infos": [
-                        {
-                            "warehouse_id": "123123123",
-                            "available_stock": 3000
-                        }
-                    ],
-                    "sales_attributes": [
-                        {
-                            "id": "123123123",
-                            "name": "aaaa",
-                            "value_id": "123123123",
-                            "value_name": "black",
-                            "sku_img": {
-                                "height": 1080,
-                                "width": 1080,
-                                "thumb_url_list": [
-                                    "https://sadfasdfasdfasdfa",
-                                    "https://asdfasfasdfasdf"
-                                ],
-                                "id": "asdfasdfasdfasdf",
-                                "url_list": [
-                                    "https://asdfasdfasdf?",
-                                    "https://asdfasdfasdfasdf"
-                                ]
-                            }
-                        }
-                    ]
+                  "id": "1",
+                  "list": [
+                    "P",
+                    "Q"
+                  ],
+                  "name": "QQ",
+                  "type": "PDF"
                 }
+              ],
+              "images": null
+            }
+          ],
+          "size_chart": {
+            "id": "ACC",
+            "height": 1,
+            "width": 2,
+            "thumb_url_list": [
+              "01.JPG",
+              "02.JPG"
             ],
-            "product_certifications": [
+            "url_list": [
+              "www.google.com",
+              "twitter.com"
+            ]
+          },
+          "is_cod_open": false,
+          "product_attributes": [
+            {
+              "id": "12",
+              "name": "pptv",
+              "values": [
                 {
-                    "id": "123123123",
-                    "title": "aaaaa",
-                    "images": [
-                        {
-                            "height": 1080,
-                            "width": 1080,
-                            "thumb_url_list": [
-                                "https://asdfasdfasdfasd",
-                                "https://asdfasdfasdfasd"
-                            ],
-                            "id": "asdfasdfasdfasdfasdf",
-                            "url_list": [
-                                "https://afsdfasdfasdfasdf",
-                                "https://asdfasdfasdfasdfsdaf"
-                            ]
-                        }
-                    ],
-                    "files": [
-                        {
-                            "id": "asdfadsfasdfasd",
-                            "list": [
-                                "http://asdfasdfasdf",
-                                "http://asdfasdfasdfa"
-                            ],
-                            "name": "test1.pdf",
-                            "type": "PDF"
-                        },
-                        {
-                            "id": "asdfasdfasdfasdf",
-                            "list": [
-                                "http://asdfasdfasdfasdf",
-                                "http://fasdfasdfasdfasdf"
-                            ],
-                            "name": "test2.pdf",
-                            "type": "PDF"
-                        }
-                    ]
+                  "id": "LL",
+                  "name": "waka"
                 }
-            ],
-            "is_cod_open": false,
-            "update_time": 1111111111
-        },
-        "want_err": false
-    }
+              ]
+            }
+          ],
+          "qc_reasons": [
+            {
+              "reason": "Illegal",
+              "sub_reasons": [
+                "R18",
+                "AV"
+              ]
+            }
+          ],
+          "update_time": 1652684619,
+          "create_time": 1652684619,
+          "delivery_services": [
+            {
+              "delivery_service_id": 12,
+              "delivery_option_name": "J\u0026T Express",
+              "delivery_service_status": false
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "product_id": "A",
+      "product_status": 1,
+      "product_name": "A",
+      "category_list": [
+        {
+          "id": "C1",
+          "parent_id": "003",
+          "local_display_name": "LAKE-NIKE",
+          "is_leaf": false
+        }
+      ],
+      "brand": {
+        "id": "P",
+        "name": "Nike",
+        "status": 0
+      },
+      "images": [
+        {
+          "id": "ACC",
+          "height": 1,
+          "width": 2,
+          "thumb_url_list": [
+            "01.JPG",
+            "02.JPG"
+          ],
+          "url_list": [
+            "www.google.com",
+            "twitter.com"
+          ]
+        }
+      ],
+      "video": {
+        "duration": 12.5,
+        "id": "tokyo",
+        "media_type": "mkv",
+        "post_url": "www.yyets.com",
+        "video_infos": [
+          {
+            "backup_url": "www.g.com",
+            "bitrate": 1024,
+            "file_hash": "29393ns9s23=",
+            "format": "mpv",
+            "height": 1,
+            "main_url": "shipping.com",
+            "size": 1,
+            "url_expire": 3600,
+            "width": 2
+          }
+        ]
+      },
+      "description": "nike sb series",
+      "warranty_period": {
+        "warranty_id": 996,
+        "warranty_description": "996 day"
+      },
+      "warranty_policy": "free return",
+      "package_height": 100,
+      "package_length": 99,
+      "package_width": 7,
+      "package_weight": "100kg",
+      "skus": [
+        {
+          "id": "zh-fz-01",
+          "seller_sku": "ship-id-iphone13",
+          "price": {
+            "currency": "IDR",
+            "original_price": "100",
+            "price_include_vat": "1"
+          },
+          "stock_infos": [
+            {
+              "warehouse_id": "001",
+              "available_stock": 10
+            }
+          ],
+          "sales_attributes": [
+            {
+              "id": "001",
+              "name": "ABC",
+              "value_id": "9",
+              "value_name": "COLOR",
+              "sku_img": {
+                "id": "ACC",
+                "height": 1,
+                "width": 2,
+                "thumb_url_list": [
+                  "01.JPG",
+                  "02.JPG"
+                ],
+                "url_list": [
+                  "www.google.com",
+                  "twitter.com"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "product_certifications": [
+        {
+          "id": "1a",
+          "title": "disney",
+          "files": [
+            {
+              "id": "1",
+              "list": [
+                "P",
+                "Q"
+              ],
+              "name": "QQ",
+              "type": "PDF"
+            }
+          ],
+          "images": null
+        }
+      ],
+      "size_chart": {
+        "id": "ACC",
+        "height": 1,
+        "width": 2,
+        "thumb_url_list": [
+          "01.JPG",
+          "02.JPG"
+        ],
+        "url_list": [
+          "www.google.com",
+          "twitter.com"
+        ]
+      },
+      "is_cod_open": false,
+      "product_attributes": [
+        {
+          "id": "12",
+          "name": "pptv",
+          "values": [
+            {
+              "id": "LL",
+              "name": "waka"
+            }
+          ]
+        }
+      ],
+      "qc_reasons": [
+        {
+          "reason": "Illegal",
+          "sub_reasons": [
+            "R18",
+            "AV"
+          ]
+        }
+      ],
+      "update_time": 1652684619,
+      "create_time": 1652684619,
+      "delivery_services": [
+        {
+          "delivery_service_id": 12,
+          "delivery_option_name": "J\u0026T Express",
+          "delivery_service_status": false
+        }
+      ]
+    },
+    "want_err": false
+  }
 ]
