@@ -119,7 +119,7 @@ func (c *Client) request(ctx context.Context, method, base, path string, param u
 	if err != nil {
 		return
 	}
-	req.Header.Set("User-Agnet", "Go-tiktok/v0")
+	req.Header.Set("User-Agent", "Go-tiktok/v0")
 	req.Header.Set("Content-Type", "application/json")
 	req = req.WithContext(ctx)
 
