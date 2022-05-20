@@ -103,6 +103,7 @@ type OrderDetail struct {
 	BuyerUID               string           `json:"buyer_uid"`
 	FulfillmentType        int              `json:"fulfillment_type"`
 	OrderLineList          []OrderLineList  `json:"order_line_list"`
+	PackageList            []OrderPackage   `json:"package_list"`
 }
 
 type OrderLineList struct {
@@ -445,4 +446,8 @@ type UpdateStockFailedSKU struct {
 
 type FailedProductIDs struct {
 	FailedProductIDs []string `json:"failed_product_ids"`
+}
+
+type OrderPackage struct {
+	PackageID string `json:"package_id"`
 }
