@@ -505,10 +505,7 @@ func TestClient_UpdatePrice_Integration(t *testing.T) {
 				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.UpdatePriceRequest{
 					ProductID: "1729428817744857665",
-					Skus: []struct {
-						ID            string `json:"id" validate:"required"`
-						OriginalPrice string `json:"original_price" validate:"required"`
-					}{
+					Skus: []tiktok.SKUPriceItem{
 						{
 							"1729428819288164929", "9999",
 						},
@@ -554,32 +551,17 @@ func TestClient_UpdateStock_Integration(t *testing.T) {
 				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.UpdateStockRequest{
 					ProductID: "1729428817744857665",
-					Skus: []struct {
-						ID         string `json:"id"`
-						StockInfos []struct {
-							AvailableStock int    `json:"available_stock" validate:"min=0,max=99999"`
-							WarehouseID    string `json:"warehouse_id"`
-						} `json:"stock_infos"`
-					}([]struct {
-						ID         string `json:"id"`
-						StockInfos []struct {
-							AvailableStock int    `json:"available_stock"`
-							WarehouseID    string `json:"warehouse_id"`
-						} `json:"stock_infos"`
-					}{
+					Skus: []tiktok.SkuStockItem{
 						{
 							ID: "1729428819288164929",
-							StockInfos: []struct {
-								AvailableStock int    `json:"available_stock"`
-								WarehouseID    string `json:"warehouse_id"`
-							}{
+							StockInfos: []tiktok.StockInfo{
 								{
 									AvailableStock: 2,
 									WarehouseID:    "7054379554541963010",
 								},
 							},
 						},
-					}),
+					},
 				},
 			},
 			wantErr: false,
