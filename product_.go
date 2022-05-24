@@ -117,32 +117,36 @@ type SKU struct {
 	OriginalPrice   string           `json:"original_price,omitempty"`
 }
 
+type SizePic struct {
+	ImgID string `json:"img_id" validate:"required"`
+}
+
+type ProductAttr struct {
+	AttributeID     string           `json:"attribute_id"`
+	AttributeName   string           `json:"attribute_name"`
+	AttributeValues []AttributeValue `json:"attribute_values"`
+}
+
 // CreateProductRequest is creating product
 // https://developers.tiktok-shops.com/documents/document/234547
 type CreateProductRequest struct {
-	ProductName    string  `json:"product_name" validate:"required"`
-	Description    string  `json:"description"  validate:"required"`
-	CategoryID     string  `json:"category_id"  validate:"required"`
-	BrandID        string  `json:"brand_id"`
-	Images         []ImgID `json:"images,omitempty"`
-	WarrantyPeriod int     `json:"warranty_period"`
-	WarrantyPolicy string  `json:"warranty_policy"`
-	PackageLength  int     `json:"package_length"`
-	PackageWidth   int     `json:"package_width"`
-	PackageHeight  int     `json:"package_height"`
-	PackageWeight  string  `json:"package_weight"  validate:"required"`
-	SizeChart      struct {
-		ImgID string `json:"img_id" validate:"required"`
-	} `json:"size_chart"`
+	ProductName           string                        `json:"product_name" validate:"required"`
+	Description           string                        `json:"description"  validate:"required"`
+	CategoryID            string                        `json:"category_id"  validate:"required"`
+	BrandID               string                        `json:"brand_id"`
+	Images                []ImgID                       `json:"images,omitempty"`
+	WarrantyPeriod        int                           `json:"warranty_period"`
+	WarrantyPolicy        string                        `json:"warranty_policy"`
+	PackageLength         int                           `json:"package_length"`
+	PackageWidth          int                           `json:"package_width"`
+	PackageHeight         int                           `json:"package_height"`
+	PackageWeight         string                        `json:"package_weight"  validate:"required"`
+	SizeChart             SizePic                       `json:"size_chart"`
 	ProductCertifications []ProductCertificationRequest `json:"product_certifications"`
 	IsCodOpen             bool                          `json:"is_cod_open"`
 	Skus                  []SKU                         `json:"skus"  validate:"required"`
 	DeliveryServiceIDS    []string                      `json:"delivery_service_ids,omitempty"`
-	ProductAttributes     []struct {
-		AttributeID     string           `json:"attribute_id"`
-		AttributeName   string           `json:"attribute_name"`
-		AttributeValues []AttributeValue `json:"attribute_values"`
-	} `json:"product_attributes,omitempty"`
+	ProductAttributes     []ProductAttr                 `json:"product_attributes,omitempty"`
 }
 
 type Image struct {
@@ -224,19 +228,21 @@ type SKUData struct {
 	SalesAttributes []SalesAttr `json:"sales_attributes"`
 }
 
+type WarrantyPeriod struct {
+	WarrantyID          int    `json:"warranty_id"`
+	WarrantyDescription string `json:"warranty_description"`
+}
+
 type ProductData struct {
-	ProductID      string     `json:"product_id"`
-	ProductStatus  int        `json:"product_status"` // 1-draft、2-pending、3-failed(initial creation)、4-live、5-seller_deactivated、6-platform_deactivated、7-freeze 8-deleted
-	ProductName    string     `json:"product_name"`
-	CategoryList   []Category `json:"category_list"`
-	Brand          Brand      `json:"brand"`
-	Images         []Image    `json:"images"`
-	Video          Video      `json:"video"`
-	Description    string     `json:"description"`
-	WarrantyPeriod struct {
-		WarrantyID          int    `json:"warranty_id"`
-		WarrantyDescription string `json:"warranty_description"`
-	} `json:"warranty_period"`
+	ProductID             string             `json:"product_id"`
+	ProductStatus         int                `json:"product_status"` // 1-draft、2-pending、3-failed(initial creation)、4-live、5-seller_deactivated、6-platform_deactivated、7-freeze 8-deleted
+	ProductName           string             `json:"product_name"`
+	CategoryList          []Category         `json:"category_list"`
+	Brand                 Brand              `json:"brand"`
+	Images                []Image            `json:"images"`
+	Video                 Video              `json:"video"`
+	Description           string             `json:"description"`
+	WarrantyPeriod        WarrantyPeriod     `json:"warranty_period"`
 	WarrantyPolicy        string             `json:"warranty_policy"`
 	PackageHeight         int                `json:"package_height"`
 	PackageLength         int                `json:"package_length"`
@@ -273,21 +279,19 @@ type EditProductCertifications []struct {
 // EditProductRequest is edit product attributes
 // https://developers.tiktok-shops.com/documents/document/234555
 type EditProductRequest struct {
-	ProductID      string  `json:"product_id" validate:"required"`
-	ProductName    string  `json:"product_name" validate:"required"`
-	Description    string  `json:"description" validate:"required"`
-	CategoryID     string  `json:"category_id" validate:"required"`
-	BrandID        string  `json:"brand_id"`
-	Images         []ImgID `json:"images,omitempty"`
-	WarrantyPeriod int     `json:"warranty_period" example:"Need to choose among the candidate values provided by the platform: 1: 4 weeks" 2:"2 months" 3:"3 months" 4:"4 months" 5:"5 months" 6:"6 months" 7:"7 months" 8:"8 months" 9:"9 months" 10:"10 months" 11:"11 months" 12:"12 months" 13:"2 years" 14:"3 years" 15:"1 week" 16:"2 weeks" 17:"18 months" 18:"4 years" 19:"5 years" 20:"10 years" 21:"lifetime warranty"`
-	WarrantyPolicy string  `json:"warranty_policy"`
-	PackageLength  int     `json:"package_length" example:"14. unit is cm"`
-	PackageHeight  int     `json:"package_height" example:"14. unit is cm"`
-	PackageWidth   int     `json:"package_width" example:"14. unit is cm"`
-	PackageWeight  string  `json:"package_weight" validate:"required" example:"14. unit is cm"`
-	SizeChart      struct {
-		ImgID string `json:"img_id" validate:"required"`
-	} `json:"size_chart,omitempty"`
+	ProductID          string                    `json:"product_id" validate:"required"`
+	ProductName        string                    `json:"product_name" validate:"required"`
+	Description        string                    `json:"description" validate:"required"`
+	CategoryID         string                    `json:"category_id" validate:"required"`
+	BrandID            string                    `json:"brand_id"`
+	Images             []ImgID                   `json:"images,omitempty"`
+	WarrantyPeriod     int                       `json:"warranty_period" example:"Need to choose among the candidate values provided by the platform: 1: 4 weeks" 2:"2 months" 3:"3 months" 4:"4 months" 5:"5 months" 6:"6 months" 7:"7 months" 8:"8 months" 9:"9 months" 10:"10 months" 11:"11 months" 12:"12 months" 13:"2 years" 14:"3 years" 15:"1 week" 16:"2 weeks" 17:"18 months" 18:"4 years" 19:"5 years" 20:"10 years" 21:"lifetime warranty"`
+	WarrantyPolicy     string                    `json:"warranty_policy"`
+	PackageLength      int                       `json:"package_length" example:"14. unit is cm"`
+	PackageHeight      int                       `json:"package_height" example:"14. unit is cm"`
+	PackageWidth       int                       `json:"package_width" example:"14. unit is cm"`
+	PackageWeight      string                    `json:"package_weight" validate:"required" example:"14. unit is cm"`
+	SizeChart          SizePic                   `json:"size_chart,omitempty"`
 	Certifications     EditProductCertifications `json:"product_certifications"`
 	IsCodOpen          bool                      `json:"is_cod_open,omitempty"`
 	Skus               []SKU                     `json:"skus"`
