@@ -286,18 +286,16 @@ func TestClient_CreateProductRequest_Integration(t *testing.T) {
 					PackageWidth:   10,
 					PackageHeight:  10,
 					PackageWeight:  "1", // required
-					SizeChart: struct {
-						ImgID string `json:"img_id" validate:"required"`
-					}(struct{ ImgID string }{ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"}),
+					SizeChart: tiktok.SizePic{
+						ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693",
+					},
 					IsCodOpen: false,
 					Skus: []tiktok.SKU{
 						{
-							ID: "1729426618893830721",
-							SalesAttributes: []tiktok.SalesAttribute{
-								{AttributeID: "100000", ValueID: "7007745555669501697", CustomValue: "red"},
-							},
-							SellerSku:     "tiktok-china-test-sku",
-							OriginalPrice: "120",
+							ID:              "1729426618893830721",
+							SalesAttributes: []tiktok.SalesAttribute{{AttributeID: "100000", ValueID: "7007745555669501697", CustomValue: "red"}},
+							SellerSku:       "tiktok-china-test-sku",
+							OriginalPrice:   "120",
 							StockInfos: []tiktok.StockInfo{
 								{
 									WarehouseID:    "7054379554541963010",
@@ -346,7 +344,7 @@ func TestClient_EditProduct_Integration(t *testing.T) {
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
 				query: tiktok.EditProductRequest{
-					ProductID:   "1729426618893765185",
+					ProductID:   "1729431519078419009",
 					ProductName: "tiktok-air-model",
 					Description: "<ul><li>It is recommended to avoid using Chinese because the copy will be displayed to local users</li></ul><img src=\"https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8de4c52c078042589e427c681ca10d0e~tplv-o3syd03w52-origin-jpeg.jpeg?\">",
 					CategoryID:  "903560",
@@ -360,13 +358,10 @@ func TestClient_EditProduct_Integration(t *testing.T) {
 					PackageWidth:   15,
 					PackageHeight:  15,
 					PackageWeight:  "9", // required
-					SizeChart: struct {
-						ImgID string `json:"img_id" validate:"required"`
-					}(struct{ ImgID string }{ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"}),
-
+					SizeChart:      tiktok.SizePic{ImgID: "tos-maliva-i-o3syd03w52-us/25ce3f668e684efe9dc28a02047f1693"},
 					Skus: []tiktok.SKU{
 						{
-							ID: "1729426618893830721",
+							ID: "1729431519078484545",
 							SalesAttributes: []tiktok.SalesAttribute{
 								{AttributeID: "100000", ValueID: "7087771520205850373", CustomValue: "Blue"},
 							},
