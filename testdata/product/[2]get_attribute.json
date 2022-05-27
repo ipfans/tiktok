@@ -1,75 +1,187 @@
 [
-    {
-        "name": "GetAttribute unit test",
-        "args": {
-            "app_key": "12abcd",
-            "app_secret": "123",
-            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
-            "shop_id": "123456",
-            "category_id": "1234"
-        },
-        "request": {
-            "method": "GET",
-            "url": "https://open-api.tiktokglobalshop.com/api/products/attributes",
-            "headers": {},
-            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&category_id=1234&shop_id=123456&sign=bdbcdf52d2a1b99bf6187aaa181e8cff8b4f4cd0d3919e264aef5d3d83801732&timestamp=1600000000"
-        },
-        "response": {
-            "status": 200,
-            "body": {
-                "code": 0,
-                "message": "Success",
-                "request_id": "1111111",
-                "data": {
-                    "attributes": [
-                        {
-                            "id": "111",
-                            "name": "aaa",
-                            "attribute_type": 1,
-                            "input_type": {
-                                "is_mandatory": true,
-                                "is_multiple_selected": true,
-                                "is_customized": true
-                            }
-                        },
-                        {
-                            "id": "222",
-                            "name": "bbb",
-                            "attribute_type": 2,
-                            "input_type": {
-                                "is_mandatory": true,
-                                "is_multiple_selected": true,
-                                "is_customized": true
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        "want": {
-            "attributes": [
+  {
+    "name": "GetAttribute unit test",
+    "args": {
+      "app_key": "12abcd",
+      "app_secret": "123",
+      "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+      "shop_id": "123456",
+      "category_id": "1234"
+    },
+    "request": {
+      "method": "GET",
+      "url": "https://open-api.tiktokglobalshop.com/api/products/attributes",
+      "headers": {},
+      "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&category_id=1234&shop_id=123456&sign=bdbcdf52d2a1b99bf6187aaa181e8cff8b4f4cd0d3919e264aef5d3d83801732&timestamp=1600000000"
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "code": 0,
+        "message": "Success",
+        "request_id": "1111111",
+        "data": {
+          "attributes": [
+            {
+              "id": "100434",
+              "name": "Tipe Tas",
+              "attribute_type": 3,
+              "input_type": {
+                "is_mandatory": false,
+                "is_multiple_selected": false,
+                "is_customized": true
+              },
+              "values": [
                 {
-                    "id": "111",
-                    "name": "aaa",
-                    "attribute_type": 1,
-                    "input_type": {
-                        "is_mandatory": true,
-                        "is_multiple_selected": true,
-                        "is_customized": true
-                    }
+                  "id": "1001417",
+                  "name": "Bum Bag"
                 },
                 {
-                    "id": "222",
-                    "name": "bbb",
-                    "attribute_type": 2,
-                    "input_type": {
-                        "is_mandatory": true,
-                        "is_multiple_selected": true,
-                        "is_customized": true
-                    }
+                  "id": "1001418",
+                  "name": "Belt Bag"
                 }
-            ]
+              ]
+            },
+            {
+              "id": "100198",
+              "name": "Pola",
+              "attribute_type": 3,
+              "input_type": {
+                "is_mandatory": false,
+                "is_multiple_selected": false,
+                "is_customized": true
+              },
+              "values": [
+                {
+                  "id": "1001182",
+                  "name": "Polos"
+                },
+                {
+                  "id": "1001183",
+                  "name": "Bunga"
+                },
+                {
+                  "id": "1001184",
+                  "name": "Bergaris-garis"
+                },
+                {
+                  "id": "1001185",
+                  "name": "Kotak-Kotak"
+                },
+                {
+                  "id": "1001186",
+                  "name": "Grafis"
+                },
+                {
+                  "id": "1001187",
+                  "name": "Sulaman"
+                },
+                {
+                  "id": "1001188",
+                  "name": "Herringbone"
+                },
+                {
+                  "id": "1001189",
+                  "name": "Moire"
+                },
+                {
+                  "id": "1001190",
+                  "name": "Paisley"
+                },
+                {
+                  "id": "1001191",
+                  "name": "Bintik"
+                },
+                {
+                  "id": "1001192",
+                  "name": "Dasi dye"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "want": {
+      "attributes": [
+        {
+          "id": "100434",
+          "name": "Tipe Tas",
+          "attribute_type": 3,
+          "input_type": {
+            "is_mandatory": false,
+            "is_multiple_selected": false,
+            "is_customized": true
+          },
+          "values": [
+            {
+              "id": "1001417",
+              "name": "Bum Bag"
+            },
+            {
+              "id": "1001418",
+              "name": "Belt Bag"
+            }
+          ]
         },
-        "want_err": false
-    }
+        {
+          "id": "100198",
+          "name": "Pola",
+          "attribute_type": 3,
+          "input_type": {
+            "is_mandatory": false,
+            "is_multiple_selected": false,
+            "is_customized": true
+          },
+          "values": [
+            {
+              "id": "1001182",
+              "name": "Polos"
+            },
+            {
+              "id": "1001183",
+              "name": "Bunga"
+            },
+            {
+              "id": "1001184",
+              "name": "Bergaris-garis"
+            },
+            {
+              "id": "1001185",
+              "name": "Kotak-Kotak"
+            },
+            {
+              "id": "1001186",
+              "name": "Grafis"
+            },
+            {
+              "id": "1001187",
+              "name": "Sulaman"
+            },
+            {
+              "id": "1001188",
+              "name": "Herringbone"
+            },
+            {
+              "id": "1001189",
+              "name": "Moire"
+            },
+            {
+              "id": "1001190",
+              "name": "Paisley"
+            },
+            {
+              "id": "1001191",
+              "name": "Bintik"
+            },
+            {
+              "id": "1001192",
+              "name": "Dasi dye"
+            }
+          ]
+        }
+      ]
+    },
+    "want_err": false
+  }
 ]
