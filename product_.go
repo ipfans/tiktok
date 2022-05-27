@@ -32,6 +32,7 @@ type Attribute struct {
 	Name          string    `json:"name"`
 	AttributeType int       `json:"attribute_type"`
 	InputType     InputType `json:"input_type"`
+	Values        []Value   `json:"values"`
 }
 
 type AttributeList struct {

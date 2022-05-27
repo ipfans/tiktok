@@ -25,7 +25,7 @@ const (
 	_PRODUCTID          = ""
 	_SKUID              = ""
 	_WAREHOUSEID        = ""
-	_CATEGORYID         = ""
+	_CATEGORYID         = "903560"
 	_SORT_TYPE          = 1 // Available values: 1 (DESC), 2 (ASC) Default value 1
 )
 
