@@ -38,9 +38,9 @@
               ]
             }
           ],
-          "order_line_id_list": "",
+          "order_line_id_list": [],
           "package_freeze_status": 100,
-          "package_id": "123456",
+          "package_id": 123456,
           "package_status": 1,
           "pick_up_end_time": 1635338186,
           "pick_up_start_time": 1635338186,
@@ -49,7 +49,7 @@
           "sc_tag": 1,
           "shipping_provider": "TT Virtual express",
           "shipping_provider_id": "6617675021119438849",
-          "sku_tag": "",
+          "sku_tag": 1,
           "tracking_number": "6617675021119438849",
           "update_time": 1635338186
         },
@@ -74,9 +74,9 @@
           ]
         }
       ],
-      "order_line_id_list": "",
+      "order_line_id_list": [],
       "package_freeze_status": 100,
-      "package_id": "123456",
+      "package_id": 123456,
       "package_status": 1,
       "pick_up_end_time": 1635338186,
       "pick_up_start_time": 1635338186,
@@ -85,7 +85,7 @@
       "sc_tag": 1,
       "shipping_provider": "TT Virtual express",
       "shipping_provider_id": "6617675021119438849",
-      "sku_tag": "",
+      "sku_tag": 1,
       "tracking_number": "6617675021119438849",
       "update_time": 1635338186
     },
