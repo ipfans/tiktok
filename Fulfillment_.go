@@ -106,10 +106,8 @@ type SearchPackageData struct {
 }
 
 type GetPackageDetailData struct {
-	CreateTime     int `json:"create_time"`
-	DeliveryOption int `json:"delivery_option"`
-	NoteTag        int `json:"note_tag"`
-	OrderInfoList  []struct {
+	PackageID     int `json:"package_id"`
+	OrderInfoList []struct {
 		OrderID string `json:"order_id"`
 		SkuList []struct {
 			Quantity string `json:"quantity"`
@@ -118,20 +116,22 @@ type GetPackageDetailData struct {
 			SkuName  string `json:"sku_name"`
 		} `json:"sku_list"`
 	} `json:"order_info_list"`
-	OrderLineIDList     string `json:"order_line_id_list"`
-	PackageFreezeStatus int    `json:"package_freeze_status"`
-	PackageID           string `json:"package_id"`
-	PackageStatus       int    `json:"package_status"`
-	PickUpEndTime       int    `json:"pick_up_end_time"`
-	PickUpStartTime     int    `json:"pick_up_start_time"`
-	PickUpType          int    `json:"pick_up_type"`
-	PrintTag            int    `json:"print_tag"`
-	ScTag               int    `json:"sc_tag"`
-	ShippingProvider    string `json:"shipping_provider"`
-	ShippingProviderID  string `json:"shipping_provider_id"`
-	SkuTag              string `json:"sku_tag"`
-	TrackingNumber      string `json:"tracking_number"`
-	UpdateTime          int    `json:"update_time"`
+	PackageStatus       int      `json:"package_status"`
+	PackageFreezeStatus int      `json:"package_freeze_status"`
+	ScTag               int      `json:"sc_tag"`
+	PrintTag            int      `json:"print_tag"`
+	SkuTag              int      `json:"sku_tag"`
+	NoteTag             int      `json:"note_tag"`
+	DeliveryOption      int      `json:"delivery_option"`
+	ShippingProvider    string   `json:"shipping_provider"`
+	ShippingProviderID  string   `json:"shipping_provider_id"`
+	TrackingNumber      string   `json:"tracking_number"`
+	PickUpType          int      `json:"pick_up_type"`
+	PickUpStartTime     int      `json:"pick_up_start_time"`
+	PickUpEndTime       int      `json:"pick_up_end_time"`
+	CreateTime          int      `json:"create_time"`
+	UpdateTime          int      `json:"update_time"`
+	OrderLineIDList     []string `json:"order_line_id_list"`
 }
 
 type GetPackageShippingInfoData struct {
