@@ -116,7 +116,7 @@ type OrderDetail struct {
 	ItemList               []Item           `json:"item_list,omitempty"`
 	CancelReason           string           `json:"cancel_reason"`
 	CancelUser             string           `json:"cancel_user"`
-	ExtStatus              string           `json:"ext_status"`
+	ExtStatus              int              `json:"ext_status"`
 	OrderStatusOld         string           `json:"order_status_old"`
 	TrackingNumber         string           `json:"tracking_number"`
 	RtsTime                int              `json:"rts_time"`
