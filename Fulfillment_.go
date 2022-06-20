@@ -106,9 +106,9 @@ type SearchPackageData struct {
 }
 
 type GetPackageDetailData struct {
-	CreateTime     int    `json:"create_time"`
-	DeliveryOption string `json:"delivery_option"`
-	NoteTag        int    `json:"note_tag"`
+	CreateTime     int `json:"create_time"`
+	DeliveryOption int `json:"delivery_option"`
+	NoteTag        int `json:"note_tag"`
 	OrderInfoList  []struct {
 		OrderID string `json:"order_id"`
 		SkuList []struct {

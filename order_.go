@@ -1,9 +1,5 @@
 package tiktok
 
-import (
-	"encoding/json"
-)
-
 type GetOrderListRequest struct {
 	CreateTimeFrom int    `json:"create_time_from,omitempty"`
 	CreateTimeTo   int    `json:"create_time_to,omitempty"`
@@ -59,30 +55,41 @@ type RecipientAddress struct {
 	Zipcode         string   `json:"zipcode"`
 	AddressDetail   string   `json:"address_detail"`
 	AddressLineList []string `json:"address_line_list"`
+	RegionCode      string   `json:"region_code"`
 }
 
 type PaymentInfo struct {
-	Currency                    string `json:"currency"`
-	SubTotal                    int    `json:"sub_total"`
-	ShippingFee                 int    `json:"shipping_fee"`
-	SellerDiscount              int    `json:"seller_discount"`
-	TotalAmount                 int    `json:"total_amount"`
-	OriginalTotalProductPrice   int    `json:"original_total_product_price"`
-	OriginalShippingFee         int    `json:"original_shipping_fee"`
-	ShippingFeeSellerDiscount   int    `json:"shipping_fee_seller_discount"`
-	ShippingFeePlatformDiscount int    `json:"shipping_fee_platform_discount"`
+	Currency                    string  `json:"currency"`
+	SubTotal                    float64 `json:"sub_total"`
+	ShippingFee                 float64 `json:"shipping_fee"`
+	SellerDiscount              float64 `json:"seller_discount"`
+	PlatformDiscount            float64 `json:"platform_discount"`
+	TotalAmount                 float64 `json:"total_amount"`
+	OriginalTotalProductPrice   float64 `json:"original_total_product_price"`
+	OriginalShippingFee         float64 `json:"original_shipping_fee"`
+	ShippingFeeSellerDiscount   float64 `json:"shipping_fee_seller_discount"`
+	ShippingFeePlatformDiscount float64 `json:"shipping_fee_platform_discount"`
+	Taxes                       float64 `json:"taxes"`
 }
 
 type Item struct {
-	SkuID            string `json:"sku_id"`
-	ProductID        string `json:"product_id"`
-	ProductName      string `json:"product_name"`
-	SkuName          string `json:"sku_name"`
-	SkuImage         string `json:"sku_image"`
-	Quantity         int    `json:"quantity"`
-	SellerSku        string `json:"seller_sku"`
-	SkuOriginalPrice int    `json:"sku_original_price"`
-	SkuSalePrice     int    `json:"sku_sale_price"`
+	SkuID               string  `json:"sku_id"`
+	ProductID           string  `json:"product_id"`
+	SkuName             string  `json:"sku_name"`
+	Quantity            int     `json:"quantity"`
+	SellerSku           string  `json:"seller_sku"`
+	ProductName         string  `json:"product_name"`
+	SkuImage            string  `json:"sku_image"`
+	SkuOriginalPrice    float64 `json:"sku_original_price"`
+	SkuSalePrice        float64 `json:"sku_sale_price"`
+	SkuPlatformDiscount float64 `json:"sku_platform_discount"`
+	SkuSellerDiscount   float64 `json:"sku_seller_discount"`
+	SkuExtStatus        int     `json:"sku_ext_status"`
+	SkuDisplayStatus    int     `json:"sku_display_status"`
+	SkuCancelReason     string  `json:"sku_cancel_reason"`
+	SkuCancelUser       string  `json:"sku_cancel_user"`
+	SkuRtsTime          int     `json:"sku_rts_time"`
+	SkuType             int     `json:"sku_type"`
 }
 
 type OrderLineList struct {
@@ -102,22 +109,28 @@ type OrderDetail struct {
 	ShippingProvider       string           `json:"shipping_provider"`
 	ShippingProviderID     string           `json:"shipping_provider_id"`
 	CreateTime             string           `json:"create_time"`
-	PaidTime               json.Number      `json:"paid_time"`
+	PaidTime               int64            `json:"paid_time"`
 	BuyerMessage           string           `json:"buyer_message"`
 	PaymentInfo            PaymentInfo      `json:"payment_info,omitempty"`
 	RecipientAddress       RecipientAddress `json:"recipient_address,omitempty"`
-	TrackingNumber         string           `json:"tracking_number"`
 	ItemList               []Item           `json:"item_list,omitempty"`
+	CancelReason           string           `json:"cancel_reason"`
+	CancelUser             string           `json:"cancel_user"`
+	ExtStatus              string           `json:"ext_status"`
+	OrderStatusOld         string           `json:"order_status_old"`
+	TrackingNumber         string           `json:"tracking_number"`
 	RtsTime                int              `json:"rts_time"`
 	RtsSLA                 int              `json:"rts_sla"`
 	TtsSLA                 int              `json:"tts_sla"`
 	CancelOrderSLA         int              `json:"cancel_order_sla"`
-	ReceiverAddressUpdated int              `json:"receiver_address_updated"`
 	UpdateTime             int              `json:"update_time"`
-	BuyerUID               string           `json:"buyer_uid"`
-	FulfillmentType        int              `json:"fulfillment_type"`
-	OrderLineList          []OrderLineList  `json:"order_line_list"`
 	PackageList            []OrderPackage   `json:"package_list"`
+	ReceiverAddressUpdated int              `json:"receiver_address_updated"`
+	BuyerUID               string           `json:"buyer_uid"`
+	SplitOrCombineTag      string           `json:"split_or_combine_tag"`
+	FulfillmentType        int              `json:"fulfillment_type"`
+	SellerNote             string           `json:"seller_note"`
+	OrderLineList          []OrderLineList  `json:"order_line_list"`
 }
 
 type OrderDetailList struct {
