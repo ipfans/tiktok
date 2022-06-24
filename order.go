@@ -55,5 +55,5 @@ func (c *Client) CancelOrder(ctx context.Context, p Param, req CancelOrderReques
 		return
 	}
 	err = c.Post(ctx, " /api/reverse/order/cancel", param, req, &resp)
-	return1
+	return
 }
