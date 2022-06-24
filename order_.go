@@ -43,6 +43,11 @@ type ShipOrderRequest struct {
 	Pickup  *Pickup `json:"pick_up,omitempty"`
 }
 
+type CancelOrderRequest struct {
+	OrderID         string `json:"order_id" validate:"required"`
+	CancelReasonKey string `json:"cancel_reason_key" validate:"required"`
+}
+
 type RecipientAddress struct {
 	FullAddress     string   `json:"full_address"`
 	Region          string   `json:"region"`
@@ -135,4 +140,8 @@ type OrderDetail struct {
 
 type OrderDetailList struct {
 	OrderList []OrderDetail `json:"order_list"`
+}
+
+type CancelOrderResponse struct {
+	ReverseMainOrderID string `json:"reverse_main_order_id"`
 }

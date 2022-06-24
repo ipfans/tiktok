@@ -44,3 +44,16 @@ func (c *Client) ShipOrder(ctx context.Context, p Param, req ShipOrderRequest) (
 	}
 	return
 }
+
+// CancelOrder to cancel the order.
+func (c *Client) CancelOrder(ctx context.Context, p Param, req CancelOrderRequest) (resp CancelOrderResponse, err error) {
+	param, err := c.params(p)
+	if err != nil {
+		return
+	}
+	if err = c.validate.Struct(req); err != nil {
+		return
+	}
+	err = c.Post(ctx, " /api/reverse/order/cancel", param, req, &resp)
+	return1
+}
