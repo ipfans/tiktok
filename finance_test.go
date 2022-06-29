@@ -105,7 +105,7 @@ func TestClient_SearchTransactions(t *testing.T) {
 		RequestTimeTo   int    `json:"request_time_to"`
 		TransactionType []int  `json:"transaction_type" validate:"required"`
 		PageSize        int    `json:"page_size"`
-		Offset          int    `json:"offset" validate:"required,gte=0,lte=1000"`
+		Offset          int    `json:"offset" validate:"gte=0,lte=1000"`
 	}
 
 	restore := mockTime()
