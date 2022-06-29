@@ -12,7 +12,7 @@ type GetReverseListRequest struct {
 	ReverseType        int    `json:"reverse_type" example:"REFUND_ONLY = 2 RETURN_AND_REFUND = 3 REQUEST_CANCEL = 4"`
 	SortBy             int    `json:"sort_by" example:"REQUEST_TIME=0(default) UPDATE_TIME=1 REFUND_TOTAL=2"`
 	SortType           int    `json:"sort_type"  example:"ASC=0 DESC=1(default)"`
-	Offset             int    `json:"offset" validate:"required,min=0"`
+	Offset             int    `json:"offset" validate:"min=0"`
 	Size               int    `json:"size" validate:"required,min=1,max=100"`
 	ReverseOrderStatus int    `json:"reverse_order_status"`
 	OrderID            string `json:"order_id"`
