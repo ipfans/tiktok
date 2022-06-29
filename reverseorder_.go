@@ -7,16 +7,16 @@ type RejectReverseRequest struct {
 }
 
 type GetReverseListRequest struct {
-	UpdateTimeFrom     int    `json:"update_time_from"`
-	UpdateTimeTo       int    `json:"update_time_to"`
-	ReverseType        int    `json:"reverse_type" example:"REFUND_ONLY = 2 RETURN_AND_REFUND = 3 REQUEST_CANCEL = 4"`
-	SortBy             int    `json:"sort_by" example:"REQUEST_TIME=0(default) UPDATE_TIME=1 REFUND_TOTAL=2"`
-	SortType           int    `json:"sort_type"  example:"ASC=0 DESC=1(default)"`
+	UpdateTimeFrom     int    `json:"update_time_from,omitempty"`
+	UpdateTimeTo       int    `json:"update_time_to,omitempty"`
+	ReverseType        int    `json:"reverse_type,omitempty" example:"REFUND_ONLY = 2 RETURN_AND_REFUND = 3 REQUEST_CANCEL = 4"`
+	SortBy             int    `json:"sort_by,omitempty" example:"REQUEST_TIME=0(default) UPDATE_TIME=1 REFUND_TOTAL=2"`
+	SortType           int    `json:"sort_type,omitempty"  example:"ASC=0 DESC=1(default)"`
 	Offset             int    `json:"offset" validate:"min=0"`
 	Size               int    `json:"size" validate:"required,min=1,max=100"`
-	ReverseOrderStatus int    `json:"reverse_order_status"`
-	OrderID            string `json:"order_id"`
-	ReverseOrderID     string `json:"reverse_order_id"`
+	ReverseOrderStatus int    `json:"reverse_order_status,omitempty"`
+	OrderID            string `json:"order_id,omitempty"`
+	ReverseOrderID     string `json:"reverse_order_id,omitempty"`
 }
 
 type GetReverseReasonRequest struct {
