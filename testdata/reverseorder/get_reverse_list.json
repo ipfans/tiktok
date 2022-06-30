@@ -13,8 +13,8 @@
         "offset": 1,
         "size": 10,
         "reverse_order_status": 1,
-        "order_id": "111111",
-        "reverse_order_id": "222222"
+        "order_id": 111111,
+        "reverse_order_id": 222222
       }
     },
     "request": {
@@ -29,8 +29,8 @@
         "offset": 1,
         "size": 10,
         "reverse_order_status": 1,
-        "order_id": "111111",
-        "reverse_order_id": "222222"
+        "order_id": 111111,
+        "reverse_order_id": 222222
       }
     },
     "response": {
