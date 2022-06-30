@@ -25,15 +25,15 @@
                         {
                             "product_certifications": [
                                 {
-                                    "certification_name": "aaaa",
-                                    "certification_id": "11",
-                                    "certification_sample": "aaaaaaaaa",
+                                    "name": "aaaa",
+                                    "id": "11",
+                                    "sample": "aaaaaaaaa",
                                     "is_mandatory": false
                                 },
                                 {
-                                    "certification_name": "bbbb",
-                                    "certification_id": "22",
-                                    "certification_sample": "bbbbbbbbb",
+                                    "name": "bbbb",
+                                    "id": "22",
+                                    "sample": "bbbbbbbbb",
                                     "is_mandatory": false
                                 }
                             ],
@@ -49,20 +49,77 @@
                 {
                     "product_certifications": [
                         {
-                            "certification_name": "aaaa",
-                            "certification_id": "11",
-                            "certification_sample": "aaaaaaaaa",
+                            "name": "aaaa",
+                            "id": "11",
+                            "sample": "aaaaaaaaa",
                             "is_mandatory": false
                         },
                         {
-                            "certification_name": "bbbb",
-                            "certification_id": "22",
-                            "certification_sample": "bbbbbbbbb",
+                            "name": "bbbb",
+                            "id": "22",
+                            "sample": "bbbbbbbbb",
                             "is_mandatory": false
                         }
                     ],
                     "support_size_chart": false,
                     "support_cod": true
+                }
+            ]
+        },
+        "want_err": false
+    },
+    {
+        "name": "GetCategoryRule in reality",
+        "args": {
+            "app_key": "12abcd",
+            "app_secret": "123",
+            "access_token": "abc1c123-3128-aa17-125e-2d2d51ab814fa",
+            "shop_id": "123456",
+            "category_id": "1234"
+        },
+        "request": {
+            "method": "GET",
+            "url": "https://open-api.tiktokglobalshop.com/api/products/categories/rules",
+            "headers": {},
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&category_id=1234&shop_id=123456&sign=220a13779c3760007c1d7c04ca0c4fe9f4b870719908d40f2d3fca7bac75d02f&timestamp=1600000000"
+        },
+        "response": {
+            "status": 200,
+            "body": {
+                "code": 0,
+                "message": "Success",
+                "request_id": "2022063008074001021713522620EFAA",
+                "data": {
+                    "category_rules": [
+                        {
+                            "product_certifications": [
+                                {
+                                    "id": "69567864873125168",
+                                    "is_mandatory": false,
+                                    "name": "BPOM Certificate",
+                                    "sample": "https://p16-oec-va.ibyteimg.com/tos-alisg-i-aphluv4xwc-s/55e5310bbf71a4453e2d760bb5301b4f.png~tplv-o3syd03w52-origin-image.image?"
+                                }
+                            ],
+                            "support_cod": true,
+                            "support_size_chart": false
+                        }
+                    ]
+                }
+            }
+        },
+        "want": {
+            "category_rules": [
+                {
+                    "product_certifications": [
+                        {
+                            "id": "69567864873125168",
+                            "is_mandatory": false,
+                            "name": "BPOM Certificate",
+                            "sample": "https://p16-oec-va.ibyteimg.com/tos-alisg-i-aphluv4xwc-s/55e5310bbf71a4453e2d760bb5301b4f.png~tplv-o3syd03w52-origin-image.image?"
+                        }
+                    ],
+                    "support_cod": true,
+                    "support_size_chart": false
                 }
             ]
         },

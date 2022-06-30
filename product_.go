@@ -40,9 +40,9 @@ type AttributeList struct {
 }
 
 type ProductCertification struct {
-	Name        string `json:"certification_name"`
-	ID          string `json:"certification_id"`
-	Sample      string `json:"certification_sample"`
+	Name        string `json:"name"`
+	ID          string `json:"id"`
+	Sample      string `json:"sample"`
 	IsMandatory bool   `json:"is_mandatory"`
 }
 
