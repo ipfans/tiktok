@@ -11,20 +11,19 @@ import (
 )
 
 func TestGetShippingInfo(t *testing.T) {
-	var args struct {
-		AppKey      string            `json:"app_key"`
-		AppSecret   string            `json:"app_secret"`
-		AccessToken string            `json:"access_token"`
-		ShopID      string            `json:"shop_id"`
-		Req         tiktok.OrderIDReq `json:"req"`
-	}
-
 	var response tiktok.LogisticsGetShippingInfoData
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[1]GetShippingInfo.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string            `json:"app_key"`
+				AppSecret   string            `json:"app_secret"`
+				AccessToken string            `json:"access_token"`
+				ShopID      string            `json:"shop_id"`
+				Req         tiktok.OrderIDReq `json:"req"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -51,19 +50,18 @@ func TestGetShippingInfo(t *testing.T) {
 }
 
 func TestUpdateShippingInfo(t *testing.T) {
-	var args struct {
-		AppKey      string                       `json:"app_key"`
-		AppSecret   string                       `json:"app_secret"`
-		AccessToken string                       `json:"access_token"`
-		ShopID      string                       `json:"shop_id"`
-		Req         tiktok.UpdateShippingInfoReq `json:"req"`
-	}
-
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[2]UpdateShippingInfo.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string                       `json:"app_key"`
+				AppSecret   string                       `json:"app_secret"`
+				AccessToken string                       `json:"access_token"`
+				ShopID      string                       `json:"shop_id"`
+				Req         tiktok.UpdateShippingInfoReq `json:"req"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, nil)
@@ -85,20 +83,19 @@ func TestUpdateShippingInfo(t *testing.T) {
 }
 
 func TestGetShippingDocument(t *testing.T) {
-	var args struct {
-		AppKey      string                            `json:"app_key"`
-		AppSecret   string                            `json:"app_secret"`
-		AccessToken string                            `json:"access_token"`
-		ShopID      string                            `json:"shop_id"`
-		Req         tiktok.GetShippingDocumentRequest `json:"req"`
-	}
-
 	var response tiktok.GetShippingDocumentData
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[3]GetShippingDocument.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string                            `json:"app_key"`
+				AppSecret   string                            `json:"app_secret"`
+				AccessToken string                            `json:"access_token"`
+				ShopID      string                            `json:"shop_id"`
+				Req         tiktok.GetShippingDocumentRequest `json:"req"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -125,19 +122,18 @@ func TestGetShippingDocument(t *testing.T) {
 }
 
 func TestGetWarehouseList(t *testing.T) {
-	var args struct {
-		AppKey      string `json:"app_key"`
-		AppSecret   string `json:"app_secret"`
-		AccessToken string `json:"access_token"`
-		ShopID      string `json:"shop_id"`
-	}
-
 	var response tiktok.GetWarehouseListData
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[5]GetWarehouseList.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string `json:"app_key"`
+				AppSecret   string `json:"app_secret"`
+				AccessToken string `json:"access_token"`
+				ShopID      string `json:"shop_id"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -162,19 +158,18 @@ func TestGetWarehouseList(t *testing.T) {
 }
 
 func TestGetShippingProvider(t *testing.T) {
-	var args struct {
-		AppKey      string `json:"app_key"`
-		AppSecret   string `json:"app_secret"`
-		AccessToken string `json:"access_token"`
-		ShopID      string `json:"shop_id"`
-	}
-
 	var response tiktok.GetShippingProviderData
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[6]GetShippingProvider.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string `json:"app_key"`
+				AppSecret   string `json:"app_secret"`
+				AccessToken string `json:"access_token"`
+				ShopID      string `json:"shop_id"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -201,20 +196,19 @@ func TestGetShippingProvider(t *testing.T) {
 }
 
 func TestGetSubscribedDelivery(t *testing.T) {
-	var args struct {
-		AppKey      string                              `json:"app_key"`
-		AppSecret   string                              `json:"app_secret"`
-		AccessToken string                              `json:"access_token"`
-		ShopID      string                              `json:"shop_id"`
-		Req         tiktok.GetSubscribedDeliveryRequest `json:"req"`
-	}
-
 	var response tiktok.GetSubscribedDeliveryData
 	restore := mockTime()
 	defer restore()
 	tests := loadTestData(t, "testdata/logistics/[4]GetSubscribedDelivery.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string                              `json:"app_key"`
+				AppSecret   string                              `json:"app_secret"`
+				AccessToken string                              `json:"access_token"`
+				ShopID      string                              `json:"shop_id"`
+				Req         tiktok.GetSubscribedDeliveryRequest `json:"req"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)

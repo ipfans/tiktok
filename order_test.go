@@ -11,13 +11,6 @@ import (
 )
 
 func TestClient_GetOrderList(t *testing.T) {
-	var args struct {
-		AppKey      string `json:"app_key"`
-		AppSecret   string `json:"app_secret"`
-		AccessToken string `json:"access_token"`
-		ShopID      string `json:"shop_id"`
-	}
-
 	var response tiktok.OrdersList
 	restore := mockTime()
 	defer restore()
@@ -25,6 +18,12 @@ func TestClient_GetOrderList(t *testing.T) {
 	tests := loadTestData(t, "testdata/order/order_list.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string `json:"app_key"`
+				AppSecret   string `json:"app_secret"`
+				AccessToken string `json:"access_token"`
+				ShopID      string `json:"shop_id"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -48,14 +47,6 @@ func TestClient_GetOrderList(t *testing.T) {
 }
 
 func TestClient_GetOrderDetail(t *testing.T) {
-	var args struct {
-		AppKey      string   `json:"app_key"`
-		AppSecret   string   `json:"app_secret"`
-		AccessToken string   `json:"access_token"`
-		ShopID      string   `json:"shop_id"`
-		OrderID     []string `json:"order_id"`
-	}
-
 	var response tiktok.OrdersList
 	restore := mockTime()
 	defer restore()
@@ -63,6 +54,13 @@ func TestClient_GetOrderDetail(t *testing.T) {
 	tests := loadTestData(t, "testdata/order/order_detail.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string   `json:"app_key"`
+				AppSecret   string   `json:"app_secret"`
+				AccessToken string   `json:"access_token"`
+				ShopID      string   `json:"shop_id"`
+				OrderID     []string `json:"order_id"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, &response)
@@ -88,20 +86,19 @@ func TestClient_GetOrderDetail(t *testing.T) {
 }
 
 func TestClient_ShipOrder(t *testing.T) {
-	var args struct {
-		AppKey      string `json:"app_key"`
-		AppSecret   string `json:"app_secret"`
-		AccessToken string `json:"access_token"`
-		ShopID      string `json:"shop_id"`
-		OrderID     string `json:"order_id"`
-	}
-
 	restore := mockTime()
 	defer restore()
 
 	tests := loadTestData(t, "testdata/order/ship_order.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string `json:"app_key"`
+				AppSecret   string `json:"app_secret"`
+				AccessToken string `json:"access_token"`
+				ShopID      string `json:"shop_id"`
+				OrderID     string `json:"order_id"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, nil)
@@ -124,21 +121,20 @@ func TestClient_ShipOrder(t *testing.T) {
 }
 
 func TestClient_CancelOrder(t *testing.T) {
-	var args struct {
-		AppKey          string `json:"app_key"`
-		AppSecret       string `json:"app_secret"`
-		AccessToken     string `json:"access_token"`
-		ShopID          string `json:"shop_id"`
-		OrderID         string `json:"order_id"`
-		CancelReasonKey string `json:"cancel_reason_key"`
-	}
-
 	restore := mockTime()
 	defer restore()
 
 	tests := loadTestData(t, "testdata/order/cancel_order.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey          string `json:"app_key"`
+				AppSecret       string `json:"app_secret"`
+				AccessToken     string `json:"access_token"`
+				ShopID          string `json:"shop_id"`
+				OrderID         string `json:"order_id"`
+				CancelReasonKey string `json:"cancel_reason_key"`
+			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			setupMock(t, tt, &args, nil)

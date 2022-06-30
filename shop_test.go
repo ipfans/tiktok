@@ -10,19 +10,19 @@ import (
 )
 
 func TestClient_GetAuthorizedShop(t *testing.T) {
-	var args struct {
-		AppKey      string `json:"app_key"`
-		AppSecret   string `json:"app_secret"`
-		AccessToken string `json:"access_token"`
-		ShopID      string `json:"shop_id"`
-	}
-
 	restore := mockTime()
 	defer restore()
 
 	tests := loadTestData(t, "testdata/shop/get_authorized_shop.json")
 	for _, tt := range tests {
 		t.Run(tt.Name, func(t *testing.T) {
+			var args struct {
+				AppKey      string `json:"app_key"`
+				AppSecret   string `json:"app_secret"`
+				AccessToken string `json:"access_token"`
+				ShopID      string `json:"shop_id"`
+			}
+
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
 			var want tiktok.ShopList

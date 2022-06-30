@@ -67,10 +67,10 @@ type ShipPackageRequest struct {
 		PickUpStartTime int `json:"pick_up_start_time"`
 		PickUpEndTime   int `json:"pick_up_end_time"`
 	} `json:"pick_up"`
-	SelfShipment struct {
+	SelfShipment *struct {
 		TrackingNumber     string `json:"tracking_number"`
 		ShippingProviderID string `json:"shipping_provider_id"`
-	} `json:"self_shipment"`
+	} `json:"self_shipment,omitempty"`
 }
 
 type ShipPackageData struct {
