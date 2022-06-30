@@ -54,6 +54,6 @@ func (c *Client) CancelOrder(ctx context.Context, p Param, req CancelOrderReques
 	if err = c.validate.Struct(req); err != nil {
 		return
 	}
-	err = c.Post(ctx, " /api/reverse/order/cancel", param, req, &resp)
+	err = c.Post(ctx, "/api/reverse/order/cancel", param, req, &resp)
 	return
 }

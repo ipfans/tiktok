@@ -122,3 +122,40 @@ func TestClient_ShipOrder(t *testing.T) {
 		})
 	}
 }
+
+func TestClient_CancelOrder(t *testing.T) {
+	var args struct {
+		AppKey          string `json:"app_key"`
+		AppSecret       string `json:"app_secret"`
+		AccessToken     string `json:"access_token"`
+		ShopID          string `json:"shop_id"`
+		OrderID         string `json:"order_id"`
+		CancelReasonKey string `json:"cancel_reason_key"`
+	}
+
+	restore := mockTime()
+	defer restore()
+
+	tests := loadTestData(t, "testdata/order/cancel_order.json")
+	for _, tt := range tests {
+		t.Run(tt.Name, func(t *testing.T) {
+			httpmock.Activate()
+			defer httpmock.DeactivateAndReset()
+			setupMock(t, tt, &args, nil)
+
+			c, err := tiktok.New(args.AppKey, args.AppSecret)
+			require.NoError(t, err)
+
+			_, err = c.CancelOrder(context.TODO(),
+				tiktok.Param{AccessToken: args.AccessToken, ShopID: args.ShopID},
+				tiktok.CancelOrderRequest{OrderID: args.OrderID, CancelReasonKey: args.CancelReasonKey},
+			)
+			if tt.WantErr {
+				require.Error(t, err)
+				return
+			} else {
+				require.NoError(t, err)
+			}
+		})
+	}
+}
