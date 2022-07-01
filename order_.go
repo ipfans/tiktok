@@ -143,5 +143,5 @@ type OrderDetailList struct {
 }
 
 type CancelOrderResponse struct {
-	ReverseMainOrderID string `json:"reverse_main_order_id"`
+	ReverseMainOrderID int64 `json:"reverse_main_order_id"`
 }
