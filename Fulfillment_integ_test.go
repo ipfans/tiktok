@@ -196,13 +196,9 @@ func TestClient_ShipPackage_Integration(t *testing.T) {
 			args: args{
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
-				query: tiktok.ShipPackageRequest{PackageID: "1152946689385597164", SelfShipment: struct {
-					TrackingNumber     string `json:"tracking_number"`
-					ShippingProviderID string `json:"shipping_provider_id"`
-				}(struct {
-					TrackingNumber     string
-					ShippingProviderID string
-				}{TrackingNumber: _TRACKINGNUMBER, ShippingProviderID: _ShippingProviderID})},
+				query: tiktok.ShipPackageRequest{
+					PackageID: "1152946689385597164",
+				},
 			},
 			wantErr: false,
 		},
