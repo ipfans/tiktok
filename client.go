@@ -32,6 +32,7 @@ type Client struct {
 	appSecret string
 	opt       *option
 	validate  *validator.Validate
+	endpoint  string
 }
 
 // New for create a client.
@@ -49,6 +50,7 @@ func New(appKey, appSecret string, opts ...Option) (c *Client, err error) {
 		appSecret: appSecret,
 		opt:       opt,
 		validate:  validator.New(),
+		endpoint:  opt.endpoint,
 	}
 	return
 }
@@ -57,7 +59,7 @@ func New(appKey, appSecret string, opts ...Option) (c *Client, err error) {
 // Note: Timestamp, appkey and signature will auto-management by action.
 func (c *Client) Get(ctx context.Context, path string, param url.Values, resp interface{}) (err error) {
 	param = c.prepareParam(path, param)
-	err = c.request(ctx, http.MethodGet, APIBaseURL, path, param, nil, resp)
+	err = c.request(ctx, http.MethodGet, c.opt.endpoint, path, param, nil, resp)
 	return
 }
 
@@ -66,7 +68,7 @@ func (c *Client) Get(ctx context.Context, path string, param url.Values, resp in
 func (c *Client) Post(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {
 	param = c.prepareParam(path, param)
 	r := c.prepareBody(body)
-	err = c.request(ctx, http.MethodPost, APIBaseURL, path, param, r, resp)
+	err = c.request(ctx, http.MethodPost, c.opt.endpoint, path, param, r, resp)
 	return
 }
 
@@ -75,7 +77,7 @@ func (c *Client) Post(ctx context.Context, path string, param url.Values, body i
 func (c *Client) Put(ctx context.Context, path string, param url.Values, body interface{}, resp interface{}) (err error) {
 	param = c.prepareParam(path, param)
 	r := c.prepareBody(body)
-	err = c.request(ctx, http.MethodPut, APIBaseURL, path, param, r, resp)
+	err = c.request(ctx, http.MethodPut, c.opt.endpoint, path, param, r, resp)
 	return
 }
 
@@ -87,7 +89,7 @@ func (c *Client) Delete(ctx context.Context, path string, param url.Values, body
 	if body != nil {
 		r = c.prepareBody(body)
 	}
-	err = c.request(ctx, http.MethodDelete, APIBaseURL, path, param, r, resp)
+	err = c.request(ctx, http.MethodDelete, c.opt.endpoint, path, param, r, resp)
 	return
 }
 
