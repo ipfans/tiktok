@@ -46,10 +46,15 @@ type ProductCertification struct {
 	IsMandatory bool   `json:"is_mandatory"`
 }
 
+type ExemptionOfIdentifierCode struct {
+	SupportIdentifierCodeExemption bool `json:"support_identifier_code_exemption"`
+}
+
 type CategoryRule struct {
-	ProductCertifications []ProductCertification `json:"product_certifications"`
-	SupportSizeChart      bool                   `json:"support_size_chart"`
-	SupportCod            bool                   `json:"support_cod"`
+	ProductCertifications     []ProductCertification    `json:"product_certifications"`
+	SupportSizeChart          bool                      `json:"support_size_chart"`
+	SupportCod                bool                      `json:"support_cod"`
+	ExemptionOfIdentifierCode ExemptionOfIdentifierCode `json:"exemption_of_identifier_code"`
 }
 
 type CategoryRules struct {
