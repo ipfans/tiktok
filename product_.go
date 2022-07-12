@@ -111,8 +111,8 @@ type SalesAttribute struct {
 }
 
 type StockInfo struct {
-	WarehouseID    string `json:"warehouse_id"`
-	AvailableStock int    `json:"available_stock"`
+	WarehouseID    string `json:"warehouse_id,omitempty"`
+	AvailableStock int    `json:"available_stock,omitempty"`
 }
 
 type SKU struct {
