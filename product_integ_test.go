@@ -131,6 +131,7 @@ func TestClient_GetBrand_Integration(t *testing.T) {
 	type args struct {
 		ak     string
 		shopID string
+		query  string
 	}
 	tests := []struct {
 		name     string
@@ -143,13 +144,14 @@ func TestClient_GetBrand_Integration(t *testing.T) {
 			args: args{
 				ak:     os.Getenv(_AK_KEY),
 				shopID: os.Getenv(_SHOP_KEY),
+				query:  "605289",
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ans, err := c.GetBrand(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID})
+			ans, err := c.GetBrand(context.TODO(), tiktok.Param{AccessToken: tt.args.ak, ShopID: tt.args.shopID}, tt.args.query)
 			require.Equal(t, tt.wantErr, err != nil, "Client.GetBrand() error = %v, wantErr %v", err, tt.wantErr)
 			if err != nil {
 				return

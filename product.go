@@ -39,10 +39,13 @@ func (c *Client) GetCategoryRule(ctx context.Context, p Param, categoryID string
 	return
 }
 
-func (c *Client) GetBrand(ctx context.Context, p Param) (list BrandList, err error) {
+func (c *Client) GetBrand(ctx context.Context, p Param, categoryID string) (list BrandList, err error) {
 	var param url.Values
 	if param, err = c.params(p); err != nil {
 		return
+	}
+	if categoryID != "" {
+		param.Set("category_id", categoryID)
 	}
 	err = c.Get(ctx, "/api/products/brands", param, &list)
 	return
