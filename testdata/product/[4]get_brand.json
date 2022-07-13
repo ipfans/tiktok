@@ -12,7 +12,7 @@
             "method": "GET",
             "url": "https://open-api.tiktokglobalshop.com/api/products/brands",
             "headers": {},
-            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&shop_id=123456&sign=864136f2b17f500075ee4a82a96cf930cbedb2e1360f5d9641d98c97e5e5797c&timestamp=1600000000"
+            "query": "access_token=abc1c123-3128-aa17-125e-2d2d51ab814fa&app_key=12abcd&category_id=1234&shop_id=123456&sign=e281f39a6508649634617c98a1dd5f2617d21144625c4441da87dee474ca7bd4&timestamp=1600000000"
         },
         "response": {
             "status": 200,

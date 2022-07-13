@@ -129,6 +129,7 @@ func TestClient_GetBrand(t *testing.T) {
 				AppSecret   string `json:"app_secret"`
 				AccessToken string `json:"access_token"`
 				ShopID      string `json:"shop_id"`
+				CategoryID  string `json:"category_id"`
 			}
 			httpmock.Activate()
 			defer httpmock.DeactivateAndReset()
@@ -140,6 +141,7 @@ func TestClient_GetBrand(t *testing.T) {
 
 			list, err := c.GetBrand(context.TODO(),
 				tiktok.Param{args.AccessToken, args.ShopID},
+				args.CategoryID,
 			)
 			if tt.WantErr {
 				require.Error(t, err)
